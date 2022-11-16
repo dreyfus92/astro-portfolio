@@ -4,26 +4,41 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Welcome to Astro.">
   <main>
-    <section>
-      <div class="flex justify-center items-center">
-        <div class="mr-10">
-          <h1
-            class="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black"
+    <div class="flex flex-col-reverse md:flex-row justify-center items-center">
+      <div class="text-white md:w-[30%]">
+        <h1 class="font-bold text-3xl md:text-5xl tracking-tight mb-1">
+          Paul Valladares
+        </h1>
+        <h2 class="text-lg mt-2">
+          Frontend Dev at <a
+            href="https://www.hackapulco.com"
+            target="_blank"
+            class="rounded-lg hover:bg-green-600 p-1">@Hackapulco</a
           >
-            Paul Valladares
-          </h1>
-          <h2>
-            Frontend Dev at <a href="www.hackapulco.com" target="_blank"
-              >Hackapulco</a
-            >
-          </h2>
-        </div>
-        <img
-          class="w-32 h-32 rounded-full ml-4"
-          src="https://avatars.githubusercontent.com/u/85648028?v=4"
-          alt="Paul Valladares"
-        />
+        </h2>
+        <p class="text-gray-400 mt-4 text-left">
+          Welcome to my little corner of the web! I am a civil engineer
+          graduated from National Autonomous University of Mexico (UNAM) who
+          decided to break into tech in his late 20s. I am interested in <strong
+            >web developement</strong
+          >, <strong>UI/UX design</strong> and <strong>data analysis.</strong>
+        </p>
       </div>
-    </section>
+      <img
+        class="h-[120px] w-[120px] md:h-[240px] md:w-[240px] rounded-full ml-10"
+        src="https://avatars.githubusercontent.com/u/85648028?v=4"
+        alt="Paul Valladares"
+      />
+    </div>
+    <div class="flex justify-center items-center my-16">
+      <div class="text-white md:w-[49%]">
+        <h2 class="text-3xl font-bold">Technologies</h2>
+        <p class="text-gray-400 mt-4 text-left">
+          I like learning new programming languages, frameworks, and libraries.
+          I've worked with the following technologies side projects.
+        </p>
+        <div></div>
+      </div>
+    </div>
   </main>
 </Layout>

@@ -1,0 +1,14 @@
+---
+interface TechCardProps {
+  name: string;
+  imgSrc: string;
+  altSrc: string;
+}
+
+const { name, imgSrc, altSrc } = Astro.props;
+---
+
+<div>
+  <img src={imgSrc} alt={altSrc} />
+  <h3>{name}</h3>
+</div>
