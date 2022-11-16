@@ -29,4 +29,9 @@ export const technologies = [
         imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png',
         altSrc: 'TypeScript Logo',
     },
+    {
+        name: 'Tailwind CSS',
+        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Tailwind_CSS_logo_and_wordmark.svg/1200px-Tailwind_CSS_logo_and_wordmark.svg.png',
+        altSrc: 'Tailwind CSS Logo',
+    }
 ]
