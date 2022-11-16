@@ -1,7 +1,7 @@
 export const technologies = [
     {
         name: 'Astro',
-        imgSrc: 'https://astro.build/assets/astro-logo.svg',
+        imgSrc: 'https://bestofjs.org/logos/astro.dark.svg',
         altSrc: 'Astro Logo',
     },
     {
@@ -11,7 +11,7 @@ export const technologies = [
     },
     {
         name: 'Node.js',
-        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png',
+        imgSrc: 'https://cdn.iconscout.com/icon/free/png-256/node-js-1174925.png',
         altSrc: 'Node.js Logo',
     },
     {
@@ -31,7 +31,7 @@ export const technologies = [
     },
     {
         name: 'Tailwind CSS',
-        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Tailwind_CSS_logo_and_wordmark.svg/1200px-Tailwind_CSS_logo_and_wordmark.svg.png',
+        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',
         altSrc: 'Tailwind CSS Logo',
     }
 ]
