@@ -1,0 +1,18 @@
+---
+interface TechBadgeProps {
+  name: string;
+  imgSrc: string;
+  altSrc: string;
+}
+
+const { name, imgSrc, altSrc } = Astro.props;
+---
+
+<div class="flex items-center gap-4">
+  <div
+    class="rounded-full bg-neutral-600 w-[60px] h-[60px] flex justify-center items-center"
+  >
+    <img src={imgSrc} alt={altSrc} height="30" width="30" />
+  </div>
+  <h3>{name}</h3>
+</div>
