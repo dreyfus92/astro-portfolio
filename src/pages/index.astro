@@ -28,6 +28,19 @@ const pinnedRepos = await fetch(
 const repos = await pinnedRepos.json();
 ---
 
+<script>
+  import { animate } from "motion";
+  const pfp = document.getElementById("pfp-1") as Element;
+  animate(
+    pfp,
+    { transform: ["translate(200px)", "translateX(0px)"], opacity: [0, 1] },
+    {
+      duration: 2,
+      direction: "alternate",
+    }
+  );
+</script>
+
 <Layout title="Paul Valladares">
   <main>
     <div class="flex flex-col-reverse md:flex-row justify-center items-center">
@@ -52,6 +65,7 @@ const repos = await pinnedRepos.json();
         </p>
       </div>
       <img
+        id="pfp-1"
         class="mb-10 md:mb-0 h-[120px] w-[120px] md:h-[240px] md:w-[240px] rounded-full ml-10"
         src="https://avatars.githubusercontent.com/u/85648028?v=4"
         alt="Paul Valladares"
