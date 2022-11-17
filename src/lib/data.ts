@@ -35,3 +35,4 @@ export const technologies = [
         altSrc: 'Tailwind CSS Logo',
     }
 ]
+

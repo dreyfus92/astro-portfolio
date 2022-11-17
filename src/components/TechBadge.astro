@@ -5,7 +5,7 @@ interface TechBadgeProps {
   altSrc: string;
 }
 
-const { name, imgSrc, altSrc } = Astro.props;
+const { name, imgSrc, altSrc } = Astro.props as TechBadgeProps;
 ---
 
 <div class="flex items-center gap-4">
