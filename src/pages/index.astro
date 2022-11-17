@@ -4,6 +4,12 @@ import ProjectCard from "../components/ProjectCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { technologies } from "../lib/data";
 
+interface TechBadgeProps {
+  name: string;
+  imgSrc: string;
+  altSrc: string;
+}
+
 interface PinnedRepos {
   owner: string;
   repo: string;
@@ -61,7 +67,7 @@ const repos = await pinnedRepos.json();
         <div
           class="grid grid-cols-2 gap-y-5 md:grid-cols-3 md:gap-y-8 md:gap-x-4 mt-10"
         >
-          {technologies.map((tech) => <TechBadge {...tech} />)}
+          {technologies.map((tech: TechBadgeProps) => <TechBadge {...tech} />)}
         </div>
       </div>
     </div>
