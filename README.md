@@ -43,4 +43,9 @@ cd astro-portfolio
 npm install -g pnpm
 pnpm i
 pnpm dev
+```
+
+## 📝 License
+
+This project is licensed under the [MIT license](/LICENSE).
 
