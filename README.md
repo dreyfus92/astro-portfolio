@@ -1,12 +1,15 @@
-# Welcome to [Astro](https://astro.build)
+# 🧑🏻‍💻 My personal website
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
+An attempt to create a miniminal js personal blog using [Astro](https://astro.build/).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+![screenshot](/public/images/sc1.png)
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+## 📚 Stack
 
+- Platform: [Astro](https://astro.build/)
+- Deployment: [Vercel](https://vercel.com/)
+- Package manager: [pnpm](https://pnpm.io/)
+- CSS: [Tailwind CSS](https://tailwindcss.com/)
 
 ## 🚀 Project Structure
 
@@ -18,11 +21,9 @@ Inside of your Astro project, you'll see the following folders and files:
 │   └── favicon.svg
 ├── src/
 │   ├── components/
-│   │   └── Card.astro
 │   ├── layouts/
-│   │   └── Layout.astro
+│   ├── lib/
 │   └── pages/
-│       └── index.astro
 └── package.json
 ```
 
@@ -32,19 +33,14 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
+## 🧞 Running Locally
 
-All commands are run from the root of the project, from a terminal:
+This app requires Node.js v16.15.0 or later.
 
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
+```bash
+git clone git@github.com:dreyfus92/astro-portfolio.git
+cd astro-portfolio
+npm install -g pnpm
+pnpm i
+pnpm dev
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
