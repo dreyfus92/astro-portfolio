@@ -1,7 +1,6 @@
 ---
 import { AstroComponent } from "astro/dist/runtime/server/render/astro";
-const { repo, link, description, language, languageColor } = Astro.props;
-const color = bg.co;
+const { repo, link, description, language } = Astro.props;
 ---
 
 <a class="group block h-56 cursor-pointer" href={link}>
@@ -34,8 +33,7 @@ const color = bg.co;
         {description}
       </p>
       <p>
-        <span
-          class={`h-[25px] w-[25px] bg-[#${languageColor}] rounded-full inline-block`}
+        <span class="h-[8px] w-[8px] bg-white rounded-full inline-block mr-2"
         ></span>{language}
       </p>
     </div>
