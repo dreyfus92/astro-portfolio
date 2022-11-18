@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-neutral-800 break-words antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    word-wrap: break-word;
+  }
