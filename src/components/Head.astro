@@ -5,7 +5,11 @@ export interface Props {
   image?: string;
 }
 
-const { title, description, image } = Astro.props;
+const {
+  title,
+  description,
+  image = new URL("/images/bannerOg.png", Astro.url),
+} = Astro.props;
 ---
 
 <!-- HTML Meta Tags -->
@@ -38,24 +42,18 @@ const { title, description, image } = Astro.props;
 <link rel="icon" type="image/svg+xml" href="/favicon/favicon.ico" />
 
 <!-- Facebook Meta Tags -->
-<meta
-  property="og:url"
-  content="https://astro-portfolio-lac-beta.vercel.app/"
-/>
+<meta property="og:url" content={Astro.url} />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Paul Valladares" />
-<meta property="og:description" content="Personal website of Paul Valladares" />
-<meta property="og:image" content="" />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:domain" content="astro-portfolio-lac-beta.vercel.app" />
+<meta property="twitter:domain" content={Astro.url} />
 <meta property="twitter:url" content={Astro.url} />
 <meta name="twitter:title" content="Paul Valladares" />
-<meta
-  name="twitter:description"
-  content="Personal website of Paul Valladares"
-/>
-<meta name="twitter:image" content="" />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
 
 <!-- Meta Tags Generated via https://www.opengraph.xyz -->
