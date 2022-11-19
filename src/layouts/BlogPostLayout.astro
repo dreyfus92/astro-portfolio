@@ -4,11 +4,15 @@ import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 
 export interface Props {
-  title: string;
-  description: string;
+  content: {
+    title: string;
+    description: string;
+  };
 }
 
-const { title, description } = Astro.props;
+const {
+  content: { title, description },
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -16,13 +20,13 @@ const { title, description } = Astro.props;
   <head>
     <Head title={title} description={description} />
   </head>
-  <Navbar />
   <body>
+    <Navbar />
     <main class="text-white flex flex-col items-center">
       <div class="w-[750px]">
         <slot />
       </div>
     </main>
+    <Footer />
   </body>
-  <Footer />
 </html>
