@@ -8,14 +8,13 @@ export interface Props {
     title: string;
     description: string;
     pubDate: string;
+    readingTime: string;
   };
 }
 
 const {
-  content: { title, description, pubDate },
+  content: { title, description, pubDate, readingTime },
 } = Astro.props;
-
-const { minutesRead } = Astro.props.frontmatter;
 ---
 
 <!DOCTYPE html>
@@ -30,7 +29,7 @@ const { minutesRead } = Astro.props.frontmatter;
         <h1 class="text-4xl font-bold">{title}</h1>
         <div>
           <p class="text-sm">{pubDate}</p>
-          <p class="text-sm">{minutesRead}</p>
+          <p class="text-sm">{readingTime}</p>
         </div>
         <hr class="my-10" />
         <slot />
