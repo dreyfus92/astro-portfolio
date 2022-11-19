@@ -26,6 +26,7 @@ const blogPosts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
             description={post.frontmatter.description}
             date={post.frontmatter.pubDate}
             link={post.url}
+            readingTime={post.frontmatter.readingTime}
           />
         ))
       }

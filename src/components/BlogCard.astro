@@ -3,11 +3,11 @@ interface BlogCardProps {
   title: string;
   description: string;
   date: string;
-  readingTime?: string;
   link: string;
+  readingTime: string;
 }
 
-const { title, description, date, readingTime, link } = Astro.props;
+const { title, description, date, link, readingTime } = Astro.props;
 ---
 
 <a
@@ -32,7 +32,7 @@ const { title, description, date, readingTime, link } = Astro.props;
     </time>
     <div class="ml-4">
       <span>📚</span>
-      <span>{readingTime ?? "10 minutes"}</span>
+      <span>{readingTime}</span>
     </div>
   </div>
 </a>

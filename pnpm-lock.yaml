@@ -3,32 +3,26 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/mdx': ^0.11.6
   '@astrojs/prefetch': ^0.1.1
-  '@astrojs/react': ^1.2.2
   '@astrojs/sitemap': ^1.0.0
   '@astrojs/tailwind': ^2.1.2
-  '@headlessui/react': ^1.7.4
   '@types/react': ^18.0.21
   '@types/react-dom': ^18.0.6
   astro: ^1.6.8
+  mdast-util-to-string: ^3.1.0
   motion: ^10.14.3
-  react: ^18.0.0
-  react-dom: ^18.0.0
   reading-time: ^1.5.0
   tailwindcss: ^3.0.24
 
 dependencies:
   '@astrojs/mdx': 0.11.6
   '@astrojs/prefetch': 0.1.1
-  '@astrojs/react': 1.2.2_cn3ejhfta5lq2dae4xucvtkwvu
   '@astrojs/sitemap': 1.0.0
   '@astrojs/tailwind': 2.1.2_tailwindcss@3.2.4
-  '@headlessui/react': 1.7.4_biqbaboplfbrettd7655fr4n2y
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.9
   astro: 1.6.8
+  mdast-util-to-string: 3.1.0
   motion: 10.14.3
-  react: 18.2.0
-  react-dom: 18.2.0_react@18.2.0
   reading-time: 1.5.0
   tailwindcss: 3.2.4
 
@@ -145,25 +139,6 @@ packages:
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       prismjs: 1.29.0
-    dev: false
-
-  /@astrojs/react/1.2.2_cn3ejhfta5lq2dae4xucvtkwvu:
-    resolution: {integrity: sha512-ab9fYvzkC74J7N+M3DWQuZgwu7sYjW0aLO3sEAdCX/jZZz+0BhrqS8m9QjtGJyQK/niF4tgJjpPfadopxKc56g==}
-    engines: {node: ^14.18.0 || >=16.12.0}
-    peerDependencies:
-      '@types/react': ^17.0.50 || ^18.0.21
-      '@types/react-dom': ^17.0.17 || ^18.0.6
-      react: ^17.0.2 || ^18.0.0
-      react-dom: ^17.0.2 || ^18.0.0
-    dependencies:
-      '@babel/core': 7.20.2
-      '@babel/plugin-transform-react-jsx': 7.19.0_@babel+core@7.20.2
-      '@types/react': 18.0.25
-      '@types/react-dom': 18.0.9
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /@astrojs/sitemap/1.0.0:
@@ -478,18 +453,6 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
-
-  /@headlessui/react/1.7.4_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-D8n5yGCF3WIkPsjEYeM8knn9jQ70bigGGb5aUvN6y4BGxcT3OcOQOKcM3zRGllRCZCFxCZyQvYJF6ZE7bQUOyQ==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      react-dom: ^16 || ^17 || ^18
-    dependencies:
-      client-only: 0.0.1
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
 
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
@@ -1192,10 +1155,6 @@ packages:
   /cli-spinners/2.7.0:
     resolution: {integrity: sha512-qu3pN8Y3qHNgE2AFweciB1IfMnmZ/fsNTEE+NOFjmGB2F/7rLhnhzppvpCnN4FovtP26k8lHyy9ptEbNwWFLzw==}
     engines: {node: '>=6'}
-    dev: false
-
-  /client-only/0.0.1:
-    resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
     dev: false
 
   /clone/1.0.4:
@@ -2464,13 +2423,6 @@ packages:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
     dev: false
 
-  /loose-envify/1.4.0:
-    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
-    hasBin: true
-    dependencies:
-      js-tokens: 4.0.0
-    dev: false
-
   /lru-cache/6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
@@ -3426,23 +3378,6 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /react-dom/18.2.0_react@18.2.0:
-    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
-    peerDependencies:
-      react: ^18.2.0
-    dependencies:
-      loose-envify: 1.4.0
-      react: 18.2.0
-      scheduler: 0.23.0
-    dev: false
-
-  /react/18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      loose-envify: 1.4.0
-    dev: false
-
   /read-cache/1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
     dependencies:
@@ -3676,12 +3611,6 @@ packages:
 
   /sax/1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
-    dev: false
-
-  /scheduler/0.23.0:
-    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
-    dependencies:
-      loose-envify: 1.4.0
     dev: false
 
   /section-matter/1.0.0:

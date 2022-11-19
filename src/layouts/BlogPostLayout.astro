@@ -7,12 +7,15 @@ export interface Props {
   content: {
     title: string;
     description: string;
+    pubDate: string;
   };
 }
 
 const {
-  content: { title, description },
+  content: { title, description, pubDate },
 } = Astro.props;
+
+const { minutesRead } = Astro.props.frontmatter;
 ---
 
 <!DOCTYPE html>
@@ -23,7 +26,13 @@ const {
   <body>
     <Navbar />
     <main class="text-white flex flex-col items-center">
-      <div class="w-[750px]">
+      <div class="w-[350px] md:w-[750px]">
+        <h1 class="text-4xl font-bold">{title}</h1>
+        <div>
+          <p class="text-sm">{pubDate}</p>
+          <p class="text-sm">{minutesRead}</p>
+        </div>
+        <hr class="my-10" />
         <slot />
       </div>
     </main>

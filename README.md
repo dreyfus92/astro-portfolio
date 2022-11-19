@@ -15,8 +15,7 @@ An attempt to create a miniminal js personal blog using [Astro](https://astro.bu
 
 Inside of your Astro project, you'll see the following folders and files:
 
-```
-/
+```bash
 ├── public/
 │   └── favicon.svg
 ├── src/
