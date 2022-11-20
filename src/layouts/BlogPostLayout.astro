@@ -12,9 +12,15 @@ export interface Props {
   };
 }
 
-const {
+let {
   content: { title, description, pubDate, readingTime },
-} = Astro.props;
+} = Astro.props as Props;
+
+const formattedDate = new Date(pubDate).toLocaleDateString("en-us", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
 
 let posts = await Astro.glob("../pages/blog/*.mdx");
 posts = posts.sort(
@@ -22,10 +28,12 @@ posts = posts.sort(
     new Date(b.frontmatter.pubDate).valueOf() -
     new Date(a.frontmatter.pubDate).valueOf()
 );
+
 // get the index of the current post
 const index = posts.findIndex((post) => {
-  return Astro.request.url.includes(post.url);
+  return Astro.request.url.includes(post.url ?? "");
 });
+
 // get the next and previous posts
 const nextPost = posts[index + 1];
 const prevPost = posts[index - 1];
@@ -42,14 +50,14 @@ const prevPost = posts[index - 1];
       <article class="w-[350px] md:w-[750px] mb-10">
         <h1 class="text-4xl font-bold">{title}</h1>
         <div class="flex gap-x-2">
-          <p class="text-sm">{pubDate}</p>
+          <p class="text-sm">{formattedDate}</p>
           <p class="text-sm">{readingTime}</p>
         </div>
 
         <hr class="my-10" />
         <slot />
       </article>
-      <div>
+      <div class="w-[350px] md:w-[750px] mb-10">
         <div class="flex flex-col sm:flex-row mt-10 gap-4 sm:gap-6 w-full">
           {
             prevPost && (
