@@ -8,3 +8,12 @@ body {
     scroll-behavior: smooth;
     word-wrap: break-word;
   }
+
+  h2{
+    @apply font-bold text-2xl tracking-tight 
+  }
+
+  p{
+    @apply text-gray-300
+  }
+  
