@@ -17,3 +17,6 @@ body {
     @apply text-gray-300
   }
   
+  a{
+    @apply text-[#87CB49]
+  }
