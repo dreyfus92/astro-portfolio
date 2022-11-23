@@ -33,6 +33,11 @@ export const technologies = [
         name: 'Tailwind CSS',
         imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',
         altSrc: 'Tailwind CSS Logo',
+    },
+    {
+        name: 'Next.js',
+        imgSrc: 'https://static.netify.ai/logos/v/e/r/irepry/icon.png?v=1',
+        altSrc: 'Next.js Logo',
     }
 ]
 
