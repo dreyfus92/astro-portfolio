@@ -1,4 +1,4 @@
-export const technologies = [
+const technologies = [
     {
         name: 'Astro',
         imgSrc: 'https://bestofjs.org/logos/astro.dark.svg',
@@ -50,3 +50,43 @@ export const technologies = [
     }
 ]
 
+const socials = [
+    {
+        name: 'Twitter',
+        url: 'https://twitter.com/soysarcasme',
+        imgSrc: 'https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/1200px-Twitter_Bird.svg.png',
+        altSrc: 'Twitter Logo',
+    },
+    {
+        name: 'GitHub',
+        url: 'https://github.com/dreyfus92',
+        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png',
+        altSrc: 'GitHub Logo',
+    },
+    {
+        name: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/paul-valladares',
+        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png',
+        altSrc: 'LinkedIn Logo',
+    },
+    {
+        name: 'Instagram',
+        url: 'https://www.instagram.com/sarcasme92',
+        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png',
+        altSrc: 'Instagram Logo',
+    },
+    {
+        name: 'Discord',
+        url: 'https://discord.com/users/603517171175391242',
+        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Discord_logo.svg/1200px-Discord_logo.svg.png',
+        altSrc: 'Discord Logo',
+    },
+    {
+        name: 'Frontend Mentor',
+        url: 'https://www.frontendmentor.io/profile/dreyfus92',
+        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Frontend_Mentor_Logo.svg/1200px-Frontend_Mentor_Logo.svg.png',
+        altSrc: 'Frontend Mentor Logo',
+    },
+]
+
+export { technologies, socials }

@@ -1,14 +1,44 @@
 ---
+import SocialsLayout from "../layouts/SocialsLayout.astro";
+import { socials } from "../lib/data";
+
+interface Socials {
+  name: string;
+  url: string;
+  imgSrc: string;
+  altSrc: string;
+}
 ---
 
-<div id="main-box">
+<SocialsLayout
+  title="Paul Valladares | Socials"
+  description="Links for social media of Paul Valladares"
+>
   <img
-    src="/images/dreyfusAnimeV2.png"
+    src="https://avatars.githubusercontent.com/u/85648028?v=4"
     class="mx-auto mt-10 mb-8 border-2 border-black border-solid rounded-full w-28"
   />
-  <h2 class="px-2 mb-3 text-3xl text-center font-custom">Paul Valladares</h2>
-  <p class="px-2 mb-3 text-2xl font-bold text-center font-custom">
+  <h2 class="px-2 mb-3 text-3xl text-center text-white">Paul Valladares</h2>
+  <p class="px-2 mb-10 text-2xl font-bold text-center">
     Frontend Developer based in Mexico
   </p>
-  <div class="flex flex-col w-10/12 mx-auto"></div>
-</div>
+  <div class="flex flex-col items-center gap-6 justify-center">
+    {
+      socials.map((opt: Socials) => {
+        return (
+          <a
+            class="inline-block rounded bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:bg-indigo-500"
+            href={opt.url}
+          >
+            <img
+              src={opt.imgSrc}
+              alt={opt.altSrc}
+              class="inline-block w-6 h-6 mr-2"
+            />
+            {opt.name}
+          </a>
+        );
+      })
+    }
+  </div>
+</SocialsLayout>
