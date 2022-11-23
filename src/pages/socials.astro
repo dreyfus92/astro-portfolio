@@ -22,18 +22,18 @@ interface Socials {
   <p class="px-2 mb-10 text-2xl font-bold text-center">
     Frontend Developer based in Mexico
   </p>
-  <div class="flex flex-col items-center gap-6 justify-center">
+  <div class="flex flex-col items-center gap-8 justify-center">
     {
       socials.map((opt: Socials) => {
         return (
           <a
-            class="inline-block rounded bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:bg-indigo-500"
+            class="inline-block rounded bg-[#87CB49] px-8 py-3  w-[350px] md:w-[450px] text-md text-center font-medium text-gray-800 transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:bg-[#87CB49]"
             href={opt.url}
           >
             <img
               src={opt.imgSrc}
               alt={opt.altSrc}
-              class="inline-block w-6 h-6 mr-2"
+              class="inline-block w-8 mr-2"
             />
             {opt.name}
           </a>

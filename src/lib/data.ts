@@ -54,7 +54,7 @@ const socials = [
     {
         name: 'Twitter',
         url: 'https://twitter.com/soysarcasme',
-        imgSrc: 'https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/1200px-Twitter_Bird.svg.png',
+        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/2491px-Twitter-logo.svg.png',
         altSrc: 'Twitter Logo',
     },
     {
@@ -78,13 +78,13 @@ const socials = [
     {
         name: 'Discord',
         url: 'https://discord.com/users/603517171175391242',
-        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Discord_logo.svg/1200px-Discord_logo.svg.png',
+        imgSrc: 'https://logodownload.org/wp-content/uploads/2017/11/discord-logo-5-1.png',
         altSrc: 'Discord Logo',
     },
     {
         name: 'Frontend Mentor',
         url: 'https://www.frontendmentor.io/profile/dreyfus92',
-        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Frontend_Mentor_Logo.svg/1200px-Frontend_Mentor_Logo.svg.png',
+        imgSrc: 'https://seeklogo.com/images/F/frontend-mentor-logo-DD85EFE0E9-seeklogo.com.png',
         altSrc: 'Frontend Mentor Logo',
     },
 ]
