@@ -59,7 +59,7 @@ const repos = await pinnedRepos.json();
             >@Hackapulco</a
           >
         </h2>
-        <p class="text-gray-300 mt-4 text-left">
+        <p class="mt-4 text-left">
           Welcome to my little corner of the web! I am a civil engineer
           graduated from National Autonomous University of Mexico (UNAM) who
           decided to break into tech in his late 20s. I am interested in <strong
@@ -77,21 +77,27 @@ const repos = await pinnedRepos.json();
     <div class="flex justify-center items-center my-10 md:my-16">
       <div class="text-white w-[350px] md:w-[740px]">
         <h2 class="text-3xl font-bold">Technologies</h2>
-        <p class="text-gray-300 mt-4 text-left">
+        <p class="mt-4 text-left">
           I like learning new programming languages, frameworks, and libraries.
           I've worked with the following technologies on side projects.
         </p>
         <div
           class="grid grid-cols-2 gap-y-5 md:grid-cols-3 md:gap-y-8 md:gap-x-4 mt-10"
         >
-          {technologies.map((tech: TechBadgeProps) => <TechBadge {...tech} />)}
+          {
+            technologies.map((tech: TechBadgeProps) => (
+              <a href={tech.link} class="cursor-pointer text-gray-300">
+                <TechBadge {...tech} />
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>
     <div class="flex justify-center items-center my-10 md:my-16">
       <div class="text-white w-[350px] md:w-[740px]">
         <h2 class="text-3xl font-bold">Projects</h2>
-        <p class="text-gray-300 mt-4 text-left">
+        <p class="mt-4 text-left">
           I've build a couple of projects in the past and since Hacktoberfest I
           started enjoying to contribute to Open Source, currently I'm working
           on <a
