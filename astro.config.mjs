@@ -11,5 +11,6 @@ export default defineConfig({
     extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime],
   },
-  integrations: [tailwind(), mdx(), sitemap(), prefetch()]
+  integrations: [tailwind(), mdx(), sitemap(), prefetch()],
+  site: "https://www.paulvall.dev/"
 });

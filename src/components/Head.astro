@@ -10,7 +10,7 @@ export interface Props {
 const {
   title,
   description,
-  image = new URL("/images/banner.png", Astro.url),
+  image = new URL("/images/banner.png", Astro.site),
 } = Astro.props;
 ---
 
