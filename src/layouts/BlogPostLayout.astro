@@ -9,12 +9,11 @@ export interface Props {
     description: string;
     pubDate: string;
     readingTime: string;
-    image: string;
   };
 }
 
 let {
-  content: { title, description, pubDate, readingTime, image },
+  content: { title, description, pubDate, readingTime },
 } = Astro.props as Props;
 
 const formattedDate = new Date(pubDate).toLocaleDateString("en-us", {
@@ -45,7 +44,7 @@ const prevPost = posts[index - 1];
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <Head title={title} description={description} image={image} />
+    <Head title={title} description={description} />
   </head>
   <body>
     <Navbar />
