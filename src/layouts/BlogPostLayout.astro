@@ -49,14 +49,14 @@ const prevPost = posts[index - 1];
   <body>
     <Navbar />
     <main class="text-white flex flex-col items-center">
-      <div class="w-[350px] md:w-[750px] mb-10">
-        <h1 class="text-4xl font-bold">{title}</h1>
-        <div class="flex gap-x-2">
-          <p class="text-sm">{formattedDate}</p>
-          <p class="text-sm">{readingTime}</p>
+      <div class="w-[350px] md:w-[750px]">
+        <h1 class="text-4xl font-bold mb-4">{title}</h1>
+        <div class="flex gap-4">
+          <p class="text-sm">📅 {formattedDate}</p>
+          <p class="text-sm">📚 {readingTime}</p>
         </div>
 
-        <hr class="my-10" />
+        <hr class="mt-5 mb-10" />
         <article>
           <slot />
         </article>
