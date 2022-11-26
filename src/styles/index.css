@@ -21,6 +21,7 @@ a{
   @apply text-[#87CB49]
 }
 
-img[alt=cat-in-a-server-room]{
-  @apply h-[500px] mx-auto
+img[alt=cat-in-a-server-room], 
+img[alt=programmer-with-chrome] {
+  @apply h-[600px] mx-auto
 }
