@@ -38,7 +38,7 @@ const index = posts.findIndex((post) => {
 const nextPost = posts[index + 1];
 const prevPost = posts[index - 1];
 
-// TODO: Add styles for slots
+// TODO: add tracking component to track progress of user's reading
 ---
 
 <!DOCTYPE html>
@@ -67,7 +67,7 @@ const prevPost = posts[index - 1];
             prevPost && (
               <a
                 href={prevPost.url + "/"}
-                class="flex flex-col grow text-sm p-4 border rounded border-zinc-700 hover:border-teal-500 transition-colors"
+                class="flex flex-col grow text-sm p-4 border rounded border-zinc-700 hover:border-[#87CB49] transition duration-500 ease-out"
               >
                 <p class="text-zinc-400 mb-1">&larr; Previous post</p>
                 <p class="font-semibold text-zinc-300">
@@ -80,9 +80,9 @@ const prevPost = posts[index - 1];
             nextPost && (
               <a
                 href={nextPost.url + "/"}
-                class="flex flex-col grow text-right text-sm p-4 border rounded border-zinc-700 hover:border-teal-500 transition-colors"
+                class="flex flex-col grow text-right text-sm p-4 border rounded border-zinc-700 hover:border-[#87CB49] transition duration-500 ease-out"
               >
-                <p class="text-zinc-400 mb-1">Next post &rarr;</p>
+                <p class="mb-1">Next post &rarr;</p>
                 <p class="font-semibold text-zinc-300">
                   {nextPost.frontmatter.title}
                 </p>
