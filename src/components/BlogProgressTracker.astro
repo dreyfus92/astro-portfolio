@@ -1,0 +1,36 @@
+---
+---
+
+<script>
+  import { animate, scroll } from "motion";
+  scroll(animate(".progress", { strokeDasharray: ["0,1", "1,1"] }));
+</script>
+
+<style>
+  svg {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    transform: rotate(-90deg);
+  }
+
+  circle {
+    stroke-dashoffset: 0;
+    stroke-width: 15%;
+    fill: none;
+  }
+
+  .bg {
+    stroke: rgba(133, 150, 193, 0.1);
+  }
+
+  .progress {
+    stroke: #87cb49;
+    stroke-dasharray: 0, 1;
+  }
+</style>
+
+<svg width="50" height="50" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="30" pathLength="1" class="bg"></circle>
+  <circle cx="50" cy="50" r="30" pathLength="1" class="progress"></circle>
+</svg>
