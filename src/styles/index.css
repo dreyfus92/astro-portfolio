@@ -23,5 +23,5 @@ a{
 
 img[alt=cat-in-a-server-room], 
 img[alt=programmer-with-chrome] {
-  @apply h-[600px] mx-auto
+  @apply h-[350px] mx-auto md:h-[600px]
 }
