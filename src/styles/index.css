@@ -26,6 +26,7 @@ img[alt=programmer-with-chrome] {
   @apply h-[350px] mx-auto md:h-[600px]
 }
 
-img[alt=galleria-gif]{
-  @apply h-[450px] mx-auto
+img[alt=first-option-to-copy-response-gif],
+img[alt=second-option-to-copy-response-gif]{
+  @apply mx-auto
 }
