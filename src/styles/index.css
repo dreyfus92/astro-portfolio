@@ -30,3 +30,7 @@ img[alt=first-option-to-copy-response-gif],
 img[alt=second-option-to-copy-response-gif]{
   @apply mx-auto
 }
+
+[astro-icon]{
+  @apply w-8
+}

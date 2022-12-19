@@ -1,22 +1,35 @@
 ---
-import type { NowPlayingTrackResponse } from "../lib/now";
-import { get } from "../lib/now";
+import type { NowPlayingTrackResponse } from "../lib/spotify";
+import { get } from "../lib/spotify";
+import { Icon } from "astro-icon";
 
 const nowPlayingTrack = await get();
 const result = (await nowPlayingTrack.json()) as NowPlayingTrackResponse;
-console.log(result);
 ---
 
-<div>
+<div
+  class="w-full text-center md:w-[250px] font-medium rounded-lg hover:bg-[#87CB49]"
+>
   {
     result.isPlaying ? (
-      <a href={result.url} target="_blank" rel="noreferrer noopener">
-        <p class="text-lg font-semibold">
-          {result.title}-{result.artist}
+      <a
+        href={result.url}
+        target="_blank"
+        rel="noreferrer noopener flex"
+        class="flex items-center justify-center hover:text-gray-900"
+      >
+        <Icon name="ph:spotify-logo-duotone" />
+        <p class="ml-2 hover:text-gray-900 p-2">
+          {result.title} - {result.artist}
         </p>
       </a>
     ) : (
-      <p class="font-medium text-[#87CB49]">Not playing anything right now!</p>
+      <span class="flex items-center justify-center hover:text-gray-900">
+        <Icon name="ph:spotify-logo-duotone" />
+        <p class="ml-2 hover:text-gray-900 p-2">
+          Not playing anything right now!
+        </p>
+      </span>
     )
   }
 </div>

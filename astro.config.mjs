@@ -5,8 +5,6 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import image from "@astrojs/image";
-
-// https://astro.build/config
 import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
