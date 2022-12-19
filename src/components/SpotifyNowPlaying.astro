@@ -1,0 +1,23 @@
+---
+import type { NowPlayingTrackResponse } from "../lib/spotify";
+
+const URL = import.meta.env.URL;
+
+const nowPlayingResponse = await fetch(`${URL}/now`);
+const nowPlayingTrack =
+  (await nowPlayingResponse.json()) as NowPlayingTrackResponse;
+---
+
+<div>
+  {
+    nowPlayingTrack.isPlaying ? (
+      <a href={nowPlayingTrack.url} target="_blank" rel="noreferrer noopener">
+        <p class="text-lg font-semibold">
+          {nowPlayingTrack.title}-{nowPlayingTrack.artist}
+        </p>
+      </a>
+    ) : (
+      <p class="font-medium text-[#87CB49]">Not playing anything right now!</p>
+    )
+  }
+</div>

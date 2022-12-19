@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 body {
-    @apply bg-neutral-800 break-words antialiased;
-    text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
-    word-wrap: break-word;
-  }
+  @apply bg-neutral-800 break-words antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  word-wrap: break-word;
+}
 
-h2{
+h2 {
   @apply font-bold text-2xl tracking-tight 
 }
 
-p{
+p {
   @apply text-gray-300
 }
 
-a{
+a {
   @apply text-[#87CB49]
 }
 

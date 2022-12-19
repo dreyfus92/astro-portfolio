@@ -1,13 +1,14 @@
 ---
+import SpotifyNowPlaying from "./SpotifyNowPlaying.astro";
 ---
 
 <nav
   role="navigation"
   aria-label="Main"
   id="top-nav"
-  class="flex justify-center items-center w-full pt-8 pb-8 sm:pb-16"
+  class="flex flex-col md:flex-row gap-4 justify-center items-center w-full pt-8 pb-8 sm:pb-16"
 >
-  <ul class="flex justify-center gap-4">
+  <ul class="flex justify-center gap-4 mr-0 md:mr-[350px]">
     <a
       href="/"
       class="relative font-medium text-[#87CB49] before:absolute before:-bottom-1 before:h-0.5 before:w-full before:scale-x-0 before:bg-[#87CB49] before:transition hover:before:scale-x-100"
@@ -19,4 +20,5 @@
       ><li>Blog</li>
     </a>
   </ul>
+  <SpotifyNowPlaying />
 </nav>
