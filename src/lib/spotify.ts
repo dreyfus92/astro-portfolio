@@ -1,11 +1,11 @@
-type track = {
+export type track = {
     name: string,
     artists: { name: string }[],
     album: { images: { url: string }[] },
     external_urls: { spotify: string }
 };
 
-type artist = {
+export type artist = {
     name: string,
     images: { url: string }[],
     external_urls: { spotify: string },
@@ -20,10 +20,10 @@ export type NowPlayingTrackResponse = {
     img: string;
 };
 
-const getAccessToken = async () => {
-    const refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN;
-    const clientId = import.meta.env.SPOTIFY_CLIENT_ID;
-    const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+export const getAccessToken = async () => {
+    let refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN;
+    let clientId = import.meta.env.SPOTIFY_CLIENT_ID;
+    let clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
 
     const response = await fetch('https://accounts.spotify.com/api/token', {
         method: "POST",
@@ -42,7 +42,7 @@ const getAccessToken = async () => {
     return response.json();
 }
 
-const nowPlaying = async () => {
+export const nowPlaying = async () => {
     const { access_token } = await getAccessToken();
 
     return fetch("https://api.spotify.com/v1/me/player/currently-playing", {
@@ -54,6 +54,7 @@ const nowPlaying = async () => {
 
 export const get = async () => {
     const response = await nowPlaying();
+    console.log(response)
 
     if (response.status === 204 || response.status > 400) {
         return new Response(JSON.stringify({ isPlaying: false }), {
@@ -77,3 +78,7 @@ export const get = async () => {
         status: 200,
     });
 };
+
+get();
+
+export { }; 
