@@ -1,19 +1,18 @@
 ---
 import type { NowPlayingTrackResponse } from "../lib/now";
+import { get } from "../lib/now";
 
-const URL = import.meta.env.URL;
-
-const nowPlayingResponse = await fetch(`${URL}/now`);
-const nowPlayingTrack =
-  (await nowPlayingResponse.json()) as NowPlayingTrackResponse;
+const nowPlayingTrack = await get();
+const result = (await nowPlayingTrack.json()) as NowPlayingTrackResponse;
+console.log(result);
 ---
 
 <div>
   {
-    nowPlayingTrack.isPlaying ? (
-      <a href={nowPlayingTrack.url} target="_blank" rel="noreferrer noopener">
+    result.isPlaying ? (
+      <a href={result.url} target="_blank" rel="noreferrer noopener">
         <p class="text-lg font-semibold">
-          {nowPlayingTrack.title}-{nowPlayingTrack.artist}
+          {result.title}-{result.artist}
         </p>
       </a>
     ) : (

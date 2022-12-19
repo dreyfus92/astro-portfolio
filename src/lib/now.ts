@@ -1,4 +1,4 @@
-import { nowPlaying, Artist } from "../lib/spotify";
+import { nowPlaying, Artist } from "./spotify";
 
 export type NowPlayingTrackResponse = {
     isPlaying: boolean;
@@ -33,5 +33,3 @@ export const get = async () => {
         status: 200,
     });
 };
-
-console.log(get())

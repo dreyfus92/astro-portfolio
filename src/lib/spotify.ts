@@ -37,5 +37,7 @@ const nowPlaying = async () => {
     });
 };
 
+console.log(getAccessToken())
+
 export { nowPlaying };
 export type { Artist };
