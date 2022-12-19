@@ -16,6 +16,7 @@
     "@astrojs/prefetch": "^0.1.1",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.1.2",
+    "@astrojs/vercel": "^2.3.6",
     "@types/node": "^18.7.6",
     "astro": "^1.6.8",
     "mdast-util-to-string": "^3.1.0",
