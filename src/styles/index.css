@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 body {
-    @apply bg-neutral-800 break-words antialiased;
-    text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
-    word-wrap: break-word;
-  }
+  @apply bg-neutral-800 break-words antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  word-wrap: break-word;
+}
 
-h2{
+h2 {
   @apply font-bold text-2xl tracking-tight 
 }
 
-p{
+p {
   @apply text-gray-300
 }
 
-a{
+a {
   @apply text-[#87CB49]
 }
 
@@ -29,4 +29,8 @@ img[alt=programmer-with-chrome] {
 img[alt=first-option-to-copy-response-gif],
 img[alt=second-option-to-copy-response-gif]{
   @apply mx-auto
+}
+
+[astro-icon]{
+  @apply w-8
 }

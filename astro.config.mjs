@@ -5,6 +5,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import image from "@astrojs/image";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,5 +14,7 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime]
   },
   integrations: [tailwind(), mdx(), sitemap(), prefetch(), image()],
-  site: "https://www.paulvall.dev/"
+  site: "https://www.paulvall.dev/",
+  output: "server",
+  adapter: vercel()
 });

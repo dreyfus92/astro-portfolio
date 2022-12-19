@@ -1,0 +1,38 @@
+---
+import type { NowPlayingTrackResponse } from "../lib/spotify";
+import { get } from "../lib/spotify";
+import { Icon } from "astro-icon";
+
+const nowPlayingTrack = await get();
+const result = (await nowPlayingTrack.json()) as NowPlayingTrackResponse;
+---
+
+<div
+  class="w-[200px] text-[11px] flex items-center justify-center font-medium rounded-lg hover:bg-[#87CB49]"
+>
+  {
+    result.isPlaying ? (
+      <a
+        href={result.url}
+        target="_blank"
+        rel="noreferrer noopener flex"
+        class="flex items-center justify-around hover:text-gray-900"
+      >
+        <Icon name="ph:spotify-logo-duotone" />
+        <p class="hover:text-gray-900 p-3">
+          {result.title} - {result.artist}
+        </p>
+      </a>
+    ) : (
+      <a
+        href="https://open.spotify.com/user/1276702099?si=2475d23fbc7f410f"
+        target="_blank"
+        rel="noreferrer noopener flex"
+        class="flex items-center justify-around hover:text-gray-900"
+      >
+        <Icon name="ph:spotify-logo-duotone" />
+        <p class=" hover:text-gray-900 p-3">Not playing anything right now!</p>
+      </a>
+    )
+  }
+</div>
