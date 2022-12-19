@@ -8,7 +8,7 @@ const result = (await nowPlayingTrack.json()) as NowPlayingTrackResponse;
 ---
 
 <div
-  class="w-full text-center md:w-[250px] font-medium rounded-lg hover:bg-[#87CB49]"
+  class="w-[200px] text-[11px] flex items-center justify-center font-medium rounded-lg hover:bg-[#87CB49]"
 >
   {
     result.isPlaying ? (
@@ -16,20 +16,23 @@ const result = (await nowPlayingTrack.json()) as NowPlayingTrackResponse;
         href={result.url}
         target="_blank"
         rel="noreferrer noopener flex"
-        class="flex items-center justify-center hover:text-gray-900"
+        class="flex items-center justify-around hover:text-gray-900"
       >
         <Icon name="ph:spotify-logo-duotone" />
-        <p class="ml-2 hover:text-gray-900 p-2">
+        <p class="hover:text-gray-900 p-3">
           {result.title} - {result.artist}
         </p>
       </a>
     ) : (
-      <span class="flex items-center justify-center hover:text-gray-900">
+      <a
+        href="https://open.spotify.com/user/1276702099?si=2475d23fbc7f410f"
+        target="_blank"
+        rel="noreferrer noopener flex"
+        class="flex items-center justify-around hover:text-gray-900"
+      >
         <Icon name="ph:spotify-logo-duotone" />
-        <p class="ml-2 hover:text-gray-900 p-2">
-          Not playing anything right now!
-        </p>
-      </span>
+        <p class=" hover:text-gray-900 p-3">Not playing anything right now!</p>
+      </a>
     )
   }
 </div>
