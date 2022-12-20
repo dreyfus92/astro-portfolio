@@ -54,38 +54,32 @@ const socials = [
     {
         name: 'Twitter',
         url: 'https://twitter.com/soysarcasme',
-        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/2491px-Twitter-logo.svg.png',
-        altSrc: 'Twitter Logo',
+        imgSrc: 'mdi:twitter',
     },
     {
         name: 'GitHub',
         url: 'https://github.com/dreyfus92',
-        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png',
-        altSrc: 'GitHub Logo',
+        imgSrc: 'mdi:github',
     },
     {
         name: 'LinkedIn',
         url: 'https://www.linkedin.com/in/paul-valladares',
-        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png',
-        altSrc: 'LinkedIn Logo',
+        imgSrc: 'mdi:linkedin',
     },
     {
         name: 'Instagram',
         url: 'https://www.instagram.com/sarcasme92',
-        imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png',
-        altSrc: 'Instagram Logo',
+        imgSrc: 'mdi:instagram',
     },
     {
         name: 'Discord',
         url: 'https://discord.com/users/603517171175391242',
-        imgSrc: 'https://logodownload.org/wp-content/uploads/2017/11/discord-logo-5-1.png',
-        altSrc: 'Discord Logo',
+        imgSrc: 'ri:discord-fill',
     },
     {
         name: 'Frontend Mentor',
         url: 'https://www.frontendmentor.io/profile/dreyfus92',
-        imgSrc: 'https://seeklogo.com/images/F/frontend-mentor-logo-DD85EFE0E9-seeklogo.com.png',
-        altSrc: 'Frontend Mentor Logo',
+        imgSrc: 'simple-icons:frontendmentor',
     },
 ]
 
