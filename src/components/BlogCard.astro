@@ -7,7 +7,8 @@ interface BlogCardProps {
   readingTime: string;
 }
 
-const { title, description, date, link, readingTime } = Astro.props;
+const { title, description, date, link, readingTime } =
+  Astro.props as BlogCardProps;
 ---
 
 <a
@@ -30,9 +31,5 @@ const { title, description, date, link, readingTime } = Astro.props;
         })
       }
     </time>
-    <div class="ml-4">
-      <span>📚</span>
-      <span>{readingTime}</span>
-    </div>
   </div>
 </a>

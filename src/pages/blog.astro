@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import BlogCard from "../components/BlogCard.astro";
+import { getCollection } from "astro:content";
 
-const blogPosts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-  (a, b) =>
-    new Date(b.frontmatter.pubDate).valueOf() -
-    new Date(a.frontmatter.pubDate).valueOf()
+const blogPosts = await getCollection("posts").then((posts) =>
+  posts.sort(
+    (a, b) =>
+      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+  )
 );
 ---
 
@@ -22,11 +24,10 @@ const blogPosts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
       {
         blogPosts.map((post) => (
           <BlogCard
-            title={post.frontmatter.title}
-            description={post.frontmatter.description}
-            date={post.frontmatter.pubDate}
-            link={post.url}
-            readingTime={post.frontmatter.readingTime}
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.pubDate}
+            link={`/posts/${post.slug}`}
           />
         ))
       }
