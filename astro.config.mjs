@@ -15,11 +15,6 @@ export default defineConfig({
   },
   integrations: [tailwind(), mdx(), sitemap(), prefetch(), image()],
   site: "https://www.paulvall.dev/",
-  outDir: {
-    output: 'server',
-    build: {
-      assets: '_custom'
-    }
-  },
+  output: 'server',
   adapter: vercel()
 });
