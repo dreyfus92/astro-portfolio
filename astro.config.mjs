@@ -18,7 +18,7 @@ export default defineConfig({
   outDir: {
     output: 'server',
     build: {
-      client: './client'
+      assets: '_custom'
     }
   },
   adapter: vercel()
