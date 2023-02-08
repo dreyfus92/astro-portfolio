@@ -4,13 +4,12 @@ interface BlogCardProps {
   description: string;
   date: string;
   link: string;
-  readingTime: string;
 }
 
-const { title, description, date, link, readingTime } =
-  Astro.props as BlogCardProps;
+const { title, description, date, link } = Astro.props as BlogCardProps;
 ---
 
+<!-- TODO: Figure out how get reading time with latest version -->
 <a
   href={link}
   rel="prefetch"
