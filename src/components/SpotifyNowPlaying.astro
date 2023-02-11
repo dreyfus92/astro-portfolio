@@ -1,10 +1,11 @@
 ---
 import type { NowPlayingTrackResponse } from "../lib/spotify";
-import { get } from "../lib/spotify";
+import { getCurrentTrack } from "../lib/spotify";
 import { Icon } from "astro-icon";
 
-const nowPlayingTrack = await get();
-const result = (await nowPlayingTrack.json()) as NowPlayingTrackResponse;
+const nowPlayingTrack = await getCurrentTrack();
+const data = await nowPlayingTrack.json();
+const result = data as NowPlayingTrackResponse;
 ---
 
 <div

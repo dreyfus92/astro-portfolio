@@ -49,7 +49,7 @@ const nowPlaying = async () => {
 };
 
 //Get currently playing track
-export const get = async () => {
+export const getCurrentTrack = async () => {
     const response = await nowPlaying();
 
     if (response.status === 204 || response.status > 400) {
