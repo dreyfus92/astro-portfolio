@@ -18,8 +18,5 @@ export default defineConfig({
   outputDir: {
     output: 'server',
     adapter: vercel(),
-    build: {
-      assets: '_astro'
-    }
   },
 });
