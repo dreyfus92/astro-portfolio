@@ -1,3 +1,4 @@
+export const prerender = true;
 type Artist = {
     name: string,
     images: { url: string }[],
