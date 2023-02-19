@@ -47,6 +47,13 @@ const technologies = [
         imgSrc: 'https://static.netify.ai/logos/v/e/r/irepry/icon.png?v=1',
         altSrc: 'Next.js Logo',
         link: 'https://nextjs.org/',
+    },
+    {
+        name: 'Vitest',
+        imgSrc: 'https://vitest.dev/logo.svg',
+        altSrc: 'Vitest Logo',
+        link: 'https://vitest.dev/'
+
     }
 ]
 
