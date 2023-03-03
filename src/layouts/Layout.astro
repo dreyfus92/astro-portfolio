@@ -15,9 +15,9 @@ const { title, description } = Astro.props;
   <head>
     <Head title={title} description={description} />
   </head>
+  <Navbar />
   <body class="mx-auto">
-    <Navbar />
     <slot />
-    <Footer />
   </body>
+  <Footer />
 </html>

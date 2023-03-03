@@ -45,9 +45,9 @@ const prevPost = posts[index - 1];
   <head>
     <Head title={frontmatter.title} description={frontmatter.description} />
   </head>
+  <Navbar />
   <body>
     <BlogProgressTracker />
-    <Navbar />
     <main class="text-white flex flex-col items-center">
       <div class="w-[350px] md:w-[750px]">
         <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
@@ -86,7 +86,7 @@ const prevPost = posts[index - 1];
           }
         </div>
       </div>
-      <Footer />
     </main>
   </body>
+  <Footer />
 </html>
