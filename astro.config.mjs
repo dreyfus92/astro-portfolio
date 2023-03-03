@@ -3,7 +3,6 @@ import { remarkReadingTime } from './src/lib/readingTime.mjs';
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import prefetch from "@astrojs/prefetch";
 import image from "@astrojs/image";
 import vercel from "@astrojs/vercel/serverless";
 
@@ -13,7 +12,7 @@ export default defineConfig({
     extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime]
   },
-  integrations: [tailwind(), mdx(), sitemap(), prefetch(), image()],
+  integrations: [tailwind(), mdx(), sitemap(), image()],
   site: "https://www.paulvall.dev/",
   outputDir: {
     output: 'server',

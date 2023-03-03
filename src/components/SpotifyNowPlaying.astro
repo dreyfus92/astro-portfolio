@@ -6,7 +6,6 @@ import { Icon } from "astro-icon";
 const nowPlayingTrack = await getCurrentTrack();
 const data = await nowPlayingTrack.json();
 const result = data as NowPlayingTrackResponse;
-console.log(result);
 ---
 
 <div
