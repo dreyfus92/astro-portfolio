@@ -1,5 +1,5 @@
 ---
-import SpotifyNowPlaying from "./SpotifyNowPlaying.astro";
+import { SpotifyBadge } from "./SpotifyNowPlaying";
 ---
 
 <nav
@@ -8,7 +8,6 @@ import SpotifyNowPlaying from "./SpotifyNowPlaying.astro";
   id="top-nav"
   class="flex flex-col md:flex-row md:justify-between gap-4 items-center pt-8 pb-8 sm:pb-16 w-[50%] mx-auto"
 >
-
   <ul class="flex justify-center items-center gap-4 px-3 py-1">
     <a
       href="/"
@@ -21,5 +20,5 @@ import SpotifyNowPlaying from "./SpotifyNowPlaying.astro";
       ><li>Blog</li>
     </a>
   </ul>
-  <SpotifyNowPlaying />
+  <SpotifyBadge />
 </nav>

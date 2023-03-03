@@ -13,7 +13,6 @@ export type NowPlayingTrackResponse = {
     img: string;
 };
 
-
 // Get access token from Spotify
 export const getAccessToken = async () => {
     // Get environment variables
@@ -39,7 +38,7 @@ export const getAccessToken = async () => {
 }
 
 // Get authorization for currently playing scope
-const nowPlaying = async () => {
+export const nowPlaying = async () => {
     const { access_token } = await getAccessToken();
     return fetch("https://api.spotify.com/v1/me/player/currently-playing", {
         headers: {
