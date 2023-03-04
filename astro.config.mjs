@@ -6,14 +6,13 @@ import sitemap from "@astrojs/sitemap";
 import image from "@astrojs/image";
 import vercel from "@astrojs/vercel/serverless";
 import prefetch from "@astrojs/prefetch";
-import react from "@astrojs/react"
 
 export default defineConfig({
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime]
   },
-  integrations: [tailwind(), mdx(), sitemap(), image(), prefetch(), react()],
+  integrations: [tailwind(), mdx(), sitemap(), image(), prefetch()],
   site: "https://www.paulvall.dev/",
   outputDir: {
     output: 'server',
