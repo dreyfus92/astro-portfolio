@@ -34,10 +34,11 @@ const repos = await pinnedRepos.json();
   const pfp = document.getElementById("pfp-1") as Element;
   animate(
     pfp,
-    { transform: ["translate(200px)", "translateX(0px)"], opacity: [0, 1] },
+    { x: [0, 4, -4, 0], y: [-4, 0, 4, 0] },
     {
-      duration: 2,
+      duration: 3,
       direction: "alternate",
+      repeat: 100,
     }
   );
 </script>
