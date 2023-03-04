@@ -14,11 +14,8 @@ export default defineConfig({
   },
   integrations: [tailwind(), mdx(), sitemap(), image(), prefetch()],
   site: "https://www.paulvall.dev/",
-  outputDir: {
-    output: 'server',
-    adapter: vercel({
-      analytics: true,
-      includeFiles: ['./src/lib/spotify.ts']
-    })
-  }
+  output: 'server',
+  adapter: vercel({
+    analytics: true,
+  }),
 });
