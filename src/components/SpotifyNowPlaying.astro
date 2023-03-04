@@ -1,9 +1,9 @@
 ---
 import { Icon } from "astro-icon";
 import { getCurrentTrack } from "../lib/spotify";
+
 const nowPlayingTrack = await getCurrentTrack();
 const data = await nowPlayingTrack.json();
-const result = data;
 ---
 
 <div
@@ -11,7 +11,7 @@ const result = data;
   class="group w-fit text-[11px] flex items-center justify-center font-medium rounded-lg hover:bg-[#87CB49] px-3 py-1"
 >
   {
-    result.isPlaying ? (
+    data.isPlaying ? (
       <a
         href={data.url}
         target="_blank"
