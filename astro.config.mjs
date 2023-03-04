@@ -4,7 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import image from "@astrojs/image";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/serverless"
 import prefetch from "@astrojs/prefetch";
 
 export default defineConfig({
@@ -16,6 +16,9 @@ export default defineConfig({
   site: "https://www.paulvall.dev/",
   outputDir: {
     output: 'server',
-    adapter: vercel()
+    adapter: vercel({
+      analytics: true,
+      includeFiles: ['./src/lib/spotify.ts']
+    })
   }
 });
