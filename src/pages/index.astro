@@ -30,15 +30,16 @@ const repos = await pinnedRepos.json();
 ---
 
 <script>
-  import { animate } from "motion";
+  import { animate, spring } from "motion";
   const pfp = document.getElementById("pfp-1") as Element;
   animate(
     pfp,
-    { x: [0, 4, -4, 0], y: [-4, 0, 4, 0] },
+    { y: [-6, 6] },
     {
-      duration: 3,
+      duration: 2,
       direction: "alternate",
       repeat: 100,
+      easing: "ease-in-out",
     }
   );
 </script>
