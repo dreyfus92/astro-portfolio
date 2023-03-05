@@ -9,8 +9,19 @@ import prefetch from "@astrojs/prefetch";
 
 export default defineConfig({
   markdown: {
-    extendDefaultPlugins: true,
-    remarkPlugins: [remarkReadingTime]
+    shikiConfig: {
+      // Choose from Shiki's built-in themes (or add your own)
+      // https://github.com/shikijs/shiki/blob/main/docs/themes.md
+      theme: 'dark-plus',
+      // Add custom languages
+      // Note: Shiki has countless langs built-in, including .astro!
+      // https://github.com/shikijs/shiki/blob/main/docs/languages.md
+      langs: ['ts', 'js', 'rs'],
+      // Enable word wrap to prevent horizontal scrolling
+      wrap: true,
+    },
+    syntaxHighlight: 'shiki',
+    remarkPlugins: [remarkReadingTime],
   },
   integrations: [tailwind(), mdx(), sitemap(), image(), prefetch()],
   site: "https://www.paulvall.dev/",
