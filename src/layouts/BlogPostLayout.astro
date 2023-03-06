@@ -1,19 +1,23 @@
 ---
+import { Icon } from "astro-icon";
 import { getCollection } from "astro:content";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import BlogProgressTracker from "../components/BlogProgressTracker.astro";
 
-interface Props {
+interface BlogPostLayoutProps {
   frontmatter: {
     title: string;
     description: string;
     pubDate: string;
   };
+  minutes: {
+    minutesRead: string;
+  };
 }
 
-let { frontmatter } = Astro.props as Props;
+let { frontmatter, minutes } = Astro.props as BlogPostLayoutProps;
 
 const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
   "en-us",
@@ -24,6 +28,7 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
   }
 );
 
+// get all posts
 let posts = await getCollection("posts").then((posts) =>
   posts.sort(
     (a, b) =>
@@ -52,8 +57,17 @@ const prevPost = posts[index - 1];
       <div class="w-[350px] md:w-[750px]">
         <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
         <div class="flex gap-4">
-          <p class="text-sm">📅 {formattedDate}</p>
-          <!-- <p class="text-sm">📚 {minutesRead}</p> -->
+          <p class="text-sm flex items-center">
+            <Icon
+              name="ic:baseline-calendar-month"
+              class="text-[#87CB49] mr-2"
+            />
+            {formattedDate}
+          </p>
+          <p class="text-sm flex items-center">
+            <Icon name="ic:baseline-access-time" class="text-[#87CB49] mr-2" />
+            {minutes.minutesRead}
+          </p>
         </div>
         <hr class="mt-5 mb-10" />
         <article>

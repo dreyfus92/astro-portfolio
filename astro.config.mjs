@@ -20,8 +20,8 @@ export default defineConfig({
       // Enable word wrap to prevent horizontal scrolling
       wrap: true,
     },
-    syntaxHighlight: 'shiki',
     remarkPlugins: [remarkReadingTime],
+    syntaxHighlight: 'shiki',
   },
   integrations: [tailwind(), mdx(), sitemap(), image(), prefetch()],
   site: "https://www.paulvall.dev/",
