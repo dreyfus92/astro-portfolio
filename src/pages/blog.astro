@@ -9,13 +9,6 @@ const blogPosts = await getCollection("posts").then((posts) =>
       new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
   )
 );
-
-blogPosts.map(async (post) => {
-  const { remarkPluginFrontmatter } = await post.render();
-  //@ts-ignore
-  post.data.minutesRead = remarkPluginFrontmatter.minutesRead;
-  return post;
-});
 ---
 
 <Layout title="Paul Valladares | Blog" description="Blog of Paul Valladares">
@@ -35,7 +28,6 @@ blogPosts.map(async (post) => {
             description={post.data.description}
             date={post.data.pubDate}
             link={`/posts/${post.slug}`}
-            readingTime={post.data.minutesRead}
           />
         ))
       }
