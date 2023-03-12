@@ -4,7 +4,8 @@ import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
 export const prerender = true;
 export async function getStaticPaths() {
   const blogEntries = await getCollection("posts");
-  return blogEntries.map((entry) => ({
+  const nonDraftEntries = blogEntries.filter((entry) => !entry.data.draft);
+  return nonDraftEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));

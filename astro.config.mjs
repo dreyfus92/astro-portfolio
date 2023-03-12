@@ -19,11 +19,12 @@ export default defineConfig({
       langs: ['ts', 'js', 'rs'],
       // Enable word wrap to prevent horizontal scrolling
       wrap: true,
+      drafts: true,
     },
     remarkPlugins: [remarkReadingTime],
     syntaxHighlight: 'shiki',
   },
-  integrations: [tailwind(), mdx(), sitemap(), image(), prefetch()],
+  integrations: [tailwind(), mdx({ drafts: true }), sitemap(), image(), prefetch()],
   site: "https://www.paulvall.dev/",
   output: 'server',
   adapter: vercel({

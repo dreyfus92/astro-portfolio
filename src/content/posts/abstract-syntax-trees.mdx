@@ -1,0 +1,52 @@
+---
+title: "What are Abstract Syntax Trees?"
+description: "A brief introduction to Abstract Syntax Trees (ASTs)."
+pubDate: 2023-03-08
+draft: true
+---
+
+# What are Abstract Syntax Trees?
+
+At a high level an Abastract Syntax Tree (AST) is an intermediate representation of source code as a tree structure. 
+
+## But what does that actually mean?
+
+The AST is a tree-like structure that represents the structure of the code in a way that is easier to manipulate and analyze than the original source code. Each node in the tree represents a construct in the code, such as a function, a loop, or an if statement. The children of each node represent the sub-constructs that make up the construct.
+
+ASTs are often used in compiler design to parse source code and generate an intermediate representation of the code. The intermediate representation can then be optimized or transformed before generating the final executable code. ASTs are also used in code analysis tools to perform tasks such as refactoring, linting, and code completion.
+
+## How do I get an AST?
+
+JavaScript ecosystem has a lot of tools that can generate ASTs from source code. The most popular one is [Babel](https://babeljs.io/). Babel is a JavaScript compiler that can parse source code and generate an AST. Babel can also generates code from an AST.
+
+Let's see an example of how an AST would look like:
+
+{/* Image goes here */}
+
+You can tell by the picture that the root node is the plus sign. The children of the root node are the number 2 and the multiplication sign which has 2 children of its own, which are 2 numbers. This follows a hierarchy of signs and can be as well represented in JSON format.
+
+```json
+{
+  "type": "BinaryExpression",
+  "left": {
+    "type": "NumericLiteral",
+    "value": 2
+  },
+  "operator": "+",
+    "right": {
+        "type": "BinaryExpression",
+        "left": {
+        "type": "NumericLiteral",
+        "value": 8
+        },
+        "operator": "*",
+        "right": {
+        "type": "NumericLiteral",
+        "value": 9
+        }
+  }
+}
+```
+
+
+

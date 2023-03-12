@@ -3,12 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import BlogCard from "../components/BlogCard.astro";
 import { getCollection } from "astro:content";
 
-const blogPosts = await getCollection("posts").then((posts) =>
-  posts.sort(
-    (a, b) =>
-      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+const blogPosts = await getCollection("posts")
+  .then((posts) =>
+    posts.sort(
+      (a, b) =>
+        new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+    )
   )
-);
+  .then((posts) => posts.filter((post) => !post.data.draft));
 ---
 
 <Layout title="Paul Valladares | Blog" description="Blog of Paul Valladares">
