@@ -1,12 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@astrojs/image': ^0.14.0
-  '@astrojs/mdx': ^0.17.2
-  '@astrojs/prefetch': ^0.1.2
+  '@astrojs/image': ^0.16.0
+  '@astrojs/mdx': ^0.18.0
+  '@astrojs/prefetch': ^0.2.0
   '@astrojs/sitemap': ^1.0.1
-  '@astrojs/tailwind': ^3.0.1
-  '@astrojs/vercel': ^3.1.4
+  '@astrojs/tailwind': ^3.1.0
+  '@astrojs/vercel': ^3.2.0
   '@example/basics': 'link:'
   '@types/node': ^18.11.17
   astro: ^2.1.2
@@ -17,12 +17,12 @@ specifiers:
   tailwindcss: ^3.0.24
 
 dependencies:
-  '@astrojs/image': 0.14.0_astro@2.1.2
-  '@astrojs/mdx': 0.17.2_astro@2.1.2+rollup@3.10.1
-  '@astrojs/prefetch': 0.1.2
+  '@astrojs/image': 0.16.0_astro@2.1.2
+  '@astrojs/mdx': 0.18.0_astro@2.1.2+rollup@3.10.1
+  '@astrojs/prefetch': 0.2.0
   '@astrojs/sitemap': 1.0.1
-  '@astrojs/tailwind': 3.0.1_g5iynqsrptwweh6j5echnjplam
-  '@astrojs/vercel': 3.1.4_astro@2.1.2+react@18.2.0
+  '@astrojs/tailwind': 3.1.0_g5iynqsrptwweh6j5echnjplam
+  '@astrojs/vercel': 3.2.0_astro@2.1.2+react@18.2.0
   '@example/basics': 'link:'
   '@types/node': 18.11.17
   astro: 2.1.2_@types+node@18.11.17
@@ -54,10 +54,10 @@ packages:
     resolution: {integrity: sha512-O8yPCyuq+PU9Fjht2tIW6WzSWiq8qDF1e8uAX2x+SOGFzKqOznp52UlDG2mSf+ekf0Z3R34sb64O7SgX+asTxg==}
     dev: false
 
-  /@astrojs/image/0.14.0_astro@2.1.2:
-    resolution: {integrity: sha512-prrBz2jZ8bsHm9uNlgeuf+jxQ4jHUD08h7+GXQv1DGfbYQuXQaupJlAg2/hJHmzE5lEvDCL0OYKTXAJ03Gorpw==}
+  /@astrojs/image/0.16.0_astro@2.1.2:
+    resolution: {integrity: sha512-9nZSA6/3ucdj5/M774CX0qtPtNZVGJeH6uTL4/4rYJgOZTFfr5CEGNmY9MIyayIYvatvG3VXyRGInLKEo4bXsg==}
     peerDependencies:
-      astro: ^2.0.5
+      astro: ^2.1.0
       sharp: '>=0.31.0'
     peerDependenciesMeta:
       sharp:
@@ -90,29 +90,6 @@ packages:
       vscode-uri: 3.0.6
     dev: false
 
-  /@astrojs/markdown-remark/2.0.1_astro@2.1.2:
-    resolution: {integrity: sha512-xQF1rXGJN18m+zZucwRRtmNehuhPMMhZhi6HWKrtpEAKnHSPk8lqf1GXgKH7/Sypglu8ivdECZ+EGs6kOYVasQ==}
-    peerDependencies:
-      astro: ^2.0.2
-    dependencies:
-      '@astrojs/prism': 2.0.0
-      astro: 2.1.2_@types+node@18.11.17
-      github-slugger: 1.5.0
-      import-meta-resolve: 2.1.0
-      rehype-raw: 6.1.1
-      rehype-stringify: 9.0.3
-      remark-gfm: 3.0.1
-      remark-parse: 10.0.1
-      remark-rehype: 10.1.0
-      remark-smartypants: 2.0.0
-      shiki: 0.11.1
-      unified: 10.1.2
-      unist-util-visit: 4.1.1
-      vfile: 5.3.5
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@astrojs/markdown-remark/2.1.0_astro@2.1.2:
     resolution: {integrity: sha512-w9T5o3UWQIfMcCkM2nLWrlfVQazh/7mw+2N/85QGcSUkZy6oNJoyy8Xz/ZkDhHLx8HPO0RT9fABR0B/H+aDaEw==}
     peerDependencies:
@@ -137,12 +114,12 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.17.2_astro@2.1.2+rollup@3.10.1:
-    resolution: {integrity: sha512-mol57cw1jJMcQgKMRGn7p6cewajq6JTNtqj5aAZgROWam/phVDSOCbXj/WU3O9+3qFnyKtpczoufQKwJTQltAw==}
+  /@astrojs/mdx/0.18.0_astro@2.1.2+rollup@3.10.1:
+    resolution: {integrity: sha512-mgICosefMpl67O7ER6Yi6ylT9Hk8ZAO6GhTlx4pYXIMOWFMQlP0NXQ9teZwPhOWzBcHWnsHEF+AzVZWbiC2EBg==}
     engines: {node: '>=16.12.0'}
     dependencies:
-      '@astrojs/markdown-remark': 2.0.1_astro@2.1.2
-      '@astrojs/prism': 2.0.0
+      '@astrojs/markdown-remark': 2.1.0_astro@2.1.2
+      '@astrojs/prism': 2.1.0
       '@mdx-js/mdx': 2.3.0
       '@mdx-js/rollup': 2.3.0_rollup@3.10.1
       acorn: 8.8.1
@@ -164,17 +141,10 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/prefetch/0.1.2:
-    resolution: {integrity: sha512-Plf1GLKDyvTHjEKVMH922wc1AmvlFYvEXrbdaMAlgJuoqTRXirP1CennildFHndTetH8swWMlVGwxdG57dN7cA==}
+  /@astrojs/prefetch/0.2.0:
+    resolution: {integrity: sha512-q68916tIId0tnRFphNL2OcORgoATnfVItaQAugz7wfIq4ghivNISG1scN86uAyF/md1N1YcKu6XPukT5f2lShQ==}
     dependencies:
       throttles: 1.0.1
-    dev: false
-
-  /@astrojs/prism/2.0.0:
-    resolution: {integrity: sha512-YgeoeEPqsxaEpg0rwe/bUq3653LqSQnMjrLlpYwrbQQMQQqz6Y5yXN+RX3SfLJ6ppNb4+Fu2+Z49EXjk48Ihjw==}
-    engines: {node: '>=16.12.0'}
-    dependencies:
-      prismjs: 1.29.0
     dev: false
 
   /@astrojs/prism/2.1.0:
@@ -191,10 +161,10 @@ packages:
       zod: 3.19.1
     dev: false
 
-  /@astrojs/tailwind/3.0.1_g5iynqsrptwweh6j5echnjplam:
-    resolution: {integrity: sha512-QSYh/xmz454j1yZU9rjw2J24PpH7j3h2ClesqMaAniOtcuL8RfP7KYCnCrk01xvjwqqO+QBpZNDD/SUhHNtFFg==}
+  /@astrojs/tailwind/3.1.0_g5iynqsrptwweh6j5echnjplam:
+    resolution: {integrity: sha512-eNflzlCdCtLZjc8pK0xQb/hXYnN/mVGVJFRAMWStrFwg8Tsvj6WVCPyRy77D5NL2tQ1piS2wiouOzAgiy1Dsiw==}
     peerDependencies:
-      astro: ^2.0.4
+      astro: ^2.1.0
       tailwindcss: ^3.0.24
     dependencies:
       '@proload/core': 0.3.3
@@ -223,12 +193,12 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/vercel/3.1.4_astro@2.1.2+react@18.2.0:
-    resolution: {integrity: sha512-fIgXBf8lUzS7s+bBJVqekIpQ4DL4aFlhPF6Y8JkLwfF6OZRvrnC4N8g/qobCVzt8tKiHRrkh/SFUtd0zRTpjoQ==}
+  /@astrojs/vercel/3.2.0_astro@2.1.2+react@18.2.0:
+    resolution: {integrity: sha512-7dHknRFezjtk07+pcDHHkWNwlha9k8+dKi/5cfTP4k9laFdlQSskZtc9IsSTwn4/yBVT6klg0P4z0e0W+e+WEQ==}
     peerDependencies:
-      astro: ^2.0.17
+      astro: ^2.1.0
     dependencies:
-      '@astrojs/webapi': 2.0.2
+      '@astrojs/webapi': 2.1.0
       '@vercel/analytics': 0.1.11_react@18.2.0
       '@vercel/nft': 0.22.6
       astro: 2.1.2_@types+node@18.11.17
@@ -239,12 +209,6 @@ packages:
       - encoding
       - react
       - supports-color
-    dev: false
-
-  /@astrojs/webapi/2.0.2:
-    resolution: {integrity: sha512-uSNtxLuvCWOcwy/DdIy30ocIcIUedEZpyhn1MHW3XuZ3PZHg4PMej3EP38Ns6uKgDKqMyEdscca9bMLuf4cO/w==}
-    dependencies:
-      undici: 5.20.0
     dev: false
 
   /@astrojs/webapi/2.1.0:
