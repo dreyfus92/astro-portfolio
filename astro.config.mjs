@@ -29,9 +29,6 @@ export default defineConfig({
   output: 'server',
   adapter: vercel({
     analytics: true,
-    includeFiles: [
-      ...glob.sync('./node_modules/image-size/**'),
-    ]
   }),
 
 });
