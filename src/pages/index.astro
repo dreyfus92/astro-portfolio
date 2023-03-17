@@ -31,7 +31,9 @@ const repos = await pinnedRepos.json();
 
 <script>
   import { animate } from "motion";
+  import { PowerGlitch } from "powerglitch";
   const pfp = document.getElementById("pfp-1") as Element;
+
   animate(
     pfp,
     { y: [-6, 6] },
@@ -42,6 +44,32 @@ const repos = await pinnedRepos.json();
       easing: "ease-in-out",
     }
   );
+
+  PowerGlitch.glitch(".glitch", {
+    playMode: "always",
+    createContainers: true,
+    hideOverflow: false,
+    timing: {
+      duration: 2000,
+    },
+    glitchTimeSpan: {
+      start: 0.5,
+      end: 0.7,
+    },
+    shake: {
+      velocity: 15,
+      amplitudeX: 0.2,
+      amplitudeY: 0.2,
+    },
+    slice: {
+      count: 6,
+      velocity: 15,
+      minHeight: 0.02,
+      maxHeight: 0.15,
+      hueRotate: true,
+    },
+    pulse: false,
+  });
 </script>
 
 <Layout
@@ -51,10 +79,11 @@ const repos = await pinnedRepos.json();
   <main>
     <div class="flex flex-col-reverse md:flex-row justify-center items-center">
       <div class="text-white w-[350px] md:w-[450px]">
-        <h1 class="font-bold text-3xl md:text-5xl tracking-tight mb-1">
+        <h1 class="font-bold text-3xl md:text-5xl tracking-tight mb-1 glitch">
           Paul Valladares
         </h1>
-        <h2 class="text-lg mt-2">
+
+        <h2 class="text-lg mt-2 glitch">
           Frontend Dev at <a
             href="https://www.hackapulco.com"
             target="_blank"
