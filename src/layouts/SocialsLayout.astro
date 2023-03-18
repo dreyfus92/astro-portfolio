@@ -14,7 +14,15 @@ const { title, description } = Astro.props;
   <head>
     <Head title={title} description={description} />
   </head>
-  <body class="my-20">
+  <body class="py-32">
+    <video
+      autoplay
+      loop
+      muted
+      class="top-0 w-full h-full object-cover brightness-[100%] -z-10 fixed bottom-0 left-0 right-0"
+    >
+      <source src="/videos/shapes.mp4" type="video/mp4" />
+    </video>
     <slot />
   </body>
 </html>
