@@ -15,24 +15,27 @@ const blogPosts = await getCollection("posts")
 
 <Layout title="Paul Valladares | Blog" description="Blog of Paul Valladares">
   <main class="flex flex-col items-center">
-    <div class="text-white w-[350px] md:w-[45%]">
-      <h1 class="font-bold text-3xl md:text-5xl tracking-tight">Blog</h1>
-      <p class="mt-4 text-left">
-        I'm gonna use this space to write about my journey as a developer, tech
-        projects and my thoughts on the tech industry. I hope you enjoy it!
-      </p>
-    </div>
-    <div class="my-10 w-[350px] md:w-[45%]">
-      {
-        blogPosts.map((post) => (
-          <BlogCard
-            title={post.data.title}
-            description={post.data.description}
-            date={post.data.pubDate}
-            link={`/posts/${post.slug}`}
-          />
-        ))
-      }
+    <div class="w-[320px] md:w-[750px]">
+      <div class="text-white">
+        <h1 class="font-bold text-3xl md:text-5xl tracking-tight">Blog</h1>
+        <p class="mt-4 text-left">
+          I'm gonna use this space to write about my journey as a developer,
+          tech projects and my thoughts on the tech industry. I hope you enjoy
+          it!
+        </p>
+      </div>
+      <div class="my-10">
+        {
+          blogPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              date={post.data.pubDate}
+              link={`/posts/${post.slug}`}
+            />
+          ))
+        }
+      </div>
     </div>
   </main>
 </Layout>
