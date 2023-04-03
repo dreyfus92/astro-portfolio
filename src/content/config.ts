@@ -8,6 +8,10 @@ const postsCollection = defineCollection({
         pubDate: z.date(),
         description: z.string(),
         draft: z.boolean(),
+        image: z.object({
+            src: z.string(),
+            alt: z.string(),
+        })
     })
 });
 

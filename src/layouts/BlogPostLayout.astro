@@ -11,6 +11,10 @@ interface BlogPostLayoutProps {
     title: string;
     description: string;
     pubDate: string;
+    image: {
+      src: string;
+      alt: string;
+    };
   };
   minutes: {
     minutesRead: string;
@@ -72,6 +76,7 @@ const prevPost = posts[index - 1];
           </p>
         </div>
         <hr class="mt-5 mb-10" />
+        <img src={frontmatter.image.src} alt={frontmatter.image.alt} />
         <article>
           <slot />
         </article>
