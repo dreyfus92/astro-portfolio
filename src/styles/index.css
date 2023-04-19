@@ -36,5 +36,5 @@ img[alt=second-option-to-copy-response-gif]{
 }
 
 pre {
-  @apply rounded p-4;
+  @apply rounded p-4 text-sm;
 }
