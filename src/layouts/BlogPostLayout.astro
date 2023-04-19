@@ -76,7 +76,12 @@ const prevPost = posts[index - 1];
           </p>
         </div>
         <hr class="mt-5 mb-10" />
-        <img src={frontmatter.image.src} alt={frontmatter.image.alt} />
+        <img
+          src={frontmatter.image.src}
+          alt={frontmatter.image.alt}
+          class="rounded-lg"
+        />
+        <br />
         <article>
           <slot />
         </article>

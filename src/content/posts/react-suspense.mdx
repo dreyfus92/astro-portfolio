@@ -1,0 +1,134 @@
+---
+title: "What is Suspense and how does it work?"
+description: "A brief explanation of what Suspense is and how it works in React."
+pubDate: 2023-04-14
+draft: false
+image: 
+    src: "/images/featuring-image-suspense-react-paulvall.png"
+    alt: "hero-for-react-suspense"
+---
+<br/>
+Suspense is a feature in React that allows you to delay the rendering of a component until some asynchronous operation, such as fetching data from an API, has completed. This helps to avoid showing a blank or incomplete page to the user while they are waiting for the data to load.
+<br/>
+In this blog post, we will explore what Suspense is, how it works in React, and provide some examples to demonstrate its usage.
+<br/>
+## What is Suspense?
+<br/>
+Suspense is a feature in React that allows you to suspend rendering while waiting for some asynchronous data to load. It was introduced in React 16.6 and is used in conjunction with the React.lazy() function, which enables lazy-loading of components.
+<br/>
+In earlier versions of React, it was difficult to handle loading states for components that were fetching data asynchronously. The component would be rendered immediately, and if the data wasn't available yet, you would have to handle the loading state manually.
+<br/>
+Suspense simplifies this process by providing a way to delay rendering until the data is available. It also makes it easier to handle loading states and errors by providing a declarative API for specifying how to handle these scenarios.
+<br/>
+## How does it work?
+<br/>
+In React, a component is rendered when its parent component calls it. When using Suspense, the parent component wraps the component that is being loaded asynchronously with a Suspense component.
+<br/>
+The Suspense component takes a fallback prop, which is displayed while the data is being loaded. Once the data is available, the component wrapped in Suspense is rendered.
+<br/>
+Here's an example of how you might use Suspense in React:
+<br/>
+```jsx
+import React, { Suspense } from 'react';
+
+const MyComponent = React.lazy(() => import('./MyComponent'));
+
+function App() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <MyComponent />
+      </Suspense>
+    </div>
+  );
+}
+
+export default App;
+```
+<br/>
+In this example, we are using React.lazy() to lazily load MyComponent. We wrap it in a Suspense component and provide a fallback component that will be displayed while MyComponent is loading. Once MyComponent has finished loading, it will be rendered.
+<br/>
+## Error boundaries
+<br/>
+In addition to loading states, Suspense can also handle errors that may occur while fetching data. You can specify an error boundary component to handle any errors that occur while the component is being loaded.
+<br/>
+Here's an example of how to use an error boundary with Suspense:
+<br/>
+```jsx
+import React, { Suspense } from 'react';
+
+const MyComponent = React.lazy(() => import('./MyComponent'));
+
+function ErrorFallback() {
+  return <div>Error loading component</div>;
+}
+
+function App() {
+  return (
+    <div>
+      <ErrorBoundary fallback={<ErrorFallback />}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <MyComponent />
+        </Suspense>
+      </ErrorBoundary>
+    </div>
+  );
+}
+
+export default App;
+```
+<br/>
+In this example, we've added an ErrorBoundary component that wraps our Suspense component. The ErrorBoundary component takes a fallback prop that will be displayed if an error occurs while loading the component.
+<br/>
+## Concurrent Mode
+<br/>
+Suspense was introduced in React 16.6, but it wasn't until React 18 that it became more fully featured with the addition of Concurrent Mode. Concurrent Mode is a new set of features in React that improve the performance and user experience of applications.
+<br/>
+One of the main features of Concurrent Mode is that it enables React to work on multiple tasks at the same time, such as rendering a component and fetching data. This makes it possible to provide a smoother user experience, especially on slower devices or networks.
+<br/>
+## Server-Side Rendering
+<br/>
+Another benefit of Suspense is that it can be used for server-side rendering in React. When using server-side rendering, the initial HTML is generated on the server, rather than in the user's browser. This can help to improve the performance and SEO of your application.
+<br/>
+To use Suspense for server-side rendering, you can use the ReactDOMServer module, which provides a renderToString function. This function can be used to render your application to HTML on the server, including any components that are loaded asynchronously with Suspense.
+<br/>
+## React.SuspenseList
+<br/>
+React 18 introduced a new feature called SuspenseList, which allows you to specify how multiple Suspense components should be rendered together. SuspenseList can be used to display multiple loading states, such as when multiple components are loading asynchronously at the same time.
+<br/>
+Here's an example of how to use SuspenseList:
+<br/>
+```jsx import React, { Suspense } from 'react';
+<br/>
+const Component1 = React.lazy(() => import('./Component1'));
+const Component2 = React.lazy(() => import('./Component2'));
+<br/>
+function App() {
+  return (
+    <div>
+      <SuspenseList revealOrder="together">
+        <Suspense fallback={<div>Loading component 1...</div>}>
+          <Component1 />
+        </Suspense>
+        <Suspense fallback={<div>Loading component 2...</div>}>
+          <Component2 />
+        </Suspense>
+      </SuspenseList>
+    </div>
+  );
+}
+
+export default App;
+```
+<br/>
+In this example, we are using SuspenseList to render multiple Suspense components together. We specify the revealOrder prop as "together", which means that the components will be displayed together once they are all ready.
+<br/>
+## Conclusion
+<br/>
+Suspense is a powerful feature in React that simplifies handling loading states and errors when fetching data asynchronously. With the addition of Concurrent Mode and SuspenseList, it's now easier than ever to provide a smooth user experience, even when loading multiple components asynchronously.
+<br/>
+If you're building a React application that fetches data asynchronously, using Suspense can help to simplify your code and provide a better user experience.
+<br/>
+## Extra Resources
+<br/>
+- [React Suspense](https://react.dev/reference/react/Suspense)
