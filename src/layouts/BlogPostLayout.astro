@@ -66,12 +66,12 @@ const prevPost = posts[index - 1];
           <p class="text-sm flex items-center">
             <Icon
               name="ic:baseline-calendar-month"
-              class="text-[#87CB49] mr-2"
+              class="text-neon-green mr-2"
             />
             {formattedDate}
           </p>
           <p class="text-sm flex items-center">
-            <Icon name="ic:baseline-access-time" class="text-[#87CB49] mr-2" />
+            <Icon name="ic:baseline-access-time" class="text-neon-green mr-2" />
             {minutes.minutesRead}
           </p>
         </div>
@@ -92,7 +92,7 @@ const prevPost = posts[index - 1];
             prevPost && (
               <a
                 href={`/posts/${prevPost.slug}`}
-                class="flex flex-col grow text-sm p-4 border rounded border-zinc-700 hover:border-[#87CB49] transition duration-500 ease-out"
+                class="flex flex-col grow text-sm p-4 border rounded border-zinc-700 hover:border-neon-green transition duration-500 ease-out"
               >
                 <p class="text-zinc-400 mb-1">&larr; Previous post</p>
                 <p class="font-semibold text-zinc-300">{prevPost.data.title}</p>
@@ -103,7 +103,7 @@ const prevPost = posts[index - 1];
             nextPost && (
               <a
                 href={`/posts/${nextPost.slug}`}
-                class="flex flex-col grow text-right text-sm p-4 border rounded border-zinc-700 hover:border-[#87CB49] transition duration-500 ease-out"
+                class="flex flex-col grow text-right text-sm p-4 border rounded border-zinc-700 hover:border-neon-green transition duration-500 ease-out"
               >
                 <p class="mb-1">Next post &rarr;</p>
                 <p class="font-semibold text-zinc-300">{nextPost.data.title}</p>

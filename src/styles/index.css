@@ -18,7 +18,7 @@ p {
 }
 
 a {
-  @apply text-[#87CB49]
+  @apply text-neon-green
 }
 
 img[alt=cat-in-a-server-room], 
