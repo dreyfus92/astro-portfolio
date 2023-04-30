@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon";
 ---
 
 <hr class="border-t-2 border-t-neutral-400 w-[350px] md:w-[750px] mx-auto" />
@@ -97,14 +98,12 @@
     </div>
   </div>
 
-  <p class="mx-auto max-w-lg text-xs text-gray-500">
-    This website isn't tracking users. It's just a static website hosted on
-    <a
-      class="text-neon-green hover:text-neon-green/75"
-      href="https://vercel.com/"
-      target="_blank"
-      rel="noreferrer">Vercel.</a
-    >
-    <br />Created by Paul Valladares
+  <p
+    class="mx-auto max-w-lg text-xs text-gray-500 flex justify-center items-center gap-x-2"
+  >
+    Created by Paul Valladares with <Icon
+      name="mdi:cards-heart"
+      class="text-neon-green h-6 w-6"
+    />
   </p>
 </footer>

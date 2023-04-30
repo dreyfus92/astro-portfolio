@@ -27,7 +27,5 @@ export default defineConfig({
   integrations: [tailwind(), mdx({ drafts: true }), sitemap(), image(), prefetch()],
   site: "https://www.paulvall.dev/",
   output: 'server',
-  adapter: vercel({
-    analytics: true,
-  }),
+  adapter: vercel(),
 });
