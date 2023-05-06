@@ -6,6 +6,7 @@ import sitemap from "@astrojs/sitemap";
 import image from "@astrojs/image";
 import vercel from "@astrojs/vercel/serverless"
 import prefetch from "@astrojs/prefetch";
+import tigris from "@tigrisdata/astro";
 
 export default defineConfig({
   markdown: {
@@ -24,7 +25,7 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
     syntaxHighlight: 'shiki',
   },
-  integrations: [tailwind(), mdx({ drafts: true }), sitemap(), image(), prefetch()],
+  integrations: [tailwind(), mdx({ drafts: true }), sitemap(), image(), prefetch(), tigris()],
   site: "https://www.paulvall.dev/",
   output: 'server',
   adapter: vercel(),
