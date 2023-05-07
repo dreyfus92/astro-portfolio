@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import BlogProgressTracker from "../components/BlogProgressTracker.astro";
+import DisplayComments from "../components/DisplayComments.astro";
 
 interface BlogPostLayoutProps {
   frontmatter: {
@@ -65,13 +66,13 @@ const prevPost = posts[index - 1];
         <div class="flex gap-4">
           <p class="text-sm flex items-center">
             <Icon
-              name="ic:baseline-calendar-month"
+              name="system-uicons:calendar-month"
               class="text-neon-green mr-2"
             />
             {formattedDate}
           </p>
           <p class="text-sm flex items-center">
-            <Icon name="ic:baseline-access-time" class="text-neon-green mr-2" />
+            <Icon name="system-uicons:clock" class="text-neon-green mr-2" />
             {minutes.minutesRead}
           </p>
         </div>
@@ -111,6 +112,9 @@ const prevPost = posts[index - 1];
             )
           }
         </div>
+      </div>
+      <div class="w-[350px] md:w-[750px] mb-10">
+        <!-- <DisplayComments /> -->
       </div>
     </main>
   </body>

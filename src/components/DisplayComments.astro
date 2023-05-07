@@ -1,0 +1,30 @@
+---
+import { useTigrisCollection } from "@tigrisdata/astro";
+import Comment from "./Comment.astro";
+
+type Comment = {
+  id: string;
+  slug: string;
+  name: string;
+  message: string;
+  createdAt: string;
+};
+
+const { slug } = Astro.props;
+
+// const commentCollection = await useTigrisCollection<Comment>("Comments");
+// const postCommentCursor = commentCollection.findMany({
+//   filter: { slug },
+//   sort: [{ field: "createdAt", order: "$desc" }],
+// });
+
+// const postComments = await postCommentCursor.toArray();
+---
+
+<div class="w-full">
+  <h2 class="mb-4">Comments</h2>
+  <ul>
+    <Comment />
+    <Comment />
+  </ul>
+</div>

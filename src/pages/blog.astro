@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import BlogCard from "../components/BlogCard.astro";
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 const blogPosts = await getCollection("posts")
   .then((posts) =>
@@ -11,6 +12,11 @@ const blogPosts = await getCollection("posts")
     )
   )
   .then((posts) => posts.filter((post) => !post.data.draft));
+
+const getReadingTime = async (post: CollectionEntry<"posts">) => {
+  const { remarkPluginFrontmatter } = await post.render();
+  return remarkPluginFrontmatter.minutesRead;
+};
 ---
 
 <Layout title="Paul Valladares | Blog" description="Blog of Paul Valladares">
@@ -32,6 +38,7 @@ const blogPosts = await getCollection("posts")
               description={post.data.description}
               date={post.data.pubDate}
               link={`/posts/${post.slug}`}
+              readingTime={getReadingTime(post)}
             />
           ))
         }

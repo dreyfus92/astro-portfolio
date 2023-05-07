@@ -10,29 +10,29 @@ body {
 }
 
 h2 {
-  @apply font-bold text-2xl tracking-tight 
+  @apply font-bold text-2xl tracking-tight;
 }
 
 p {
-  @apply text-gray-300
+  @apply text-gray-300;
 }
 
 a {
-  @apply text-neon-green
+  @apply text-neon-green;
 }
 
 img[alt=cat-in-a-server-room], 
 img[alt=programmer-with-chrome] {
-  @apply h-[350px] mx-auto md:h-[600px]
+  @apply h-[350px] mx-auto md:h-[600px];
 }
 
 img[alt=first-option-to-copy-response-gif],
 img[alt=second-option-to-copy-response-gif]{
-  @apply mx-auto
+  @apply mx-auto;
 }
 
 [astro-icon]{
-  @apply w-8
+  @apply w-8;
 }
 
 pre {
