@@ -17,12 +17,18 @@ Inside of your Astro project, you'll see the following folders and files:
 
 ```bash
 ├── public/
-│   └── favicon.svg
+│   ├──favicon/
+│   ├── images/
+│   ├── videos.txt
+│   └── robots.txt
 ├── src/
 │   ├── components/
+│   ├── content/
 │   ├── layouts/
 │   ├── lib/
-│   └── pages/
+│   ├── pages/
+│   └── styles/
+├── .env.example
 └── package.json
 ```
 
