@@ -25,7 +25,7 @@ Inside of my Astro project, you'll see the following folders and files:
 │   ├── components/
 │   ├── content/
 │   ├── layouts/
-│   ├── lib/
+│   ├── utils/
 │   ├── pages/
 │   └── styles/
 ├── .env.example
