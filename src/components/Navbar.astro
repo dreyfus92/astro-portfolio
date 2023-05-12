@@ -1,27 +1,12 @@
 ---
-import { map } from "zod";
 import SpotifyNowPlaying from "./SpotifyNowPlaying.astro";
+import { navItems } from "../utils/navigation";
 
 type NavbarProps = {
   display?: boolean;
 };
 
-const { display = true } = Astro.props;
-
-const navItems = [
-  {
-    route: "/",
-    text: "Home",
-  },
-  {
-    route: "/blog",
-    text: "Blog",
-  },
-  {
-    route: "/socials",
-    text: "Socials",
-  },
-];
+const { display = true } = Astro.props as NavbarProps;
 ---
 
 <nav
