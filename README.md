@@ -19,7 +19,6 @@ Inside of my Astro project, you'll see the following folders and files:
 ├── public/
 │   ├──favicon/
 │   ├── images/
-│   ├── videos.txt
 │   └── robots.txt
 ├── src/
 │   ├── components/
