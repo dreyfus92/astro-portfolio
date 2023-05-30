@@ -74,11 +74,6 @@ const socials = [
         imgSrc: 'mdi:linkedin',
     },
     {
-        name: 'Instagram',
-        url: 'https://www.instagram.com/sarcasme92',
-        imgSrc: 'mdi:instagram',
-    },
-    {
         name: 'Discord',
         url: 'https://discord.com/users/603517171175391242',
         imgSrc: 'ri:discord-fill',
