@@ -49,10 +49,10 @@ const technologies = [
         link: 'https://nextjs.org/',
     },
     {
-        name: 'Vitest',
-        imgSrc: 'https://vitest.dev/logo.svg',
-        altSrc: 'Vitest Logo',
-        link: 'https://vitest.dev/'
+        name: 'Go',
+        imgSrc: 'https://geekole.com/wp-content/uploads/2022/12/golang_logo_gopher_geekole.png',
+        altSrc: 'Golang Logo',
+        link: 'https://go.dev/'
 
     }
 ]

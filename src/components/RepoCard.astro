@@ -1,5 +1,6 @@
 ---
-const { repo, link, description, language } = Astro.props;
+import RepoLang from "./RepoLang.astro";
+const { repo, link, description, language, languageColor } = Astro.props;
 ---
 
 <a class="group block h-56 cursor-pointer" href={link}>
@@ -31,10 +32,7 @@ const { repo, link, description, language } = Astro.props;
       <p class="mt-4 text-lg font-medium leading-relaxed">
         {description}
       </p>
-      <p>
-        <span class="h-[8px] w-[8px] bg-white rounded-full inline-block mr-2"
-        ></span>{language}
-      </p>
+      <RepoLang lang={language} color={languageColor} />
     </div>
   </div>
 </a>

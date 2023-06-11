@@ -1,0 +1,27 @@
+---
+const {color = "#0DB9D7", lang = "Go"} = Astro.props
+---
+
+<repo-lang data-color={color} data-lang={lang}>
+    <p class="flex flex-row items-center">
+        <span id="dot" class="h-3 w-3 rounded-full inline-block mr-2"
+        ></span><strong>{lang}</strong>
+      </p>
+</repo-lang>
+
+<script>
+    class RepoLang extends HTMLElement {
+        constructor() {
+            super()
+
+            const color = this.dataset.color
+            const span = this.querySelector("span")
+            if (!span) return
+            if (!color) return
+            span.style.backgroundColor = color
+
+        }
+    }
+
+    customElements.define("repo-lang", RepoLang)
+</script>
