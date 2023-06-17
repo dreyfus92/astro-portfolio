@@ -22,6 +22,9 @@ dependencies:
   '@example/basics':
     specifier: 'link:'
     version: 'link:'
+  '@swup/slide-theme':
+    specifier: ^1.0.5
+    version: 1.0.5
   '@tigrisdata/astro':
     specifier: ^1.0.0
     version: 1.0.0(@types/node@18.16.17)
@@ -49,6 +52,9 @@ dependencies:
   reading-time:
     specifier: ^1.5.0
     version: 1.5.0
+  swup:
+    specifier: ^3.1.0
+    version: 3.1.0
   tailwindcss:
     specifier: ^3.3.2
     version: 3.3.2
@@ -1103,6 +1109,16 @@ packages:
       rollup: 3.25.0
     dev: false
 
+  /@swup/slide-theme@1.0.5:
+    resolution: {integrity: sha512-0xxqtURSMDScjLMRdNjtxzo8NGCPcmp6VXrQcxIQzQDSAvwNnP8Zw871C+FSL1EMe8OhAzWAP3E3x9vzH+iLHg==}
+    dependencies:
+      '@swup/theme': 1.0.7
+    dev: false
+
+  /@swup/theme@1.0.7:
+    resolution: {integrity: sha512-OINEaf34fYs90l7/YUUKfOf+paY7/FDhOBLwYxrD0w1OjBiItZpw3N+ATA/QklJwmoUu3KkDFOaQG0zT4KxmmA==}
+    dev: false
+
   /@tigrisdata/astro@1.0.0(@types/node@18.16.17):
     resolution: {integrity: sha512-dv84kuusaftICmf6jU/Sd76rYTN0ubhUQqES95w+HHYgb5Xn7n1QuWTdVO1m8pm59QTjE0x+aLPBoMGV0Ca/Ig==}
     dependencies:
@@ -2061,6 +2077,12 @@ packages:
     dependencies:
       has-property-descriptors: 1.0.0
       object-keys: 1.1.1
+    dev: false
+
+  /delegate-it@6.0.1:
+    resolution: {integrity: sha512-ZS2hRm/SaoPzaeWcWyYjzVVF4/PgALZqma9FXsunFt4XQGVAtQ79Vx7v57vNQNaI75Rl12C+x6TkLqHS5PNKLg==}
+    dependencies:
+      typed-query-selector: 2.11.0
     dev: false
 
   /delegates@1.0.0:
@@ -4266,6 +4288,11 @@ packages:
       is-wsl: 2.2.0
     dev: false
 
+  /opencollective-postinstall@2.0.3:
+    resolution: {integrity: sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==}
+    hasBin: true
+    dev: false
+
   /ora@6.3.1:
     resolution: {integrity: sha512-ERAyNnZOfqM+Ao3RAvIXkYh5joP220yf59gVe2X/cI6SiCxIdi4c9HZKZD8R6q/RDXEje1THBju6iExiSsgJaQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -5334,6 +5361,14 @@ packages:
       stable: 0.1.8
     dev: false
 
+  /swup@3.1.0:
+    resolution: {integrity: sha512-F2gVPvB6lJPvHaa9uzgaSAYHQ/L+a6rIg7OBOgHZLNpTxB4c7K7/Yo93KFAU5qU2DD9gHoTcpKh0StQQeA4GTg==}
+    requiresBuild: true
+    dependencies:
+      delegate-it: 6.0.1
+      opencollective-postinstall: 2.0.3
+    dev: false
+
   /synckit@0.8.5:
     resolution: {integrity: sha512-L1dapNV6vu2s/4Sputv8xGsCdAVlb5nRDMFU/E27D44l5U6cw1g0dGd45uLc+OXjNMmF4ntiMdCimzcjFKQI8Q==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -5485,6 +5520,10 @@ packages:
   /type-fest@2.19.0:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
     engines: {node: '>=12.20'}
+    dev: false
+
+  /typed-query-selector@2.11.0:
+    resolution: {integrity: sha512-qBs4sfmnLlPOyo2oSdvHbIFHe2CPgU54/1UGfSNceb7LARpIEVxUaeRX0Doje6oKpuySS2stqy90R3YrynR8Kg==}
     dev: false
 
   /typescript@5.1.3:

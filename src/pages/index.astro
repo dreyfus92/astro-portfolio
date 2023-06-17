@@ -32,6 +32,9 @@ const repos = await pinnedRepos.json();
 <script>
   import { animate } from "motion";
   import { PowerGlitch } from "powerglitch";
+  import Swup from "swup";
+
+  const swup = new Swup();
   const pfp = document.getElementById("pfp-1") as Element;
 
   animate(
@@ -76,7 +79,7 @@ const repos = await pinnedRepos.json();
   title="Paul Valladares | Home"
   description="Personal website of Paul Valladares"
 >
-  <main>
+  <main id="swup" class="transition-fade">
     <div class="flex flex-col-reverse md:flex-row justify-center items-center">
       <div class="text-white w-[350px] md:w-[450px]">
         <h1 class="font-bold text-3xl md:text-5xl tracking-tight mb-1 glitch">

@@ -19,8 +19,13 @@ const getReadingTime = async (post: CollectionEntry<"posts">) => {
 };
 ---
 
+<script>
+  import Swup from "swup";
+  const swup = new Swup();
+</script>
+
 <Layout title="Paul Valladares | Blog" description="Blog of Paul Valladares">
-  <main class="flex flex-col items-center">
+  <main id="swup" class="flex flex-col items-center transition-fade">
     <div class="w-[320px] md:w-[750px]">
       <div class="text-white">
         <h1 class="font-bold text-3xl md:text-5xl tracking-tight">Blog</h1>
