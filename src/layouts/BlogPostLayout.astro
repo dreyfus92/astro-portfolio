@@ -52,11 +52,6 @@ const index = posts.findIndex((post) => {
 const nextPost = posts[index + 1];
 const prevPost = posts[index - 1];
 ---
-<script>
-  import Swup from "swup";
-  const swup = new Swup();
-</script>
-
 <html lang="en">
   <head>
     <Head title={frontmatter.title} description={frontmatter.description} />
@@ -64,7 +59,7 @@ const prevPost = posts[index - 1];
   <Navbar display={false} />
   <body>
     <BlogProgressTracker />
-    <main id="swup" class="text-white flex flex-col items-center transition-fade">
+    <main class="text-white flex flex-col items-center">
       <div class="w-[350px] md:w-[750px]">
         <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
         <div class="flex gap-4">
