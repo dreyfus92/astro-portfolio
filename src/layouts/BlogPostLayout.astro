@@ -52,13 +52,17 @@ const index = posts.findIndex((post) => {
 const nextPost = posts[index + 1];
 const prevPost = posts[index - 1];
 ---
+<script>
+  import Swup from "swup";
+  const swup = new Swup();
+</script>
 
 <html lang="en">
   <head>
     <Head title={frontmatter.title} description={frontmatter.description} />
   </head>
   <Navbar display={false} />
-  <body>
+  <body id="swup">
     <BlogProgressTracker />
     <main class="text-white flex flex-col items-center">
       <div class="w-[350px] md:w-[750px]">

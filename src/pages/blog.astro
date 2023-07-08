@@ -18,12 +18,6 @@ const getReadingTime = async (post: CollectionEntry<"posts">) => {
   return remarkPluginFrontmatter.minutesRead;
 };
 ---
-
-<script>
-  import Swup from "swup";
-  const swup = new Swup();
-</script>
-
 <Layout title="Paul Valladares | Blog" description="Blog of Paul Valladares">
   <main id="swup" class="flex flex-col items-center transition-fade">
     <div class="w-[320px] md:w-[750px]">

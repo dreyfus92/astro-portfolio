@@ -11,12 +11,17 @@ export interface Props {
 const { title, description } = Astro.props;
 ---
 
+<script>
+  import Swup from "swup";
+  const swup = new Swup();
+</script>
+
 <html lang="en">
   <head>
     <Head title={title} description={description} />
   </head>
   <Navbar />
-  <body>
+  <body class="swup">
     <slot />
   </body>
   <Footer />
