@@ -21,7 +21,7 @@ const { title, description } = Astro.props;
     <Head title={title} description={description} />
   </head>
   <Navbar />
-  <body class="swup">
+  <body id="swup" class="transition-fade">
     <slot />
   </body>
   <Footer />
