@@ -3,8 +3,6 @@
   "compilerOptions": {
     // Enable top-level await, and other modern ESM features.
     "strictNullChecks": true,
-    "target": "ESNext",
-    "module": "ESNext",
     "types": ["vite/client", "ts-node"],
     // Enable node-style module resolution, for things like npm package imports.
     "moduleResolution": "node",
