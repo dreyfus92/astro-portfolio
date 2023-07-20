@@ -3,7 +3,6 @@ import { remarkReadingTime } from './src/utils/readingTime.mjs';
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import image from "@astrojs/image";
 import vercel from "@astrojs/vercel/serverless"
 import prefetch from "@astrojs/prefetch";
 import tigris from "@tigrisdata/astro";
@@ -25,7 +24,7 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
     syntaxHighlight: 'shiki',
   },
-  integrations: [tailwind(), mdx({ drafts: true }), sitemap(), image(), prefetch(), tigris()],
+  integrations: [tailwind(), mdx({ drafts: true }), sitemap(), prefetch(), tigris()],
   site: "https://www.paulvall.dev/",
   output: 'server',
   adapter: vercel(),
