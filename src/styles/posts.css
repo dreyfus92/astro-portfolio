@@ -11,7 +11,7 @@
 }
 
 .post h3 {
-  @apply my-4 text-xl text-neutral-100;
+  @apply my-6 text-xl text-neutral-100 font-bold;
 }
 
 .post a {
