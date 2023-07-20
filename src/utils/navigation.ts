@@ -4,8 +4,8 @@ export const navItems = [
         text: "Home",
     },
     {
-        route: "/blog",
-        text: "Blog",
+        route: "/posts",
+        text: "Posts",
     },
     {
         route: "/socials",

@@ -1,6 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import BlogCard from "../components/BlogCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import BlogCard from "../../components/BlogCard.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
@@ -23,7 +23,7 @@ const getReadingTime = async (post: CollectionEntry<"posts">) => {
   <main class="flex flex-col items-center">
     <div class="w-[320px] md:w-[750px]">
       <div class="text-white">
-        <h1 class="font-bold text-3xl md:text-5xl tracking-tight">Blog</h1>
+        <h1 class="font-bold text-3xl md:text-5xl tracking-tight">Posts</h1>
         <p class="mt-4 text-left">
           I'm gonna use this space to write about my journey as a developer,
           tech projects and my thoughts on the tech industry. I hope you enjoy
