@@ -1,0 +1,39 @@
+.post p {
+  @apply leading-7 my-4;
+}
+
+.post code {
+  @apply rounded-sm bg-neutral-800 px-1 py-[2px] text-neon-green;
+}
+
+.post h2 {
+  @apply my-6 text-3xl text-neutral-100 font-bold;
+}
+
+.post h3 {
+  @apply my-4 text-xl text-neutral-100;
+}
+
+.post a {
+  @apply text-neon-green;
+}
+
+.post code {
+  @apply rounded-sm bg-neutral-800 px-1 py-[2px] text-neon-green;
+}
+
+.post ul {
+  @apply list-disc;
+}
+
+.post blockquote {
+  @apply flex flex-row gap-2 before:block before:h-auto before:w-1 before:max-w-[1px] before:bg-neon-green before:content-[''];
+}
+
+.post pre {
+  @apply p-4;
+}
+
+.post pre > code {
+  @apply bg-transparent text-sm;
+}

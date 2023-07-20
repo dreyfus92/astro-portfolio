@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import BlogProgressTracker from "../components/BlogProgressTracker.astro";
-import DisplayComments from "../components/DisplayComments.astro";
+import "../../src/styles/posts.css"
 
 interface BlogPostLayoutProps {
   frontmatter: {
@@ -60,7 +60,7 @@ const prevPost = posts[index - 1];
   <Navbar display={false} />
   <body>
     <BlogProgressTracker />
-    <main class="text-white flex flex-col items-center">
+    <main class="post text-white flex flex-col items-center">
       <div class="w-[350px] md:w-[750px]">
         <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
         <div class="flex gap-4">
@@ -114,7 +114,6 @@ const prevPost = posts[index - 1];
         </div>
       </div>
       <div class="w-[350px] md:w-[750px] mb-10">
-        <!-- <DisplayComments /> -->
       </div>
     </main>
   </body>

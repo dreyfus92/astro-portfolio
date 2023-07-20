@@ -7,33 +7,19 @@ image:
     src: "/images/typeguards.jpg"
     alt: "banner-with-typescript-logo-and-guard"
 ---
-<br />
-
 Type guards are a key TypeScript feature that enables you to build code that is more resistant to runtime mistakes. In this post, we'll look at type guards, how to use them, and some best practices for putting them in place.
-
-<br />
 
 ## What are type guards?
 
-<br />
-
 **TypeScript** is a typed programming language, which means that variables and functions have a predefined type. When working with data from external sources (for example, user input or API answers), it might be difficult to confirm that the data is of the correct type. Type guards are very handy here.
 
-<br />
-
 A type guard is a piece of code that verifies the type of a variable during runtime and changes the variable's type as needed. Assume you have a variable data, which might be a string or an object:
-
-<br />
 
 ```ts
 let data: string | object = "hello";
 ```
 
-<br />
-
 If you wish to access a data property that exists exclusively on the object type, you must first check the data type:
-
-<br />
 
 ```ts
 if (typeof data === "object") {
@@ -41,15 +27,9 @@ if (typeof data === "object") {
 }
 ```
 
-<br />
-
 The `typeof` operator determines the `data` type, and the if statement establishes a type guard that guarantees data is an object before accessing its property property.
 
-<br />
-
 Type guards can be implemented as functions as well. As an example, suppose you have an interface Person:
-
-<br />
 
 ```ts
 interface Person {
@@ -58,11 +38,7 @@ interface Person {
 }
 ```
 
-<br />
-
 You can define a type guard function isPerson that checks whether an object has the properties name and age:
-
-<br />
 
 ```ts
 function isPerson(obj: any): obj is Person {
@@ -70,15 +46,9 @@ function isPerson(obj: any): obj is Person {
 }
 ```
 
-<br />
-
 The obj is Person syntax tells TypeScript that the function is a type guard that changes the type of obj to Person.
 
-<br />
-
 Now you can use the isPerson function to check whether an object is a Person:
-
-<br />
 
 ```ts
 let data: any = { name: "Paul", age: 30 };
@@ -88,15 +58,9 @@ if (isPerson(data)) {
 }
 ```
 
-<br />
-
 ## Using type guards
 
-<br />
-
 Type guards are most commonly used to handle data from external sources, such as user input or API responses. For example, let's say you have a function that fetches data from an API:
-
-<br />
 
 ```ts
 async function getData() {
@@ -106,11 +70,7 @@ async function getData() {
 }
 ```
 
-<br />
-
 The `fetchData` function returns an object of type any, which means that TypeScript doesn't know what properties the object has. You can use a type guard to check the type of the returned data and handle different cases accordingly:
-
-<br />
 
 ```ts
 async function fetchData(): Promise<void> {
@@ -127,34 +87,18 @@ async function fetchData(): Promise<void> {
 }
 ```
 
-<br />
-
 ## Best practices
-
-<br />
 
 **Use type guards to make your code more expressive:** Type guards can help make your code more readable and expressive by making it clear what types of values your code is expecting.
 
-<br />
-
 **Use user-defined type guards when working with custom types:** If you're working with custom types, it's a good idea to define your own type guards to help TypeScript narrow down the types of variables at runtime.
-
-<br />
 
 **Use type guards with switch statements:** Type guards can be especially useful when used with switch statements. By checking the type of a value with a type guard in each case statement, you can avoid errors and make your code more reliable.
 
-<br />
-
 **Avoid using type assertions:** Type assertions can be tempting, but they can be dangerous if used incorrectly. Instead, use type guards to help TypeScript infer the types of variables at runtime.
-
-<br />
 
 **Be aware of performance implications:** Type guards can have performance implications, especially if they're used in performance-critical code. Make sure to test your code and optimize where necessary.
 
-<br />
-
 ## Conclusion
-
-<br />
 
 Overall, type guards are a powerful feature of TypeScript that can help make your code more reliable and expressive. By following these best practices, you can use type guards effectively and avoid common pitfalls.
