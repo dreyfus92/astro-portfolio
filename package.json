@@ -9,18 +9,19 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "update-integrations": "pnpm install @astrojs/mdx@latest @astrojs/prefetch@latest @astrojs/sitemap@latest @astrojs/tailwind@latest @astrojs/vercel@latest"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.18.4",
-    "@astrojs/prefetch": "^0.2.3",
-    "@astrojs/sitemap": "^1.4.0",
-    "@astrojs/tailwind": "^3.1.3",
-    "@astrojs/vercel": "^3.7.3",
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/prefetch": "^0.3.0",
+    "@astrojs/sitemap": "^2.0.1",
+    "@astrojs/tailwind": "^4.0.0",
+    "@astrojs/vercel": "^3.8.0",
     "@example/basics": "link:",
     "@tigrisdata/astro": "^1.0.0",
     "@tigrisdata/core": "1.0.0-beta.49",
-    "astro": "^2.9.0",
+    "astro": "^2.10.3",
     "astro-icon": "^0.8.1",
     "mdast-util-to-string": "^3.2.0",
     "motion": "^10.16.2",
@@ -30,9 +31,9 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@types/node": "^18.16.19",
+    "@types/node": "^18.17.4",
     "@typescript-eslint/parser": "^5.62.0",
-    "eslint": "^8.45.0",
+    "eslint": "^8.46.0",
     "eslint-plugin-astro": "^0.27.2",
     "eslint-plugin-jsx-a11y": "^6.7.1"
   }
