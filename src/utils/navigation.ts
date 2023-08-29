@@ -11,4 +11,8 @@ export const navItems = [
         route: "/socials",
         text: "Socials",
     },
+    {
+        route: "/contact",
+        text: "Contact",
+    },
 ];
