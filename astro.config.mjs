@@ -6,7 +6,6 @@ import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel/serverless";
 import prefetch from "@astrojs/prefetch";
 import tigris from "@tigrisdata/astro";
-import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -30,7 +29,7 @@ export default defineConfig({
     applyBaseStyles: false,
   }), mdx({
     drafts: true
-  }), sitemap(), prefetch(), tigris(), react()],
+  }), sitemap(), prefetch(), tigris()],
   site: "https://www.paulvall.dev/",
   output: 'server',
   adapter: vercel()
