@@ -9,6 +9,10 @@ body {
   word-wrap: break-word;
 }
 
+h1 {
+  @apply font-bold text-3xl md:text-5xl tracking-tight text-white;
+}
+
 h2 {
   @apply font-bold text-2xl tracking-tight;
 }

@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       colors: {
         'neon-green': '#87CB49',
+      },
+      backgroundImage: {
+        'blue-green-gradient': 'linear-gradient(247.23deg, #4AF2C8 0%, #2F4CB3 100%)',
       }
     },
   },

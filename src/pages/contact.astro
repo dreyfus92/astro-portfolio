@@ -1,10 +1,62 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon";
 ---
 
-<Layout
-  title="Paul Valladares | Contact"
-  description="Personal website of Paul Valladares"
->
-  <main></main>
+<Layout title="Paul Valladares | Contact">
+  <main class="flex flex-col items-center">
+    <h1>Contact</h1>
+    <div
+      id="form-container"
+      class="bg-blue-green-gradient p-0.5 rounded-lg my-10"
+    >
+      <form
+        id="contact-form"
+        class="flex flex-col rounded-lg w-[320px] md:w-[750px] p-10 gap-4 bg-zinc-900 text-white [&_input]:block [&_input]:bg-zinc-800 max-sm:[&_input]:w-full [&_textarea]:block [&_textarea]:bg-zinc-800 [&_select]:block [&_select]:bg-zinc-800 [&_select]:text-white"
+        action="https://getform.io/f/0317a7a6-6baa-4a9e-98c3-7717e70bce41"
+        method="POST"
+      >
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Jane Doe"
+          class="rounded-sm p-2"
+          required
+        />
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="jane.doe@example.com"
+          class="rounded-sm p-2"
+          required
+        />
+        <label for="subject">Subject</label>
+        <select id="subject" name="subject" class="rounded-sm p-2" required>
+          <option value="General">General</option>
+          <option value="Freelance Work">Freelance Work</option>
+          <option value="Collaboration">Collaboration</option>
+          <option value="Job Opportunity">Job Opportunity</option>
+          <option value="Other">Other</option>
+        </select>
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Hello, I am Jane Doe..."
+          class="h-48 rounded-sm p-2 resize-none"
+          required></textarea>
+        <button
+          type="submit"
+          class="flex self-center items-center gap-2 bg-blue-green-gradient w-fit px-4 py-2 rounded-lg text-white"
+        >
+          <Icon name="ic:baseline-send" />
+          Send
+        </button>
+      </form>
+    </div>
+  </main>
 </Layout>
