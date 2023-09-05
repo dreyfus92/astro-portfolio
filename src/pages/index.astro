@@ -29,52 +29,7 @@ const pinnedRepos = await fetch(
 const repos = await pinnedRepos.json();
 ---
 
-<script>
-  import { animate } from "motion";
-  import { PowerGlitch } from "powerglitch";
-  const pfp = document.getElementById("pfp-1") as HTMLElement;
-
-  animate(
-    pfp,
-    { y: [-6, 6] },
-    {
-      duration: 2,
-      direction: "alternate",
-      repeat: 100,
-      easing: "ease-in-out",
-    }
-  );
-
-  PowerGlitch.glitch(".glitch", {
-    playMode: "always",
-    createContainers: true,
-    hideOverflow: false,
-    timing: {
-      duration: 2000,
-    },
-    glitchTimeSpan: {
-      start: 0.5,
-      end: 0.7,
-    },
-    shake: {
-      velocity: 15,
-      amplitudeX: 0.2,
-      amplitudeY: 0.2,
-    },
-    slice: {
-      count: 6,
-      velocity: 15,
-      minHeight: 0.02,
-      maxHeight: 0.15,
-      hueRotate: true,
-    },
-    pulse: false,
-  });
-</script>
-
-<Layout
-  title="Paul Valladares | Home"
->
+<Layout title="Paul Valladares | Home">
   <main>
     <div class="flex flex-col-reverse md:flex-row justify-center items-center">
       <div class="text-white w-[350px] md:w-[450px]">
@@ -85,14 +40,14 @@ const repos = await pinnedRepos.json();
           Frontend Dev seeking a new coding journey!
         </h2>
         <h2 class="text-lg glitch">
-        prev
-        <a
-          href="https://www.hackapulco.com"
-          target="_blank"
-          class="rounded-lg hover:bg-neon-green hover:text-gray-900 p-1"
-          >@Hackapulco</a
-        >
-      </h2>
+          prev
+          <a
+            href="https://www.hackapulco.com"
+            target="_blank"
+            class="rounded-lg hover:bg-neon-green hover:text-gray-900 p-1"
+            >@Hackapulco</a
+          >
+        </h2>
         <p class="mt-4 text-left">
           Welcome to my little corner of the web! I am a civil engineer
           graduated from National Autonomous University of Mexico (UNAM) who
@@ -134,8 +89,8 @@ const repos = await pinnedRepos.json();
         <h2 class="text-3xl font-bold">Projects</h2>
         <p class="mt-4 text-left">
           I've build a couple of projects in the past and since Hacktoberfest I
-          started enjoying to contribute to Open Source, currently I'm contributing
-          to <a
+          started enjoying to contribute to Open Source, currently I'm
+          contributing to <a
             href="https://astro.build/"
             target="_blank"
             class="rounded-lg hover:bg-neon-green hover:text-gray-900 p-1"
@@ -145,7 +100,8 @@ const repos = await pinnedRepos.json();
             href="https://starlight.astro.build/"
             target="_blank"
             class="rounded-lg hover:bg-neon-green hover:text-gray-900 p-1"
-            ><strong>Starlight.</strong></a>
+            ><strong>Starlight.</strong></a
+          >
         </p>
         <div
           class="grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-y-8 md:gap-x-4 mt-10"
