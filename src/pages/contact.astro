@@ -5,10 +5,10 @@ import { Icon } from "astro-icon";
 
 <Layout title="Paul Valladares | Contact">
   <main class="flex flex-col items-center">
-    <h1>Contact</h1>
+    <h1 class="">Contact</h1>
     <div
       id="form-container"
-      class="bg-blue-green-gradient p-0.5 rounded-lg my-10"
+      class="bg-blue-green-gradient p-0.5 rounded-lg my-16"
     >
       <form
         id="contact-form"
@@ -16,7 +16,7 @@ import { Icon } from "astro-icon";
         action="https://getform.io/f/0317a7a6-6baa-4a9e-98c3-7717e70bce41"
         method="POST"
       >
-        <label for="name">Name</label>
+        <label for="name" class="font-semibold">Name</label>
         <input
           type="text"
           id="name"
@@ -25,7 +25,7 @@ import { Icon } from "astro-icon";
           class="rounded-sm p-2"
           required
         />
-        <label for="email">Email</label>
+        <label for="email" class="font-semibold">Email</label>
         <input
           type="email"
           id="email"
@@ -34,7 +34,7 @@ import { Icon } from "astro-icon";
           class="rounded-sm p-2"
           required
         />
-        <label for="subject">Subject</label>
+        <label for="subject" class="font-semibold">Subject</label>
         <select id="subject" name="subject" class="rounded-sm p-2" required>
           <option value="General">General</option>
           <option value="Freelance Work">Freelance Work</option>
@@ -42,7 +42,7 @@ import { Icon } from "astro-icon";
           <option value="Job Opportunity">Job Opportunity</option>
           <option value="Other">Other</option>
         </select>
-        <label for="message">Message</label>
+        <label for="message" class="font-semibold">Message</label>
         <textarea
           id="message"
           name="message"
@@ -51,9 +51,9 @@ import { Icon } from "astro-icon";
           required></textarea>
         <button
           type="submit"
-          class="flex self-center items-center gap-2 bg-blue-green-gradient w-fit px-4 py-2 rounded-lg text-white"
+          class="flex self-center items-center gap-1 w-fit px-4 py-2 rounded-lg text-white font-semibold bg-gray-400 backdrop-blur-lg bg-opacity-10 mt-4 hover:scale-105 hover:transition-transform hover:duration-300"
         >
-          <Icon name="ic:baseline-send" />
+          <Icon name="ic:baseline-send" class="h-4" />
           Send
         </button>
       </form>
