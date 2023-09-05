@@ -5,10 +5,11 @@ import Head from "../components/Head.astro";
 
 export interface Props {
   title: string;
-  description: string;
+  description?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description = "Personal website of Paul Valladares" } =
+  Astro.props;
 ---
 
 <html lang="en">

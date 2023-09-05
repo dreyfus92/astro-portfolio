@@ -3,10 +3,11 @@ import { remarkReadingTime } from './src/utils/readingTime.mjs';
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel/serverless"
+import vercel from "@astrojs/vercel/serverless";
 import prefetch from "@astrojs/prefetch";
 import tigris from "@tigrisdata/astro";
 
+// https://astro.build/config
 export default defineConfig({
   markdown: {
     shikiConfig: {
@@ -19,13 +20,17 @@ export default defineConfig({
       langs: ['ts', 'js', 'rs'],
       // Enable word wrap to prevent horizontal scrolling
       wrap: true,
-      drafts: true,
+      drafts: true
     },
     remarkPlugins: [remarkReadingTime],
-    syntaxHighlight: 'shiki',
+    syntaxHighlight: 'shiki'
   },
-  integrations: [tailwind(), mdx({ drafts: true }), sitemap(), prefetch(), tigris()],
+  integrations: [tailwind({
+    applyBaseStyles: false,
+  }), mdx({
+    drafts: true
+  }), sitemap(), prefetch(), tigris()],
   site: "https://www.paulvall.dev/",
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel()
 });
