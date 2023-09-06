@@ -2,7 +2,7 @@
 
 An attempt to create a miniminal js personal blog using [Astro](https://astro.build/).
 
-![screenshot](/public/images/sc1.png)
+![screenshot](/public/sc1.png)
 
 ## 📚 Stack
 
