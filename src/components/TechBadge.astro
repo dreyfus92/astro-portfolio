@@ -1,9 +1,9 @@
 ---
-interface TechBadgeProps {
+type TechBadgeProps = {
   name: string;
   imgSrc: string;
   altSrc: string;
-}
+};
 
 const { name, imgSrc, altSrc } = Astro.props as TechBadgeProps;
 ---

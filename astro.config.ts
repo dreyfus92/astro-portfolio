@@ -5,7 +5,6 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel/serverless";
 import prefetch from "@astrojs/prefetch";
-import tigris from "@tigrisdata/astro";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,20 +16,19 @@ export default defineConfig({
       // Add custom languages
       // Note: Shiki has countless langs built-in, including .astro!
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md
-      langs: ['ts', 'js', 'rs'],
+      langs: [],
       // Enable word wrap to prevent horizontal scrolling
       wrap: true,
-      drafts: true
     },
     remarkPlugins: [remarkReadingTime],
     syntaxHighlight: 'shiki'
   },
   integrations: [tailwind({
     applyBaseStyles: false,
-  }), mdx({
-    drafts: true
-  }), sitemap(), prefetch(), tigris()],
+  }), mdx(), sitemap(), prefetch()],
   site: "https://www.paulvall.dev/",
   output: 'server',
-  adapter: vercel()
+  adapter: vercel({
+    edgeMiddleware: true,
+  })
 });

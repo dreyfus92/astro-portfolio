@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon";
 
-interface BlogCardProps {
+type BlogCardProps = {
   title: string;
   description: string;
   date: string;
@@ -9,7 +9,7 @@ interface BlogCardProps {
   readingTime: {
     minutesRead: string;
   };
-}
+};
 
 const { title, description, date, link, readingTime } =
   Astro.props as BlogCardProps;
