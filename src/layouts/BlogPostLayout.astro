@@ -4,7 +4,6 @@ import { getCollection } from "astro:content";
 import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
 import Head from "@components/Head.astro";
-import BlogProgressTracker from "@components/BlogProgressTracker.astro";
 import "@styles/posts.css";
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
@@ -59,7 +58,6 @@ const prevPost = posts[index - 1];
   </head>
   <Navbar display={false} />
   <body>
-    <BlogProgressTracker />
     <main class="post text-white flex flex-col items-center">
       <div class="w-[350px] md:w-[750px]">
         <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
