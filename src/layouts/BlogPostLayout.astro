@@ -1,21 +1,21 @@
 ---
 import { Icon } from "astro-icon";
 import { getCollection } from "astro:content";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
-import Head from "../components/Head.astro";
-import BlogProgressTracker from "../components/BlogProgressTracker.astro";
-import "../../src/styles/posts.css"
+import Navbar from "@components/Navbar.astro";
+import Footer from "@components/Footer.astro";
+import Head from "@components/Head.astro";
+import BlogProgressTracker from "@components/BlogProgressTracker.astro";
+import "@styles/posts.css";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 
 interface BlogPostLayoutProps {
   frontmatter: {
     title: string;
     description: string;
     pubDate: string;
-    image: {
-      src: string;
-      alt: string;
-    };
+    cover: ImageMetadata;
+    coverAlt: string;
   };
   minutes: {
     minutesRead: string;
@@ -77,11 +77,7 @@ const prevPost = posts[index - 1];
           </p>
         </div>
         <hr class="mt-5 mb-10" />
-        <img
-          src={frontmatter.image.src}
-          alt={frontmatter.image.alt}
-          class="rounded-lg"
-        />
+        <Image src={frontmatter.cover} alt={frontmatter.coverAlt} />
         <br />
         <article>
           <slot />
@@ -113,8 +109,7 @@ const prevPost = posts[index - 1];
           }
         </div>
       </div>
-      <div class="w-[350px] md:w-[750px] mb-10">
-      </div>
+      <div class="w-[350px] md:w-[750px] mb-10"></div>
     </main>
   </body>
   <Footer />

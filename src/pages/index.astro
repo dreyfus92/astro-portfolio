@@ -4,14 +4,14 @@ import ProjectCard from "../components/RepoCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { technologies } from "../utils/data";
 
-interface TechBadgeProps {
+type TechBadgeProps = {
   name: string;
   imgSrc: string;
   altSrc: string;
   link: string;
-}
+};
 
-interface PinnedRepos {
+type PinnedRepos = {
   owner: string;
   repo: string;
   link: string;
@@ -21,7 +21,7 @@ interface PinnedRepos {
   languageColor: string;
   stars: number;
   forks: number;
-}
+};
 
 const pinnedRepos = await fetch(
   "https://gh-pinned-repos.egoist.dev/?username=dreyfus92"
@@ -96,7 +96,7 @@ const repos = await pinnedRepos.json();
             class="rounded-lg hover:bg-neon-green hover:text-gray-900 p-1"
             ><strong>Astro Docs</strong>
           </a>
-          and <a
+           and <a
             href="https://starlight.astro.build/"
             target="_blank"
             class="rounded-lg hover:bg-neon-green hover:text-gray-900 p-1"
