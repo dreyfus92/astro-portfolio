@@ -1,7 +1,7 @@
 ---
-import { getCollection } from "astro:content";
 import BlogPostLayout from "@layouts/BlogPostLayout.astro";
-export const prerender = true;
+import { getCollection, type CollectionEntry } from "astro:content";
+
 export async function getStaticPaths() {
   const blogEntries = await getCollection("posts").then((posts) =>
     posts.filter((post) => !post.data.draft)
@@ -11,6 +11,10 @@ export async function getStaticPaths() {
     props: { entry },
   }));
 }
+
+type Props = {
+  entry: CollectionEntry<"posts">;
+};
 
 const { entry } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await entry.render();

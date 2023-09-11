@@ -27,7 +27,7 @@ export default defineConfig({
     applyBaseStyles: false,
   }), mdx(), sitemap(), prefetch()],
   site: "https://www.paulvall.dev/",
-  output: 'server',
+  output: 'hybrid',
   adapter: vercel({
     edgeMiddleware: true,
   })
