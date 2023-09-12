@@ -1,19 +1,11 @@
 ---
 import { Icon } from "astro-icon";
 import { getCurrentTrack } from "@utils/spotify";
+import type { NowPlayingTrackResponse } from "@utils/spotify";
 
 const nowPlayingTrack = await getCurrentTrack();
-const data = await nowPlayingTrack.json();
+const data: NowPlayingTrackResponse = await nowPlayingTrack.json();
 ---
-
-<script>
-  import { getCurrentTrack } from "@utils/spotify";
-
-  const nowPlayingTrack = await getCurrentTrack();
-  const data = await nowPlayingTrack.json();
-
-  console.log(data);
-</script>
 
 <div
   id="spotify"
