@@ -6,6 +6,15 @@ const nowPlayingTrack = await getCurrentTrack();
 const data = await nowPlayingTrack.json();
 ---
 
+<script>
+  import { getCurrentTrack } from "@utils/spotify";
+
+  const nowPlayingTrack = await getCurrentTrack();
+  const data = await nowPlayingTrack.json();
+
+  console.log(data);
+</script>
+
 <div
   id="spotify"
   class="group w-fit text-[11px] flex items-center justify-center font-medium rounded-lg hover:bg-neon-green px-3 py-1"
