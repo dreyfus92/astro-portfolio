@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon";
-import { getCurrentTrack } from "../utils/spotify";
+import { getCurrentTrack } from "@api/spotify";
 
 const nowPlayingTrack = await getCurrentTrack();
 const data = await nowPlayingTrack.json();
