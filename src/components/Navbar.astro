@@ -1,12 +1,6 @@
 ---
 import SpotifyNowPlaying from "./SpotifyNowPlaying.astro";
 import { navItems } from "../utils/navigation";
-
-type NavbarProps = {
-  display?: boolean;
-};
-
-const { display = true } = Astro.props as NavbarProps;
 ---
 
 <nav
@@ -27,5 +21,5 @@ const { display = true } = Astro.props as NavbarProps;
       ))
     }
   </ul>
-  {display && <SpotifyNowPlaying />}
+  <SpotifyNowPlaying />
 </nav>
