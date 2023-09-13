@@ -16,19 +16,30 @@ An attempt to create a miniminal js personal blog using [Astro](https://astro.bu
 Inside of my Astro project, you'll see the following folders and files:
 
 ```bash
+├── .vscode/
 ├── public/
 │   ├──favicon/
-│   ├── images/
-│   └── robots.txt
+│   ├── banner.png
+│   ├── robots.txt
+│   └── sc1.png
 ├── src/
+│   ├── assets/
 │   ├── components/
 │   ├── content/
 │   ├── layouts/
-│   ├── utils/
 │   ├── pages/
-│   └── styles/
+│   ├── styles/
+│   └── utils/
 ├── .env.example
-└── package.json
+├── .eslintrc.cjs
+├── .gitignore
+├── .LICENSE
+├── README.md
+├── astro.config.ts
+├── package-json
+├── pnpm-lock.yaml
+├── tailwind.config.js
+└── tsconfig.json
 ```
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
@@ -37,9 +48,13 @@ There's nothing special about `src/components/`, but that's where you should pla
 
 Any static assets, like images, can be placed in the `public/` directory.
 
+This project uses [Tailwind CSS](https://tailwindcss.com/) for styling. The `tailwind.config.js` file is where you can customize your Tailwind theme.
+
+I'm using the `assets` folder to store my images and the `content` folder to store my markdown files so I can take advantage of Astro's built-in image optimization.
+
 ## 🧞 Running Locally
 
-This app requires Node.js v16.15.0 or later.
+This app requires Node.js v18.4.1 or later.
 
 ```bash
 git clone git@github.com:dreyfus92/astro-portfolio.git
@@ -52,4 +67,3 @@ pnpm dev
 ## 📝 License
 
 This project is licensed under the [MIT license](/LICENSE).
-
