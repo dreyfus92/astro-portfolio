@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon";
-import { GET } from "@pages/api/spotify.json.ts";
-import type { NowPlayingTrackResponse } from "@pages/api/spotify.json.ts";
+import { GET } from "@pages/api/spotify";
+import type { NowPlayingTrackResponse } from "@pages/api/spotify";
 //@ts-ignore
 const response = await GET(Astro);
 //@ts-ignore
@@ -43,3 +43,4 @@ const data: NowPlayingTrackResponse = await response.json();
     )
   }
 </div>
+ @pages/api/spotify@pages/api/spotify
