@@ -1,18 +1,24 @@
 ---
 import { Icon } from "astro-icon";
-import { getCurrentTrack } from "@utils/spotify";
-import type { NowPlayingTrackResponse } from "@utils/spotify";
+// import { getCurrentTrack } from "@pages/api/spotify";
+// import type { NowPlayingTrackResponse } from "@utils/spotify";
+import { GET } from "@pages/api/spotify";
 
-const nowPlayingTrack = await getCurrentTrack();
-const data: NowPlayingTrackResponse = await nowPlayingTrack.json();
+// const nowPlayingTrack = await getCurrentTrack();
+// const data: NowPlayingTrackResponse = await nowPlayingTrack.json();
+//@ts-ignore
+const response = await GET(Astro);
+//@ts-ignore
+const data = await response.json();
 ---
 
+<!-- <h1>{data.greeting} world!</h1> -->
 <div
   id="spotify"
   class="group w-fit text-[11px] flex items-center justify-center font-medium rounded-lg hover:bg-neon-green px-3 py-1"
 >
   {
-    data.isPlaying ? (
+    data && data.isPlaying ? (
       <a
         href={data.url}
         target="_blank"
