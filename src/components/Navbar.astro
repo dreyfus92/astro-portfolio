@@ -1,5 +1,5 @@
 ---
-import SpotifyNowPlaying from "./SpotifyNowPlaying.astro";
+import { SpotifyNowPlaying } from "./SpotifyNowPlaying.tsx";
 import { navItems } from "@utils/navigation";
 ---
 
@@ -21,5 +21,5 @@ import { navItems } from "@utils/navigation";
       ))
     }
   </ul>
-  <SpotifyNowPlaying transition:persist />
+  <SpotifyNowPlaying transition:persist client:load />
 </nav>

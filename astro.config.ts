@@ -6,6 +6,8 @@ import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel/serverless";
 import prefetch from "@astrojs/prefetch";
 
+import preact from "@astrojs/preact";
+
 // https://astro.build/config
 export default defineConfig({
   markdown: {
@@ -18,17 +20,17 @@ export default defineConfig({
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md
       langs: [],
       // Enable word wrap to prevent horizontal scrolling
-      wrap: true,
+      wrap: true
     },
     remarkPlugins: [remarkReadingTime],
     syntaxHighlight: 'shiki'
   },
   integrations: [tailwind({
-    applyBaseStyles: false,
-  }), mdx(), sitemap(), prefetch()],
+    applyBaseStyles: false
+  }), mdx(), sitemap(), prefetch(), preact()],
   site: "https://www.paulvall.dev/",
   output: 'hybrid',
   adapter: vercel({
-    edgeMiddleware: true,
+    edgeMiddleware: true
   })
 });
