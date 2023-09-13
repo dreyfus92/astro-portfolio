@@ -6,8 +6,6 @@ import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel/serverless";
 import prefetch from "@astrojs/prefetch";
 
-import preact from "@astrojs/preact";
-
 // https://astro.build/config
 export default defineConfig({
   markdown: {
@@ -27,7 +25,7 @@ export default defineConfig({
   },
   integrations: [tailwind({
     applyBaseStyles: false
-  }), mdx(), sitemap(), prefetch(), preact()],
+  }), mdx(), sitemap(), prefetch()],
   site: "https://www.paulvall.dev/",
   output: 'hybrid',
   adapter: vercel({
