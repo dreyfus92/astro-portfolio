@@ -1,5 +1,4 @@
 ---
-import SpotifyNowPlaying from "./SpotifyNowPlaying.astro";
 import { navItems } from "../utils/navigation";
 ---
 
@@ -7,19 +6,22 @@ import { navItems } from "../utils/navigation";
   role="navigation"
   aria-label="navigation"
   id="top-nav"
-  class="flex flex-col md:flex-row md:justify-between gap-4 items-center pt-8 pb-8 sm:pb-16 w-full md:w-[740px] mx-auto border-"
+  class="flex flex-col md:flex-row md:justify-center gap-4 items-center pt-8 pb-8 sm:pb-16 w-full md:w-[740px] mx-auto"
 >
-  <ul class="flex justify-center items-center gap-4 px-3 py-1">
+  <ul
+    class="flex justify-center items-center gap-4 px-8 py-4 bg-slate-950 rounded-full"
+  >
     {
       navItems.map((navItem) => (
-        <a
-          href={navItem.route}
-          class="relative font-medium text-neon-green before:absolute before:-bottom-1 before:h-0.5 before:w-full before:scale-x-0 before:bg-neon-green before:transition hover:before:scale-x-100"
-        >
-          <li>{navItem.text}</li>
-        </a>
+        <li>
+          <a
+            href={navItem.route}
+            class="relative font-medium text-neon-green before:absolute before:-bottom-1 before:h-0.5 before:w-full before:scale-x-0 before:bg-neon-green before:transition hover:before:scale-x-100"
+          >
+            {navItem.text}
+          </a>
+        </li>
       ))
     }
   </ul>
-  <SpotifyNowPlaying />
 </nav>
