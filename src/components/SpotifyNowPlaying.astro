@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon";
 import { getCurrentTrack } from "../utils/spotify";
 
+export const prerender = false;
+
 const nowPlayingTrack = await getCurrentTrack();
 const data = await nowPlayingTrack.json();
 ---
