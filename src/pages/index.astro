@@ -9,6 +9,7 @@ type TechBadgeProps = {
   imgSrc: string;
   altSrc: string;
   link: string;
+  ariaLink: string;
 };
 
 type PinnedRepos = {
@@ -76,7 +77,11 @@ const repos = await pinnedRepos.json();
         >
           {
             technologies.map((tech: TechBadgeProps) => (
-              <a href={tech.link} class="cursor-pointer text-gray-300">
+              <a
+                href={tech.link}
+                class="cursor-pointer text-gray-300"
+                aria-label={tech.ariaLink}
+              >
                 <TechBadge {...tech} />
               </a>
             ))
@@ -92,6 +97,7 @@ const repos = await pinnedRepos.json();
           started enjoying to contribute to Open Source, currently I'm
           contributing to <a
             href="https://astro.build/"
+            aria-label="Documentation for Astro"
             target="_blank"
             class="rounded-lg hover:bg-neon-green hover:text-gray-900 p-1"
             ><strong>Astro Docs</strong>
@@ -99,6 +105,7 @@ const repos = await pinnedRepos.json();
            and <a
             href="https://starlight.astro.build/"
             target="_blank"
+            aria-label="Documentation for Starlight"
             class="rounded-lg hover:bg-neon-green hover:text-gray-900 p-1"
             ><strong>Starlight.</strong></a
           >
