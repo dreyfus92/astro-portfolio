@@ -2,7 +2,7 @@
   "name": "@example/basics",
   "version": "0.0.1",
   "private": true,
-  "trustedDependencies": [ "sharp" ],
+  "trustedDependencies": ["sharp"],
   "scripts": {
     "dev": "astro dev",
     "start": "astro check --watch & astro dev",
@@ -29,7 +29,6 @@
     "tailwindcss": "^3.3.3",
     "zod": "^3.21.4"
   },
-  
   "devDependencies": {
     "@types/node": "^18.17.4",
     "@typescript-eslint/parser": "^5.62.0",
