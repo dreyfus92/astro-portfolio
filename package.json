@@ -2,7 +2,9 @@
   "name": "@example/basics",
   "version": "0.0.1",
   "private": true,
-  "trustedDependencies": ["sharp"],
+  "trustedDependencies": [
+    "sharp"
+  ],
   "scripts": {
     "dev": "astro dev",
     "start": "astro check --watch & astro dev",
@@ -11,6 +13,7 @@
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
     "update-astro": "bun install astro@latest",
     "update-integrations": "bun install @astrojs/mdx@latest @astrojs/prefetch@latest @astrojs/sitemap@latest @astrojs/tailwind@latest @astrojs/vercel@latest"
   },
@@ -34,6 +37,9 @@
     "@typescript-eslint/parser": "^5.62.0",
     "eslint": "^8.46.0",
     "eslint-plugin-astro": "^0.27.2",
-    "eslint-plugin-jsx-a11y": "^6.7.1"
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0",
+    "prettier-plugin-tailwindcss": "^0.5.4"
   }
 }

@@ -1,6 +1,7 @@
 # 🧑🏻‍💻 My personal website
 
-An attempt to create a miniminal js personal blog using [Astro](https://astro.build/).
+An attempt to create a miniminal js personal blog using
+[Astro](https://astro.build/).
 
 ![screenshot](/public/sc1.png)
 
@@ -42,15 +43,20 @@ Inside of my Astro project, you'll see the following folders and files:
 └── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page
+is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where you should place any Astro/React/Vue/Svelte/Preact components.
+There's nothing special about `src/components/`, but that's where you should
+place any Astro/React/Vue/Svelte/Preact components.
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling. The `tailwind.config.js` file is where you can customize your Tailwind theme.
+This project uses [Tailwind CSS](https://tailwindcss.com/) for styling. The
+`tailwind.config.js` file is where you can customize your Tailwind theme.
 
-I'm using the `assets` folder to store my images and the `content` folder to store my markdown files so I can take advantage of Astro's built-in image optimization.
+I'm using the `assets` folder to store my images and the `content` folder to
+store my markdown files so I can take advantage of Astro's built-in image
+optimization.
 
 ## 🧞 Running Locally
 

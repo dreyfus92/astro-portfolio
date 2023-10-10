@@ -1,80 +1,98 @@
 ---
-title: "Typeguards in TypeScript"
-description: "What are typeguards in TypeScript and how to use them"
+title: 'Typeguards in TypeScript'
+description: 'What are typeguards in TypeScript and how to use them'
 pubDate: 2023-03-03
 draft: false
-cover: "@assets/posts/typeguards.jpg"
-coverAlt: "banner-with-typescript-logo-and-guard"
+cover: '@assets/posts/typeguards.jpg'
+coverAlt: 'banner-with-typescript-logo-and-guard'
 ---
-Type guards are a key TypeScript feature that enables you to build code that is more resistant to runtime mistakes. In this post, we'll look at type guards, how to use them, and some best practices for putting them in place.
+
+Type guards are a key TypeScript feature that enables you to build code that is
+more resistant to runtime mistakes. In this post, we'll look at type guards, how
+to use them, and some best practices for putting them in place.
 
 ## What are type guards?
 
-**TypeScript** is a typed programming language, which means that variables and functions have a predefined type. When working with data from external sources (for example, user input or API answers), it might be difficult to confirm that the data is of the correct type. Type guards are very handy here.
+**TypeScript** is a typed programming language, which means that variables and
+functions have a predefined type. When working with data from external sources
+(for example, user input or API answers), it might be difficult to confirm that
+the data is of the correct type. Type guards are very handy here.
 
-A type guard is a piece of code that verifies the type of a variable during runtime and changes the variable's type as needed. Assume you have a variable data, which might be a string or an object:
+A type guard is a piece of code that verifies the type of a variable during
+runtime and changes the variable's type as needed. Assume you have a variable
+data, which might be a string or an object:
 
 ```ts
-let data: string | object = "hello";
+let data: string | object = 'hello'
 ```
 
-If you wish to access a data property that exists exclusively on the object type, you must first check the data type:
+If you wish to access a data property that exists exclusively on the object
+type, you must first check the data type:
 
 ```ts
-if (typeof data === "object") {
-  console.log(data.property); // error: property does not exist on type string
+if (typeof data === 'object') {
+  console.log(data.property) // error: property does not exist on type string
 }
 ```
 
-The `typeof` operator determines the `data` type, and the if statement establishes a type guard that guarantees data is an object before accessing its property property.
+The `typeof` operator determines the `data` type, and the if statement
+establishes a type guard that guarantees data is an object before accessing its
+property property.
 
-Type guards can be implemented as functions as well. As an example, suppose you have an interface Person:
+Type guards can be implemented as functions as well. As an example, suppose you
+have an interface Person:
 
 ```ts
 interface Person {
-  name: string;
-  age: number;
+  name: string
+  age: number
 }
 ```
 
-You can define a type guard function isPerson that checks whether an object has the properties name and age:
+You can define a type guard function isPerson that checks whether an object has
+the properties name and age:
 
 ```ts
 function isPerson(obj: any): obj is Person {
-  return obj && typeof obj.name === "string" && typeof obj.age === "number";
+  return obj && typeof obj.name === 'string' && typeof obj.age === 'number'
 }
 ```
 
-The obj is Person syntax tells TypeScript that the function is a type guard that changes the type of obj to Person.
+The obj is Person syntax tells TypeScript that the function is a type guard that
+changes the type of obj to Person.
 
 Now you can use the isPerson function to check whether an object is a Person:
 
 ```ts
-let data: any = { name: "Paul", age: 30 };
+let data: any = { name: 'Paul', age: 30 }
 
 if (isPerson(data)) {
-  console.log(data.name); // "Paul"
+  console.log(data.name) // "Paul"
 }
 ```
 
 ## Using type guards
 
-Type guards are most commonly used to handle data from external sources, such as user input or API responses. For example, let's say you have a function that fetches data from an API:
+Type guards are most commonly used to handle data from external sources, such as
+user input or API responses. For example, let's say you have a function that
+fetches data from an API:
 
 ```ts
 async function getData() {
-  const response = await fetch("https://example.com/api");
-  const data = await response.json();
-  return data;
+  const response = await fetch('https://example.com/api')
+  const data = await response.json()
+  return data
 }
 ```
 
-The `fetchData` function returns an object of type any, which means that TypeScript doesn't know what properties the object has. You can use a type guard to check the type of the returned data and handle different cases accordingly:
+The `fetchData` function returns an object of type any, which means that
+TypeScript doesn't know what properties the object has. You can use a type guard
+to check the type of the returned data and handle different cases accordingly:
 
 ```ts
 async function fetchData(): Promise<void> {
-  const response = await fetch("/api/data");
-  const data = await response.json();
+  const response = await fetch('/api/data')
+  const data = await response.json()
 
   if (isPerson(data)) {
     // handle Person data
@@ -88,16 +106,29 @@ async function fetchData(): Promise<void> {
 
 ## Best practices
 
-**Use type guards to make your code more expressive:** Type guards can help make your code more readable and expressive by making it clear what types of values your code is expecting.
+**Use type guards to make your code more expressive:** Type guards can help make
+your code more readable and expressive by making it clear what types of values
+your code is expecting.
 
-**Use user-defined type guards when working with custom types:** If you're working with custom types, it's a good idea to define your own type guards to help TypeScript narrow down the types of variables at runtime.
+**Use user-defined type guards when working with custom types:** If you're
+working with custom types, it's a good idea to define your own type guards to
+help TypeScript narrow down the types of variables at runtime.
 
-**Use type guards with switch statements:** Type guards can be especially useful when used with switch statements. By checking the type of a value with a type guard in each case statement, you can avoid errors and make your code more reliable.
+**Use type guards with switch statements:** Type guards can be especially useful
+when used with switch statements. By checking the type of a value with a type
+guard in each case statement, you can avoid errors and make your code more
+reliable.
 
-**Avoid using type assertions:** Type assertions can be tempting, but they can be dangerous if used incorrectly. Instead, use type guards to help TypeScript infer the types of variables at runtime.
+**Avoid using type assertions:** Type assertions can be tempting, but they can
+be dangerous if used incorrectly. Instead, use type guards to help TypeScript
+infer the types of variables at runtime.
 
-**Be aware of performance implications:** Type guards can have performance implications, especially if they're used in performance-critical code. Make sure to test your code and optimize where necessary.
+**Be aware of performance implications:** Type guards can have performance
+implications, especially if they're used in performance-critical code. Make sure
+to test your code and optimize where necessary.
 
 ## Conclusion
 
-Overall, type guards are a powerful feature of TypeScript that can help make your code more reliable and expressive. By following these best practices, you can use type guards effectively and avoid common pitfalls.
+Overall, type guards are a powerful feature of TypeScript that can help make
+your code more reliable and expressive. By following these best practices, you
+can use type guards effectively and avoid common pitfalls.
