@@ -2,6 +2,7 @@
   "name": "@example/basics",
   "version": "0.0.1",
   "private": true,
+  "trustedDependencies": ["sharp"],
   "scripts": {
     "dev": "astro dev",
     "start": "astro check --watch & astro dev",
@@ -10,21 +11,21 @@
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "update-astro": "pnpm install astro@latest",
-    "update-integrations": "pnpm install @astrojs/mdx@latest @astrojs/prefetch@latest @astrojs/sitemap@latest @astrojs/tailwind@latest @astrojs/vercel@latest"
+    "update-astro": "bun install astro@latest",
+    "update-integrations": "bun install @astrojs/mdx@latest @astrojs/prefetch@latest @astrojs/sitemap@latest @astrojs/tailwind@latest @astrojs/vercel@latest"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.1.0",
-    "@astrojs/prefetch": "^0.4.0",
-    "@astrojs/sitemap": "^3.0.0",
-    "@astrojs/tailwind": "^5.0.0",
-    "@astrojs/vercel": "^5.0.1",
-    "astro": "^3.1.2",
+    "@astrojs/mdx": "latest",
+    "@astrojs/prefetch": "latest",
+    "@astrojs/sitemap": "latest",
+    "@astrojs/tailwind": "latest",
+    "@astrojs/vercel": "latest",
+    "astro": "latest",
     "astro-icon": "^0.8.1",
     "mdast-util-to-string": "^3.2.0",
     "motion": "^10.16.2",
     "reading-time": "^1.5.0",
-    "sharp": "^0.32.6",
+    "sharp": "0.33.0-alpha.6",
     "tailwindcss": "^3.3.3",
     "zod": "^3.21.4"
   },
