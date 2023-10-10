@@ -13,11 +13,11 @@ The other day I came across with this algo and while reading I found it amazing.
 
 ### A bit of historical background
 
-The Aho-Corasick (A-C) algorithm was conceived by Alfred V. Aho and Margaret J. Corasick. The algorithm was introduced in their seminal paper titled "Efficient string matching: An aid to bibliographic search," published in 1975. This work was aimed at addressing the computational challenges associated with bibliographic search, which is a crucial aspect of academic research and literary work management.
+The Aho-Corasick algorithm (hereinafter "A-C") algorithm was conceived by Alfred V. Aho and Margaret J. Corasick. A-C was introduced in their seminal paper titled "Efficient string matching: An aid to bibliographic search," published in 1975. This work was aimed at addressing the computational challenges associated with bibliographic search, which is a crucial aspect of academic research and literary work management.
 
 During the 1970s, bibliographic search was emerging as a critical challenge, especially with the burgeoning volume of academic literature. The need for efficient string matching algorithms was glaring, as traditional approaches were notably inefficient when tasked with searching for multiple patterns within large text corpora.
 
-The algorithm is built upon earlier theoretical work in automata theory and the theory of computation. It leverages the power of trie data structures and finite automata to perform efficient string matching. The algorithm's elegance lies in its simplicity and efficiency, making a single pass over the text, regardless of the number of patterns.
+A-C is built upon earlier theoretical work in automata theory and the theory of computation. It leverages the power of trie data structures and finite automata to perform efficient string matching. The algorithm's elegance lies in its simplicity and efficiency, making a single pass over the text, regardless of the number of patterns.
 
 Let's delve into intricacies of the algo, ilustrating its mechanisms in a manner akin to unraveling a narrative.
 
@@ -38,7 +38,7 @@ For example, the words "he" and "hers" both start with the character 'h', so the
 
 ### Crafting Failure Links
 
-The algorithm  then adorns the Trie with failure links, a mechanism to gracefully retreat and advance along different branches when a mismatch occurs. These links conect nodes in a manner that encapsulates the shared prefixes among the words, creating a network of fallbacks. It's akin to having secret passages that swiftly guide the search to the right path upon encountering a hurdle.
+The algorithm then adorns the Trie with failure links, a mechanism to gracefully retreat and advance along different branches when a mismatch occurs. These links conect nodes in a manner that encapsulates the shared prefixes among the words, creating a network of fallbacks. It's akin to having secret passages that swiftly guide the search to the right path upon encountering a hurdle.
 
 ### The Search Begins
 
@@ -50,7 +50,7 @@ Whenever the traversal reaches the end of a word in the Trie, a match is found! 
 
 ### The result
 
-At the conclusion of this expedition, the algorithm presents a comprehensive list of all ocurrences of the words within the text. The Aho-Corasick algorithm's ability to find multiple patterns in a single pass makes it a cherished asset in the toolbox of text processing.
+At the conclusion of this expedition, the algorithm presents a comprehensive list of all ocurrences of the words within the text. A-C's ability to find multiple patterns in a single pass makes it a cherished asset in the toolbox of text processing.
 
 ### Implementation
 
