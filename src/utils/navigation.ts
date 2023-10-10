@@ -1,18 +1,18 @@
 export const navItems = [
-    {
-        route: "/",
-        text: "Home",
-    },
-    {
-        route: "/posts",
-        text: "Posts",
-    },
-    {
-        route: "/socials",
-        text: "Socials",
-    },
-    {
-        route: "/contact",
-        text: "Contact",
-    },
-];
+  {
+    route: '/',
+    text: 'Home',
+  },
+  {
+    route: '/posts',
+    text: 'Posts',
+  },
+  {
+    route: '/socials',
+    text: 'Socials',
+  },
+  {
+    route: '/contact',
+    text: 'Contact',
+  },
+]

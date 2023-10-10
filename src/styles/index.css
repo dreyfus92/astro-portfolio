@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 body {
-  @apply bg-neutral-800 break-words antialiased;
+  @apply break-words bg-neutral-800 antialiased;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   word-wrap: break-word;
 }
 
 h1 {
-  @apply font-bold text-3xl md:text-5xl tracking-tight text-white;
+  @apply text-3xl font-bold tracking-tight text-white md:text-5xl;
 }
 
 h2 {
-  @apply font-bold text-2xl tracking-tight;
+  @apply text-2xl font-bold tracking-tight;
 }
 
 p {
@@ -25,17 +25,17 @@ a {
   @apply text-neon-green;
 }
 
-img[alt=cat-in-a-server-room], 
-img[alt=programmer-with-chrome] {
-  @apply h-[350px] mx-auto md:h-[600px];
+img[alt='cat-in-a-server-room'],
+img[alt='programmer-with-chrome'] {
+  @apply mx-auto h-[350px] md:h-[600px];
 }
 
-img[alt=first-option-to-copy-response-gif],
-img[alt=second-option-to-copy-response-gif]{
+img[alt='first-option-to-copy-response-gif'],
+img[alt='second-option-to-copy-response-gif'] {
   @apply mx-auto;
 }
 
-[astro-icon]{
+[astro-icon] {
   @apply w-8;
 }
 

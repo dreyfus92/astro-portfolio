@@ -1,10 +1,10 @@
-import { defineConfig } from 'astro/config';
-import { remarkReadingTime } from './src/utils/readingTime.mjs';
-import tailwind from "@astrojs/tailwind";
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel/serverless";
-import prefetch from "@astrojs/prefetch";
+import { defineConfig } from 'astro/config'
+import { remarkReadingTime } from './src/utils/readingTime.mjs'
+import tailwind from '@astrojs/tailwind'
+import mdx from '@astrojs/mdx'
+import sitemap from '@astrojs/sitemap'
+import vercel from '@astrojs/vercel/serverless'
+import prefetch from '@astrojs/prefetch'
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,14 +21,19 @@ export default defineConfig({
       wrap: true,
     },
     remarkPlugins: [remarkReadingTime],
-    syntaxHighlight: 'shiki'
+    syntaxHighlight: 'shiki',
   },
-  integrations: [tailwind({
-    applyBaseStyles: false,
-  }), mdx(), sitemap(), prefetch()],
-  site: "https://www.paulvall.dev/",
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    mdx(),
+    sitemap(),
+    prefetch(),
+  ],
+  site: 'https://www.paulvall.dev/',
   output: 'hybrid',
   adapter: vercel({
     edgeMiddleware: true,
-  })
-});
+  }),
+})

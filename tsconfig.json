@@ -8,7 +8,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"],
-      "@assets/*": ["src/assets/*"],
-    },
+      "@assets/*": ["src/assets/*"]
+    }
   }
 }
