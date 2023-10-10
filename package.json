@@ -12,8 +12,6 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "update-astro": "install astro@latest",
     "update-integrations": "install @astrojs/mdx@latest @astrojs/prefetch@latest @astrojs/sitemap@latest @astrojs/tailwind@latest @astrojs/vercel@latest"
