@@ -13,8 +13,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
-    "update-astro": "install astro@latest",
-    "update-integrations": "install @astrojs/mdx@latest @astrojs/prefetch@latest @astrojs/sitemap@latest @astrojs/tailwind@latest @astrojs/vercel@latest"
+    "update-astro": "bun install astro@latest",
+    "update-integrations": "bun install @astrojs/mdx@latest @astrojs/prefetch@latest @astrojs/sitemap@latest @astrojs/tailwind@latest @astrojs/vercel@latest"
   },
   "dependencies": {
     "@astrojs/mdx": "latest",
