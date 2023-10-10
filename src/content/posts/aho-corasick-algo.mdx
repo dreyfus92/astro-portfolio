@@ -56,14 +56,14 @@ At the conclusion of this expedition, the algorithm presents a comprehensive lis
 
 For those desiring a more tangible grasp, here is a TypeScript implementation of the Aho-Corasick algorithm.
 
-We will start by defining the max number of states in matcher and the max number of characters in the alphabet.
+We will start by defining the max number of states in `buildMatchingMachine` and the max number of characters in the alphabet.
 
 ```ts
 const MAX_STATES = 500;
 const MAX_CHARS = 26;
 ```
 
-Next we will define the AhoCorasick class, which will be responsible for constructing the Trie and performing the search.
+Next we will define the `AhoCorasick class`, which will be responsible for constructing the Trie and performing the search.
 
 ```ts
 class AhoCorasick {
@@ -72,6 +72,12 @@ class AhoCorasick {
     private g: number[][] = new Array(MAX_STATES).fill(null).map(() => new Array(MAX_CHARS).fill(-1));
 
     constructor(private keywords: string[]) { }
+
+    /**
+     * Builds the Aho-Corasick machine, initializing the goto, failure, 
+     * and output functions.
+     * @returns The total number of states in the machine.
+     */
 
     private buildMatchingMachine(): number {
         this.out.fill(0);
@@ -136,6 +142,13 @@ class AhoCorasick {
         return states;
     }
 
+    /**
+     * Finds the next state based on the current state and the next input character.
+     * @param currentState - The current state in the machine.
+     * @param nextInput - The next input character.
+     * @returns The next state in the machine.
+     */
+
     private findNextState(currentState: number, nextInput: string): number {
         let answer = currentState;
         const ch = nextInput.charCodeAt(0) - 'a'.charCodeAt(0);
@@ -147,7 +160,17 @@ class AhoCorasick {
         return this.g[answer][ch];
     }
 
+    /**
+     * Searches for all occurrences of the keywords in the given text.
+     * @param text - The text to search.
+     */
+
     public searchWords(text: string): void {
+        if(!text) {
+            console.log("The text to search cannot be empty or null.")
+            return;
+        }
+
         this.buildMatchingMachine();
 
         let currentState = 0;
