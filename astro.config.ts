@@ -33,5 +33,7 @@ export default defineConfig({
   ],
   site: 'https://www.paulvall.dev/',
   output: 'hybrid',
-  adapter: vercel(),
+  adapter: vercel({
+    edgeMiddleware: true,
+  }),
 })
