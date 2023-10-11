@@ -1,12 +1,12 @@
-import { defineConfig } from 'astro/config';
-import { remarkReadingTime } from './src/utils/readingTime.mjs';
-import tailwind from '@astrojs/tailwind';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel/serverless';
-import prefetch from '@astrojs/prefetch';
+import { defineConfig } from 'astro/config'
+import { remarkReadingTime } from './src/utils/readingTime.mjs'
+import tailwind from '@astrojs/tailwind'
+import mdx from '@astrojs/mdx'
+import sitemap from '@astrojs/sitemap'
+import vercel from '@astrojs/vercel/serverless'
+import prefetch from '@astrojs/prefetch'
 
-import expressiveCode from "astro-expressive-code";
+import expressiveCode from 'astro-expressive-code'
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,17 +20,23 @@ export default defineConfig({
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md
       langs: [],
       // Enable word wrap to prevent horizontal scrolling
-      wrap: true
+      wrap: true,
     },
     remarkPlugins: [remarkReadingTime],
-    syntaxHighlight: 'shiki'
+    syntaxHighlight: 'shiki',
   },
-  integrations: [tailwind({
-    applyBaseStyles: false
-  }), sitemap(), prefetch(), expressiveCode(), mdx()],
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    sitemap(),
+    prefetch(),
+    expressiveCode(),
+    mdx(),
+  ],
   site: 'https://www.paulvall.dev/',
   output: 'hybrid',
   adapter: vercel({
-    edgeMiddleware: true
-  })
-});
+    edgeMiddleware: true,
+  }),
+})
