@@ -4,9 +4,6 @@
   "author": "Paul Valladares <paulvi92@gmail.com>",
   "version": "0.0.1",
   "private": true,
-  "trustedDependencies": [
-    "sharp"
-  ],
   "scripts": {
     "dev": "astro dev",
     "start": "astro check --watch & astro dev",
@@ -14,8 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
-    "update-astro": "bun install astro@latest",
-    "update-integrations": "bun install @astrojs/mdx@latest @astrojs/prefetch@latest @astrojs/sitemap@latest @astrojs/tailwind@latest @astrojs/vercel@latest"
+    "update-astro": "pnpm install astro@latest",
+    "update-integrations": "pnpm install @astrojs/mdx@latest @astrojs/prefetch@latest @astrojs/sitemap@latest @astrojs/tailwind@latest @astrojs/vercel@latest"
   },
   "dependencies": {
     "@astrojs/mdx": "latest",
