@@ -3,7 +3,7 @@
 }
 
 .post code {
-  @apply rounded-sm bg-neutral-800 px-1 py-[2px] text-neon-green;
+  @apply rounded-sm bg-gray-600 px-1 py-[2px] text-white;
 }
 
 .post h2 {
@@ -18,22 +18,6 @@
   @apply text-neon-green;
 }
 
-.post code {
-  @apply rounded-sm bg-neutral-800 px-1 py-[2px] text-neon-green;
-}
-
 .post ul {
   @apply list-disc;
-}
-
-.post blockquote {
-  @apply flex flex-row gap-2 before:block before:h-auto before:w-1 before:max-w-[1px] before:bg-neon-green before:content-[''];
-}
-
-.post pre {
-  @apply p-4;
-}
-
-.post pre > code {
-  @apply bg-transparent text-sm;
 }
