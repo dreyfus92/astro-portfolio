@@ -1,0 +1,102 @@
+---
+title: 'Understanding the Josephus Problem'
+description:
+  'A brief explaination on how to approach the Josephus Problem with TypeScript.'
+pubDate: 2023-10-23
+draft: false
+cover: '@assets/posts/josephus-problem/cover.png'
+coverAlt: 'josephus-hero'
+---
+
+The Josephus problem is a famous mathematical puzzle with an intriguing
+backstory. As the legend goes, in 67 AD a group of 41 Jewish rebels were trapped
+by the Roman army. Preferring death over capture, they decided to form a circle
+and kill every third remaining rebel until only one was left. That last rebel
+would then commit suicide rather than be taken prisoner. One of the rebels,
+Josephus, wanted to figure out where to sit in the circle so he would be the
+final survivor. Rather than die, he could then surrender to the Romans. Finding
+the safe spot in the circle became known as the Josephus problem.
+
+While apocryphal, this tale provides a vivid setup for understanding the
+problem. Let's break it down step-by-step:
+
+## The Problem
+
+Formally, the Josephus problem is:
+
+Given `n` people numbered 1 to `n` arranged in a circle, every `mth` person is
+eliminated until only one person remains. What is the position of the last
+survivor?
+
+For example, with `n=7` people and `m=3`:
+
+- Persons 1, 2, and 3 remain
+- Person 5 is eliminated next
+- Persons 6, 7, and 1 remain
+- Person 7 is eliminated
+- Persons 1 and 6 remain
+- Person 1 is the final survivor
+
+The solution should work for any `n` and `m` values.
+
+## Solving through Examples
+
+To gain insights, we can work through examples systematically. The key
+observations:
+
+- The survivor is always in an odd-numbered position
+- When n is a power of 2, the survivor is person 1
+- Between powers of 2, the position increases by 2 each time
+
+Here are results for different n values with m=3:
+
+```text
+n    Survivor
+1    1
+2    1
+3    3
+4    1
+5    3
+6    5
+7    7
+8    1
+9    3
+10   5
+```
+
+## The Recursive Solution
+
+The full solution uses:
+
+- Modular arithmetic
+- Expressing `n` as the largest power of 2 plus a remainder
+- Recursing on progressively smaller `n`
+
+If n = 2^a + l where l < 2^a, the survivor is:
+
+```ts
+function survivor(n: number, m: number): number {
+  if (n === 1) {
+    return 1
+  }
+
+  return (survivor(n - 1, m) + m - 1) % n
+}
+```
+
+This recursively eliminates 1 person per round until a power of 2 remains. The
+final survivor is then `2l + 1`.
+
+For Josephus with `n=41`, written in binary as 32 + 8 + 1, l=9. The survivor is
+2\*9 + 1 = 19.
+
+## Applications
+
+The Josephus problem applies to rotating processes like round robin scheduling.
+It is also commonly used in tech interviews to evaluate recursive programming
+skills. Understanding and implementing the solution demonstrates strong
+algorithmic abilities.
+
+I hope this post helped explain the origins, logic, and code behind solving the
+famous Josephus problem. Let me know in the comments if you have any other
+examples of recursive algorithms you'd like explained!

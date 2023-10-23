@@ -19,5 +19,5 @@
 }
 
 .post ul {
-  @apply list-disc;
+  @apply list-disc ps-6 leading-8 text-gray-300;
 }
