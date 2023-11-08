@@ -6,22 +6,22 @@ settings:
 
 dependencies:
   '@astrojs/mdx':
-    specifier: latest
+    specifier: ^1.1.1
     version: 1.1.1(astro@3.2.4)
   '@astrojs/prefetch':
-    specifier: latest
+    specifier: ^0.4.1
     version: 0.4.1
   '@astrojs/sitemap':
-    specifier: latest
+    specifier: ^3.0.1
     version: 3.0.1
   '@astrojs/tailwind':
-    specifier: latest
+    specifier: ^5.0.2
     version: 5.0.2(astro@3.2.4)(tailwindcss@3.3.3)
   '@astrojs/vercel':
-    specifier: latest
+    specifier: ^5.0.2
     version: 5.0.2(astro@3.2.4)
   astro:
-    specifier: latest
+    specifier: ^3.2.4
     version: 3.2.4(@types/node@18.18.4)
   astro-expressive-code:
     specifier: ^0.26.2
