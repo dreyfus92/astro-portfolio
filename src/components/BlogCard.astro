@@ -1,44 +1,44 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon'
 
 type BlogCardProps = {
-  title: string;
-  description: string;
-  date: string;
-  link: string;
+  title: string
+  description: string
+  date: string
+  link: string
   readingTime: {
-    minutesRead: string;
-  };
-};
+    minutesRead: string
+  }
+}
 
 const { title, description, date, link, readingTime } =
-  Astro.props as BlogCardProps;
+  Astro.props as BlogCardProps
 ---
 
 <a
   href={link}
-  rel="prefetch"
-  class="border-2 border-zinc-700 flex flex-col gap-y-5 p-4 mb-8 hover:border-neon-green transition-colors duration-500 rounded-xl"
+  rel='prefetch'
+  class='mb-8 flex flex-col gap-y-5 rounded-xl border-2 border-zinc-700 p-4 transition-colors duration-500 hover:border-neon-green'
 >
-  <h3 class="text-white text-xl md:text-2xl font-extrabold">{title}</h3>
+  <h3 class='text-xl font-extrabold text-white md:text-2xl'>{title}</h3>
 
-  <p class="text-sm text-white md:text-base">{description}</p>
+  <p class='text-sm text-white md:text-base'>{description}</p>
 
-  <div class="flex items-center gap-x-4 text-neutral-200 text-xs md:text-sm">
-    <div class="flex items-center gap-x-2">
-      <Icon name="system-uicons:calendar-month" class="text-neon-green" />
+  <div class='flex items-center gap-x-4 text-xs text-neutral-200 md:text-sm'>
+    <div class='flex items-center gap-x-2'>
+      <Icon name='system-uicons:calendar-month' class='text-neon-green' />
       <time datetime={date}>
         {
-          new Date(date).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
+          new Date(date).toLocaleDateString('en-us', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
           })
         }
       </time>
     </div>
-    <div class="flex items-center gap-x-2">
-      <Icon name="ic:baseline-schedule" class="text-neon-green" />
+    <div class='flex items-center gap-x-2'>
+      <Icon name='system-uicons:clock' class='text-neon-green' />
       <p>{readingTime}</p>
     </div>
   </div>

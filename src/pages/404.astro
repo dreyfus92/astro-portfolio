@@ -1,0 +1,26 @@
+---
+import Head from '@components/Head.astro'
+
+const title = 'Paul Valladares | 404'
+const description = 'Personal website of Paul Valladares'
+---
+
+<html lang='en'>
+  <head>
+    <Head title={title} description={description} />
+  </head>
+  <body>
+    <div
+      class='flex min-h-screen flex-col items-center justify-center text-white'
+    >
+      <h1 class='text-9xl font-bold'>404</h1>
+      <p class='mb-8 mt-4 text-2xl'>Oops! Page not found.</p>
+      <a
+        class='inline-flex h-10 items-center justify-center rounded-md bg-neon-green px-8 text-sm font-medium text-gray-800 shadow transition-colors hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
+        href='/'
+      >
+        Go Home
+      </a>
+    </div>
+  </body>
+</html>
