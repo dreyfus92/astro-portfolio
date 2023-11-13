@@ -1,18 +1,18 @@
 ---
 type TechBadgeProps = {
-  name: string;
-  imgSrc: string;
-  altSrc: string;
-};
+  name: string
+  imgSrc: string
+  altSrc: string
+}
 
-const { name, imgSrc, altSrc } = Astro.props as TechBadgeProps;
+const { name, imgSrc, altSrc } = Astro.props as TechBadgeProps
 ---
 
-<div class="flex items-center gap-4 hover:scale-105 ease-in-out duration-200">
+<div class='flex items-center gap-4 duration-200 ease-in-out hover:scale-105'>
   <div
-    class="rounded-full bg-neutral-600 w-[60px] h-[60px] flex justify-center items-center"
+    class='flex h-[60px] w-[60px] items-center justify-center rounded-full bg-neutral-600'
   >
-    <img src={imgSrc} alt={altSrc} height="30" width="30" />
+    <img src={imgSrc} alt={altSrc} height='30' width='30' />
   </div>
-  <h3 class="text-[14px] md:text-[16px]">{name}</h3>
+  <h3 class='text-[14px] md:text-[16px]'>{name}</h3>
 </div>

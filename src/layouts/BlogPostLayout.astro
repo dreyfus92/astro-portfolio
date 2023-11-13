@@ -1,100 +1,100 @@
 ---
-import { Icon } from "astro-icon";
-import { getCollection } from "astro:content";
-import Navbar from "@components/Navbar.astro";
-import Footer from "@components/Footer.astro";
-import Head from "@components/Head.astro";
-import "@styles/posts.css";
-import type { ImageMetadata } from "astro";
-import { Image } from "astro:assets";
+import { Icon } from 'astro-icon'
+import { getCollection } from 'astro:content'
+import Navbar from '@components/Navbar.astro'
+import Footer from '@components/Footer.astro'
+import Head from '@components/Head.astro'
+import '@styles/posts.css'
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
 
 interface BlogPostLayoutProps {
   frontmatter: {
-    title: string;
-    description: string;
-    pubDate: string;
-    cover: ImageMetadata;
-    coverAlt: string;
-  };
+    title: string
+    description: string
+    pubDate: string
+    cover: ImageMetadata
+    coverAlt: string
+  }
   minutes: {
-    minutesRead: string;
-  };
+    minutesRead: string
+  }
 }
 
-let { frontmatter, minutes } = Astro.props as BlogPostLayoutProps;
+let { frontmatter, minutes } = Astro.props as BlogPostLayoutProps
 
 const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
-  "en-us",
+  'en-us',
   {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  }
-);
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  },
+)
 
 // get all posts
-let posts = await getCollection("posts")
+let posts = await getCollection('posts')
   .then((posts) =>
     posts.sort(
       (a, b) =>
-        new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-    )
+        new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
+    ),
   )
-  .then((posts) => posts.filter((post) => !post.data.draft));
+  .then((posts) => posts.filter((post) => !post.data.draft))
 
 // get the index of the current post
 const index = posts.findIndex((post) => {
-  return Astro.request.url.includes(post.slug ?? "");
-});
+  return Astro.request.url.includes(post.slug ?? '')
+})
 
 // get the next and previous posts
-const nextPost = posts[index + 1];
-const prevPost = posts[index - 1];
+const nextPost = posts[index + 1]
+const prevPost = posts[index - 1]
 ---
 
-<html lang="en">
+<html lang='en'>
   <head>
     <Head title={frontmatter.title} description={frontmatter.description} />
   </head>
   <Navbar display={false} />
   <body>
-    <main class="post text-white flex flex-col items-center">
-      <div class="w-10/12 md:w-[750px]">
-        <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
-        <div class="flex gap-4">
-          <p class="text-sm flex items-center">
+    <main class='post flex flex-col items-center text-white'>
+      <div class='w-10/12 md:w-[750px]'>
+        <h1 class='mb-4 text-4xl font-bold'>{frontmatter.title}</h1>
+        <div class='flex gap-4'>
+          <p class='flex items-center text-sm'>
             <Icon
-              name="system-uicons:calendar-month"
-              class="text-neon-green mr-2"
+              name='system-uicons:calendar-month'
+              class='mr-2 text-neon-green'
             />
             {formattedDate}
           </p>
-          <p class="text-sm flex items-center">
-            <Icon name="system-uicons:clock" class="text-neon-green mr-2" />
+          <p class='flex items-center text-sm'>
+            <Icon name='system-uicons:clock' class='mr-2 text-neon-green' />
             {minutes.minutesRead}
           </p>
         </div>
-        <hr class="mt-5 mb-10" />
+        <hr class='mb-10 mt-5' />
         <Image
           src={frontmatter.cover}
           alt={frontmatter.coverAlt}
-          class="rounded-md"
+          class='rounded-md'
         />
         <br />
         <article>
           <slot />
         </article>
       </div>
-      <div class="w-10/12 md:w-[750px] mb-10">
-        <div class="flex flex-col sm:flex-row mt-10 gap-4 sm:gap-6 w-full">
+      <div class='mb-10 w-10/12 md:w-[750px]'>
+        <div class='mt-10 flex w-full flex-col gap-4 sm:flex-row sm:gap-6'>
           {
             prevPost && (
               <a
                 href={`/posts/${prevPost.slug}`}
-                class="flex flex-col grow text-sm p-4 border rounded border-zinc-700 hover:border-neon-green transition duration-500 ease-out"
+                class='flex grow flex-col rounded border border-zinc-700 p-4 text-sm transition duration-500 ease-out hover:border-neon-green'
               >
-                <p class="text-zinc-400 mb-1">&larr; Previous post</p>
-                <p class="font-semibold text-zinc-300">{prevPost.data.title}</p>
+                <p class='mb-1 text-zinc-400'>&larr; Previous post</p>
+                <p class='font-semibold text-zinc-300'>{prevPost.data.title}</p>
               </a>
             )
           }
@@ -102,10 +102,10 @@ const prevPost = posts[index - 1];
             nextPost && (
               <a
                 href={`/posts/${nextPost.slug}`}
-                class="flex flex-col grow text-right text-sm p-4 border rounded border-zinc-700 hover:border-neon-green transition duration-500 ease-out"
+                class='flex grow flex-col rounded border border-zinc-700 p-4 text-right text-sm transition duration-500 ease-out hover:border-neon-green'
               >
-                <p class="mb-1">Next post &rarr;</p>
-                <p class="font-semibold text-zinc-300">{nextPost.data.title}</p>
+                <p class='mb-1'>Next post &rarr;</p>
+                <p class='font-semibold text-zinc-300'>{nextPost.data.title}</p>
               </a>
             )
           }
