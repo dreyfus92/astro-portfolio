@@ -1,5 +1,6 @@
 ---
 import { navItems } from '../utils/navigation'
+import { SpotifyNowPlaying } from './SpotifyNowPlaying'
 ---
 
 <nav
@@ -23,5 +24,6 @@ import { navItems } from '../utils/navigation'
         </li>
       ))
     }
+    <SpotifyNowPlaying client:only='react' />
   </ul>
 </nav>

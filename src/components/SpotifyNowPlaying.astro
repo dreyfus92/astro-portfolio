@@ -8,7 +8,7 @@ const nowPlayingTrack = await getCurrentTrack()
 const data = await nowPlayingTrack.json()
 ---
 
-<div
+<li
   id='spotify'
   class='group flex w-fit items-center justify-center rounded-lg px-3 py-1 text-[11px] font-medium hover:bg-neon-green'
 >
@@ -42,4 +42,4 @@ const data = await nowPlayingTrack.json()
       </a>
     )
   }
-</div>
+</li>
