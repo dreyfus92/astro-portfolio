@@ -1,5 +1,5 @@
 export const prerender = false;
-import { type Artist, nowPlaying } from "@utils/spotify";
+import { type Artist, nowPlaying } from "../../utils/spotify";
 
 export async function GET() {
     const response = await nowPlaying()
