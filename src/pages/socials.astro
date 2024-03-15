@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro'
 import { socials } from '@utils/data'
 import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
 
 type Socials = {
   name: string
@@ -15,10 +16,13 @@ type Socials = {
   title='Paul Valladares | Socials'
   description='Links for social media of Paul Valladares'
 >
-  <main class='mb-28 mt-14'>
-    <img
+  <main class='mb-28 mt-10'>
+    <Image
+      class='mx-auto mb-10 w-40 rounded-full'
       src='https://avatars.githubusercontent.com/u/85648028?v=4'
-      class='mx-auto mb-10 w-40 rounded-full border-2 border-solid border-white'
+      alt='Paul Valladares'
+      inferSize={true}
+      loading='eager'
     />
     <h2 class='mb-3 px-2 text-center text-3xl text-white'>Paul Valladares</h2>
     <p class='mb-10 px-2 text-center text-2xl font-bold'>
@@ -33,7 +37,7 @@ type Socials = {
               href={opt.url}
               aria-label={opt.ariaLabel}
             >
-              <Icon name={opt.imgSrc} class='mr-2' />
+              <Icon name={opt.imgSrc} class='mr-2 h-6 w-6' />
               <p class='text-gray-800'>{opt.name}</p>
             </a>
           )

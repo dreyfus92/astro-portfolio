@@ -26,7 +26,10 @@ const { title, description, date, link, readingTime } =
 
   <div class='flex items-center gap-x-4 text-xs text-neutral-200 md:text-sm'>
     <div class='flex items-center gap-x-2'>
-      <Icon name='system-uicons:calendar-month' class='text-neon-green' />
+      <Icon
+        name='system-uicons:calendar-month'
+        class='h-6 w-6 text-neon-green'
+      />
       <time datetime={date}>
         {
           new Date(date).toLocaleDateString('en-us', {
@@ -38,7 +41,7 @@ const { title, description, date, link, readingTime } =
       </time>
     </div>
     <div class='flex items-center gap-x-2'>
-      <Icon name='system-uicons:clock' class='text-neon-green' />
+      <Icon name='system-uicons:clock' class='h-6 w-6 text-neon-green' />
       <p>{readingTime}</p>
     </div>
   </div>

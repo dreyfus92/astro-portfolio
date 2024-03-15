@@ -41,4 +41,7 @@ export default defineConfig({
   site: 'https://www.paulvall.dev/',
   output: 'hybrid',
   adapter: vercel(),
+  image: {
+    remotePatterns: [{ protocol: "https" }],
+  }
 })
