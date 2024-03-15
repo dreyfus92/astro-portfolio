@@ -1,5 +1,7 @@
-import { type FC, useEffect, useState } from 'react'
+import { type FC, useEffect, useState, Suspense } from 'react'
 import type { NowPlayingTrackResponse } from '@utils/spotify'
+import { NotPlaying } from './NotPlaying'
+import { NowPlaying } from './NowPlaying'
 
 export const SpotifyNowPlaying: FC = () => {
   const [spotifyData, setSpotifyData] = useState<NowPlayingTrackResponse>()
@@ -10,8 +12,12 @@ export const SpotifyNowPlaying: FC = () => {
   }, [])
   console.log(spotifyData)
   return (
-    <li>
-      <p>{spotifyData?.title}</p>
+    <li className='hidden md:block'>
+      {spotifyData?.isPlaying ? (
+        <NowPlaying props={spotifyData} />
+      ) : (
+        <NotPlaying />
+      )}
     </li>
   )
 }

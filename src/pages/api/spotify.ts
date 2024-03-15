@@ -1,7 +1,12 @@
+export const prerender = false
 import { type Artist, nowPlaying } from '@utils/spotify'
 
 export async function GET() {
   const response = await nowPlaying()
+  // const response = new Response("Not Found", {
+  //   status: 404,
+  //   statusText: "Not Found"
+  // })
 
   if (response.status === 204 || response.status > 400) {
     return new Response(JSON.stringify({ isPlaying: false }), {
