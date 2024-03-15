@@ -3,6 +3,7 @@ import TechBadge from '@components/TechBadge.astro'
 import ProjectCard from '@components/RepoCard.astro'
 import Layout from '@layouts/Layout.astro'
 import { technologies } from '@utils/data'
+import { Image } from 'astro:assets'
 
 type TechBadgeProps = {
   name: string
@@ -55,11 +56,12 @@ const repos = await pinnedRepos.json()
           >, <strong>UI/UX design</strong> and <strong>data analysis.</strong>
         </p>
       </div>
-      <img
-        id='pfp-1'
+      <Image
         class='mb-10 ml-0 h-[120px] w-[120px] rounded-full md:mb-0 md:ml-10 md:h-[240px] md:w-[240px]'
         src='https://avatars.githubusercontent.com/u/85648028?v=4'
         alt='Paul Valladares'
+        inferSize={true}
+        loading='eager'
       />
     </div>
     <div class='my-10 flex items-center justify-center md:my-16'>
@@ -106,8 +108,8 @@ const repos = await pinnedRepos.json()
             aria-label='Documentation for Starlight'
             class='rounded-lg p-1 hover:bg-neon-green hover:text-gray-900'
             ><strong>Starlight.</strong></a
-          > My contributions to Astro Docs led to me becoming an official
-          maintainer for the <a
+          > My contributions to Astro Docs led to me becoming an official maintainer
+          for the <a
             href='https://twitter.com/astrodotbuild'
             aria-label='Official X account of Astro'
             target='_blank'

@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets'
+
 type TechBadgeProps = {
   name: string
   imgSrc: string
@@ -12,7 +14,7 @@ const { name, imgSrc, altSrc } = Astro.props as TechBadgeProps
   <div
     class='flex h-[60px] w-[60px] items-center justify-center rounded-full bg-neutral-600'
   >
-    <img src={imgSrc} alt={altSrc} height='30' width='30' />
+    <Image src={imgSrc} alt={altSrc} width={30} height={30} loading='eager' />
   </div>
   <h3 class='text-[14px] md:text-[16px]'>{name}</h3>
 </div>
