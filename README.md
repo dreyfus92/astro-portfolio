@@ -9,7 +9,7 @@ An attempt to create a miniminal js personal blog using
 
 - Platform: [Astro](https://astro.build/)
 - Deployment: [Vercel](https://vercel.com/)
-- Package manager: [pnpm](https://pnpm.io/)
+- Package manager: [bun](https://pnpm.io/)
 - CSS: [Tailwind CSS](https://tailwindcss.com/)
 
 ## 🚀 Project Structure
@@ -66,8 +66,8 @@ This app requires Node.js v18.4.1 or later.
 git clone git@github.com:dreyfus92/astro-portfolio.git
 cd astro-portfolio
 npm install -g pnpm
-pnpm i
-pnpm dev
+npm i
+npm dev
 ```
 
 ## 📝 License
