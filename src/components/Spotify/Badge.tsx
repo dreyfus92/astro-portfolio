@@ -10,7 +10,6 @@ export const SpotifyNowPlaying: FC = () => {
       .then((res) => res.json())
       .then((data) => setSpotifyData(data))
   }, [])
-  console.log(spotifyData)
   return (
     <li className='hidden md:block'>
       {spotifyData?.isPlaying ? (
