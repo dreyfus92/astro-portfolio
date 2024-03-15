@@ -4,7 +4,6 @@ import tailwind from '@astrojs/tailwind'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import vercel from '@astrojs/vercel/serverless'
-import prefetch from '@astrojs/prefetch'
 import expressiveCode from 'astro-expressive-code'
 import icon from 'astro-icon'
 
@@ -32,7 +31,6 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap(),
-    prefetch(),
     expressiveCode(),
     mdx(),
     react(),
