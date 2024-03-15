@@ -1,6 +1,12 @@
 ---
 import { navItems } from '../utils/navigation'
 import { SpotifyNowPlaying } from '@components/Spotify/Badge'
+
+type Props = {
+  display?: boolean
+}
+
+const { display } = Astro.props
 ---
 
 <nav
@@ -24,6 +30,6 @@ import { SpotifyNowPlaying } from '@components/Spotify/Badge'
         </li>
       ))
     }
-    <SpotifyNowPlaying client:only='react' />
+    {display ?? <SpotifyNowPlaying client:only='react' />}
   </ul>
 </nav>
