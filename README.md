@@ -9,7 +9,7 @@ An attempt to create a miniminal js personal blog using
 
 - Platform: [Astro](https://astro.build/)
 - Deployment: [Vercel](https://vercel.com/)
-- Package manager: [bun](https://pnpm.io/)
+- Package manager: [bun](https://bun.sh/)
 - CSS: [Tailwind CSS](https://tailwindcss.com/)
 
 ## 🚀 Project Structure
