@@ -65,13 +65,15 @@ const prevPost = posts[index - 1]
           <p class='flex items-center text-sm'>
             <Icon
               name='system-uicons:calendar-month'
-              3
-              class='mr-2 text-neon-green'
+              class='mr-2 h-6 w-6 text-neon-green'
             />
             {formattedDate}
           </p>
           <p class='flex items-center text-sm'>
-            <Icon name='system-uicons:clock' class='mr-2 text-neon-green' />
+            <Icon
+              name='system-uicons:clock'
+              class='mr-2 h-6 w-6 text-neon-green'
+            />
             {minutes.minutesRead}
           </p>
         </div>
