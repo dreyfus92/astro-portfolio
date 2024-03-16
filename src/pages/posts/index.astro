@@ -4,7 +4,7 @@ import BlogCard from '@components/BlogCard.astro'
 import { getCollection } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 
-const blogPosts = await getCollection('posts')
+const allPosts = await getCollection('posts')
   .then((posts) =>
     posts.sort(
       (a, b) =>
@@ -12,6 +12,26 @@ const blogPosts = await getCollection('posts')
     ),
   )
   .then((posts) => posts.filter((post) => !post.data.draft))
+
+const groupPostsByYear = () => {
+  const postsByYear: Map<number, CollectionEntry<'posts'>[]> = new Map()
+  allPosts.forEach((post) => {
+    const year = new Date(post.data.pubDate).getFullYear()
+    if (!postsByYear.has(year)) {
+      postsByYear.set(year, [])
+    }
+    const yearPosts = postsByYear.get(year)
+    if (yearPosts) {
+      // Check if yearPosts is not undefined
+      yearPosts.push(post)
+    }
+  })
+  return postsByYear
+}
+
+const postsByYear = groupPostsByYear()
+
+const years = Array.from(postsByYear.keys()).sort((a, b) => b - a)
 
 const getReadingTime = async (post: CollectionEntry<'posts'>) => {
   const { remarkPluginFrontmatter } = await post.render()
@@ -32,14 +52,23 @@ const getReadingTime = async (post: CollectionEntry<'posts'>) => {
       </div>
       <div class='my-10'>
         {
-          blogPosts.map((post) => (
-            <BlogCard
-              title={post.data.title}
-              description={post.data.description}
-              date={post.data.pubDate}
-              link={`/posts/${post.slug}`}
-              readingTime={getReadingTime(post)}
-            />
+          years.map((year) => (
+            <div>
+              <h2 class='pb-10 pl-2 text-neon-green'>{year}</h2>
+              <ul>
+                {postsByYear.get(year)?.map((post) => (
+                  <li>
+                    <BlogCard
+                      title={post.data.title}
+                      description={post.data.description}
+                      date={post.data.pubDate}
+                      link={`/posts/${post.slug}`}
+                      readingTime={getReadingTime(post)}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))
         }
       </div>
