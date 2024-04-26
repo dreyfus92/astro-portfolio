@@ -9,7 +9,7 @@ An attempt to create a miniminal js personal blog using
 
 - Platform: [Astro](https://astro.build/)
 - Deployment: [Vercel](https://vercel.com/)
-- Package manager: [bun](https://bun.sh/)
+- Package manager: [pnpm](https://pnpm.io/)
 - CSS: [Tailwind CSS](https://tailwindcss.com/)
 
 ## 🚀 Project Structure
@@ -19,10 +19,6 @@ Inside of my Astro project, you'll see the following folders and files:
 ```bash
 ├── .vscode/
 ├── public/
-│   ├──favicon/
-│   ├── banner.png
-│   ├── robots.txt
-│   └── sc1.png
 ├── src/
 │   ├── assets/
 │   ├── components/
@@ -66,8 +62,8 @@ This app requires Node.js v18.4.1 or later.
 git clone git@github.com:dreyfus92/astro-portfolio.git
 cd astro-portfolio
 npm install -g pnpm
-npm i
-npm dev
+pnpm i
+pnpm dev
 ```
 
 ## 📝 License
