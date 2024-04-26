@@ -1,4 +1,4 @@
-export const prerender = false;
+export const prerender = false
 
 import { type Artist } from '@utils/spotify'
 import type { APIRoute } from 'astro'
@@ -11,7 +11,9 @@ export const GET: APIRoute = async () => {
     const client_id = import.meta.env.SPOTIFY_CLIENT_ID
     const client_secret = import.meta.env.SPOTIFY_CLIENT_SECRET
 
-    const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
+    const basic = Buffer.from(`${client_id}:${client_secret}`).toString(
+      'base64',
+    )
     const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token'
 
     const response = await fetch(TOKEN_ENDPOINT, {
@@ -38,7 +40,7 @@ export const GET: APIRoute = async () => {
     })
   }
 
-  const response = await nowPlaying();
+  const response = await nowPlaying()
 
   if (response.status === 204 || response.status > 400) {
     return new Response(JSON.stringify({ isPlaying: false }), {
