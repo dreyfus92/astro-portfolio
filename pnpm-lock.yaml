@@ -50,6 +50,9 @@ dependencies:
   astro:
     specifier: ^4.7.0
     version: 4.7.0(@types/node@20.12.7)(typescript@5.4.5)
+  astro-capo:
+    specifier: ^0.0.1
+    version: 0.0.1(astro@4.7.0)
   astro-expressive-code:
     specifier: 0.35.2
     version: 0.35.2(astro@4.7.0)
@@ -1768,6 +1771,15 @@ packages:
   /astring@1.8.6:
     resolution: {integrity: sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==}
     hasBin: true
+    dev: false
+
+  /astro-capo@0.0.1(astro@4.7.0):
+    resolution: {integrity: sha512-KyQD1mzgEQnbqrKpYdoIZMAYejkOcIJocdGuQBH9Yzr4KqGzIR8P2DDNbV/FQXaSyq900lCZwWJH45tBIQCG8w==}
+    peerDependencies:
+      astro: '>= 2.8'
+    dependencies:
+      astro: 4.7.0(@types/node@20.12.7)(typescript@5.4.5)
+      ultrahtml: 1.5.3
     dev: false
 
   /astro-expressive-code@0.35.2(astro@4.7.0):
