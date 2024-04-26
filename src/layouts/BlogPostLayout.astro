@@ -3,7 +3,8 @@ import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import Navbar from '@components/Navbar.astro'
 import Footer from '@components/Footer.astro'
-import Head from '@components/Head.astro'
+import HeadTags from '@components/HeadTags.astro'
+import { Head } from 'astro-capo'
 import '@styles/posts.css'
 import type { ImageMetadata } from 'astro'
 import { Image } from 'astro:assets'
@@ -53,9 +54,9 @@ const prevPost = posts[index - 1]
 ---
 
 <html lang='en'>
-  <head>
-    <Head title={frontmatter.title} description={frontmatter.description} />
-  </head>
+  <Head>
+    <HeadTags title={frontmatter.title} description={frontmatter.description} />
+  </Head>
   <Navbar display={false} />
   <body>
     <main class='post flex flex-col items-center text-white'>
@@ -115,6 +116,6 @@ const prevPost = posts[index - 1]
         </div>
       </div>
     </main>
+    <Footer />
   </body>
-  <Footer />
 </html>

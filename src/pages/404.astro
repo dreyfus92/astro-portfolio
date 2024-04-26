@@ -1,14 +1,15 @@
 ---
-import Head from '@components/Head.astro'
+import HeadTags from '@components/HeadTags.astro'
+import { Head } from 'astro-capo'
 
 const title = 'Paul Valladares | 404'
 const description = 'Personal website of Paul Valladares'
 ---
 
 <html lang='en'>
-  <head>
-    <Head title={title} description={description} />
-  </head>
+  <Head>
+    <HeadTags title={title} description={description} />
+  </Head>
   <body>
     <div
       class='flex min-h-screen flex-col items-center justify-center text-white'

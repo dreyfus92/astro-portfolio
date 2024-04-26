@@ -1,7 +1,8 @@
 ---
 import Navbar from '@components/Navbar.astro'
 import Footer from '@components/Footer.astro'
-import Head from '@components/Head.astro'
+import HeadTags from '@components/HeadTags.astro'
+import { Head } from 'astro-capo'
 
 export interface Props {
   title: string
@@ -13,12 +14,12 @@ const { title, description = 'Personal website of Paul Valladares' } =
 ---
 
 <html lang='en'>
-  <head>
-    <Head title={title} description={description} />
-  </head>
+  <Head>
+    <HeadTags title={title} description={description} />
+  </Head>
   <Navbar />
   <body>
     <slot />
+    <Footer />
   </body>
-  <Footer />
 </html>
