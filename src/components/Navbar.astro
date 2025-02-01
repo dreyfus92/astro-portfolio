@@ -30,6 +30,6 @@ const { display } = Astro.props
         </li>
       ))
     }
-    {display ?? <SpotifyNowPlaying client:load />}
+    {display ?? <SpotifyNowPlaying client:only="react" />}
   </ul>
 </nav>
