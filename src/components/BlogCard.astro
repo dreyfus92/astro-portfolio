@@ -18,7 +18,7 @@ const { title, description, date, link, readingTime } =
 <a
   href={link}
   rel='prefetch'
-  class='mb-8 flex flex-col gap-y-5 rounded-xl border-2 border-zinc-700 p-4 transition-colors duration-500 hover:border-neon-green'
+  class='hover:border-neon-green mb-8 flex flex-col gap-y-5 rounded-xl border-2 border-zinc-700 p-4 transition-colors duration-500'
 >
   <h3 class='text-xl font-extrabold text-white md:text-2xl'>{title}</h3>
 
@@ -28,7 +28,7 @@ const { title, description, date, link, readingTime } =
     <div class='flex items-center gap-x-2'>
       <Icon
         name='system-uicons:calendar-month'
-        class='h-6 w-6 text-neon-green'
+        class='text-neon-green h-6 w-6'
       />
       <time datetime={date}>
         {
@@ -41,7 +41,7 @@ const { title, description, date, link, readingTime } =
       </time>
     </div>
     <div class='flex items-center gap-x-2'>
-      <Icon name='system-uicons:clock' class='h-6 w-6 text-neon-green' />
+      <Icon name='system-uicons:clock' class='text-neon-green h-6 w-6' />
       <p>{readingTime}</p>
     </div>
   </div>

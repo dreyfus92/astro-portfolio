@@ -6,10 +6,7 @@ import { Icon } from 'astro-icon/components'
 <Layout title='Paul Valladares | Contact'>
   <main class='flex flex-col items-center'>
     <h1>Contact</h1>
-    <div
-      id='form-container'
-      class='my-16 rounded-lg bg-blue-green-gradient p-0.5'
-    >
+    <div id='form-container' class='my-16 rounded-lg p-0.5'>
       <form
         id='contact-form'
         class='flex w-[320px] flex-col gap-4 rounded-lg bg-zinc-900 p-10 text-white md:w-[750px] [&_input]:block [&_input]:bg-zinc-800 max-sm:[&_input]:w-full [&_select]:block [&_select]:bg-zinc-800 [&_select]:text-white [&_textarea]:block [&_textarea]:bg-zinc-800'
@@ -51,7 +48,7 @@ import { Icon } from 'astro-icon/components'
           required></textarea>
         <button
           type='submit'
-          class='mt-4 flex w-fit items-center gap-1 self-center rounded-lg bg-gray-400 bg-opacity-10 px-4 py-2 font-semibold text-white backdrop-blur-lg hover:scale-105 hover:transition-transform hover:duration-300'
+          class='bg-opacity-10 mt-4 flex w-fit items-center gap-1 self-center rounded-lg bg-gray-400 px-4 py-2 font-semibold text-white backdrop-blur-lg hover:scale-105 hover:transition-transform hover:duration-300'
         >
           <Icon name='ic:baseline-send' class='h-4' />
           Send
