@@ -28,14 +28,12 @@ Inside of my Astro project, you'll see the following folders and files:
 │   ├── styles/
 │   └── utils/
 ├── .env.example
-├── .eslintrc.cjs
 ├── .gitignore
-├── .LICENSE
-├── README.md
+├── .prettierrc
 ├── astro.config.ts
+├── .LICENSE
 ├── package-json
-├── pnpm-lock.yaml
-├── tailwind.config.js
+├── README.md
 └── tsconfig.json
 ```
 
