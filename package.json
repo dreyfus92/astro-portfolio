@@ -2,9 +2,6 @@
   "name": "paulvall.dev",
   "author": "Paul Valladares <paulvi92@gmail.com>",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=18.19.0"
-  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro check --watch & astro dev",
