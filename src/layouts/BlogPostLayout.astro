@@ -5,7 +5,7 @@ import Navbar from '@components/Navbar.astro'
 import Footer from '@components/Footer.astro'
 import HeadTags from '@components/HeadTags.astro'
 import { Head } from 'astro-capo'
-import '@styles/posts.css'
+import '../styles/posts.css'
 import type { ImageMetadata } from 'astro'
 import { Image } from 'astro:assets'
 
@@ -66,19 +66,19 @@ const prevPost = posts[index - 1]
           <p class='flex items-center text-sm'>
             <Icon
               name='system-uicons:calendar-month'
-              class='mr-2 h-6 w-6 text-neon-green'
+              class='text-neon-green mr-2 h-6 w-6'
             />
             {formattedDate}
           </p>
           <p class='flex items-center text-sm'>
             <Icon
               name='system-uicons:clock'
-              class='mr-2 h-6 w-6 text-neon-green'
+              class='text-neon-green mr-2 h-6 w-6'
             />
             {minutes.minutesRead}
           </p>
         </div>
-        <hr class='mb-10 mt-5' />
+        <hr class='mt-5 mb-10' />
         <Image
           src={frontmatter.cover}
           alt={frontmatter.coverAlt}
@@ -95,7 +95,7 @@ const prevPost = posts[index - 1]
             prevPost && (
               <a
                 href={`/posts/${prevPost.slug}`}
-                class='flex grow flex-col rounded border border-zinc-700 p-4 text-sm transition duration-500 ease-out hover:border-neon-green'
+                class='hover:border-neon-green flex grow flex-col rounded border border-zinc-700 p-4 text-sm transition duration-500 ease-out'
               >
                 <p class='mb-1 text-zinc-400'>&larr; Previous post</p>
                 <p class='font-semibold text-zinc-300'>{prevPost.data.title}</p>
@@ -106,7 +106,7 @@ const prevPost = posts[index - 1]
             nextPost && (
               <a
                 href={`/posts/${nextPost.slug}`}
-                class='flex grow flex-col rounded border border-zinc-700 p-4 text-right text-sm transition duration-500 ease-out hover:border-neon-green'
+                class='hover:border-neon-green flex grow flex-col rounded border border-zinc-700 p-4 text-right text-sm transition duration-500 ease-out'
               >
                 <p class='mb-1'>Next post &rarr;</p>
                 <p class='font-semibold text-zinc-300'>{nextPost.data.title}</p>
