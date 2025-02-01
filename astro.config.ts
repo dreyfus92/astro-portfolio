@@ -36,7 +36,7 @@ export default defineConfig({
     react(),
     icon(),
   ],
-  site: 'https://www.paulvall.dev/',
+  site: 'https://www.paulvall.dev',
   output: 'server',
   adapter: vercel(),
   image: {
