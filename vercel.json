@@ -1,6 +1,8 @@
 {
+  "version": 2,
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "status": 404, "dest": "/pages/404.html" }
+    { "src": "/_image", "dest": "/_image" },
+    { "src": "/(.*)", "dest": "/dist/server/entry.mjs" },
+    { "src": "/404", "dest": "/pages/404.html" }
   ]
 }
