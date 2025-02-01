@@ -4,18 +4,16 @@ import BlogCard from '@components/BlogCard.astro'
 import { getCollection } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 
-const allPosts = await getCollection('posts')
-  .then((posts) =>
-    posts.sort(
-      (a, b) =>
-        new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
-    ),
-  )
-  .then((posts) => posts.filter((post) => !post.data.draft))
+const posts = await getCollection('posts', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+})
+
+// Sort posts by date if needed
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 
 const groupPostsByYear = () => {
   const postsByYear: Map<number, CollectionEntry<'posts'>[]> = new Map()
-  allPosts.forEach((post) => {
+  sortedPosts.forEach((post) => {
     const year = new Date(post.data.pubDate).getFullYear()
     if (!postsByYear.has(year)) {
       postsByYear.set(year, [])
