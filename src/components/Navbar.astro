@@ -13,7 +13,7 @@ const { display } = Astro.props
   role='navigation'
   aria-label='navigation'
   id='top-nav'
-  class='mx-auto flex w-full flex-col items-center gap-4 pb-8 pt-8 sm:pb-16 md:w-[740px] md:flex-row md:justify-center'
+  class='mx-auto flex w-full flex-col items-center gap-4 pt-8 pb-8 sm:pb-16 md:w-[740px] md:flex-row md:justify-center'
 >
   <ul
     class='flex items-center justify-center gap-4 rounded-full bg-slate-950 px-8 py-4'
@@ -23,13 +23,13 @@ const { display } = Astro.props
         <li>
           <a
             href={navItem.route}
-            class='relative font-medium text-neon-green before:absolute before:-bottom-1 before:h-0.5 before:w-full before:scale-x-0 before:bg-neon-green before:transition hover:before:scale-x-100'
+            class='text-neon-green before:bg-neon-green relative font-medium before:absolute before:-bottom-1 before:h-0.5 before:w-full before:scale-x-0 before:transition hover:before:scale-x-100'
           >
             {navItem.text}
           </a>
         </li>
       ))
     }
-    {display ?? <SpotifyNowPlaying client:only='react' />}
+    {display ?? <SpotifyNowPlaying client:load />}
   </ul>
 </nav>
