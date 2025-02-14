@@ -3,7 +3,7 @@ import { remarkReadingTime } from './src/utils/readingTime.mjs'
 import tailwindcss from '@tailwindcss/vite'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import vercel from '@astrojs/vercel/serverless'
+import vercel from '@astrojs/vercel'
 import expressiveCode from 'astro-expressive-code'
 import icon from 'astro-icon'
 
