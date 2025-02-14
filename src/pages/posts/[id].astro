@@ -1,0 +1,24 @@
+---
+export const prerender = true
+
+import BlogPostLayout from '@layouts/BlogPostLayout.astro'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => {
+    return import.meta.env.PROD ? !data.draft : true
+  })
+
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { ...post },
+  }))
+}
+
+const post = Astro.props
+const { Content, remarkPluginFrontmatter } = await render(post)
+---
+
+<BlogPostLayout frontmatter={post.data} minutes={remarkPluginFrontmatter}>
+  <Content />
+</BlogPostLayout>

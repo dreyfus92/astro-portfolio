@@ -1,15 +1,17 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import BlogCard from '@components/BlogCard.astro'
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 
 const posts = await getCollection('posts', ({ data }) => {
-  return import.meta.env.PROD ? !data.draft : true;
+  return import.meta.env.PROD ? !data.draft : true
 })
 
 // Sort posts by date if needed
-const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+const sortedPosts = posts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+)
 
 const groupPostsByYear = () => {
   const postsByYear: Map<number, CollectionEntry<'posts'>[]> = new Map()
@@ -32,7 +34,7 @@ const postsByYear = groupPostsByYear()
 const years = Array.from(postsByYear.keys()).sort((a, b) => b - a)
 
 const getReadingTime = async (post: CollectionEntry<'posts'>) => {
-  const { remarkPluginFrontmatter } = await post.render()
+  const { remarkPluginFrontmatter } = await render(post)
   return remarkPluginFrontmatter.minutesRead
 }
 ---
@@ -52,7 +54,7 @@ const getReadingTime = async (post: CollectionEntry<'posts'>) => {
         {
           years.map((year) => (
             <div>
-              <h2 class='pb-10 pl-2 text-neon-green'>{year}</h2>
+              <h2 class='text-neon-green pb-10 pl-2'>{year}</h2>
               <ul>
                 {postsByYear.get(year)?.map((post) => (
                   <li>
@@ -60,7 +62,7 @@ const getReadingTime = async (post: CollectionEntry<'posts'>) => {
                       title={post.data.title}
                       description={post.data.description}
                       date={post.data.pubDate}
-                      link={`/posts/${post.slug}`}
+                      link={`/posts/${post.id}`}
                       readingTime={getReadingTime(post)}
                     />
                   </li>
