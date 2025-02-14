@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config'
 import { remarkReadingTime } from './src/utils/readingTime.mjs'
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import vercel from '@astrojs/vercel/serverless'
+import vercel from '@astrojs/vercel'
 import expressiveCode from 'astro-expressive-code'
 import icon from 'astro-icon'
 
@@ -26,18 +26,12 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
     syntaxHighlight: 'shiki',
   },
-  integrations: [
-    sitemap(),
-    expressiveCode(),
-    mdx(),
-    react(),
-    icon(),
-  ],
+  integrations: [sitemap(), expressiveCode(), mdx(), react(), icon()],
   site: 'https://www.paulvall.dev',
   output: 'server',
   adapter: vercel(),
   image: {
-    remotePatterns: [{ protocol: "https" }],
+    remotePatterns: [{ protocol: 'https' }],
   },
   vite: {
     plugins: [tailwindcss()],
