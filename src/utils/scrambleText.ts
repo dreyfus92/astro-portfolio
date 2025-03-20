@@ -25,7 +25,7 @@ export class ScrambleText {
     }
 
     // Set FPS interval based on speed
-    this.fpsInterval = 1000 / (60 * this.props.speed)
+    this.fpsInterval = 1000 / (60 * (this.props.speed ?? 1))
 
     // Initialize final text
     this.finalText = this.props.text?.split('') || []
@@ -95,7 +95,7 @@ export class ScrambleText {
         
         // Random chance to set this character to its final value
         // The scrambleFactor determines how quickly characters settle to their final value
-        if (Math.random() < this.props.scrambleFactor) {
+        if (Math.random() < (this.props.scrambleFactor ?? 0.28)) {
           this.currentText[i] = targetChar
           currentString += targetChar
         } else {
