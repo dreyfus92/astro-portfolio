@@ -31,13 +31,30 @@ const pinnedRepos = await fetch(
 const repos = await pinnedRepos.json()
 ---
 
+<script>
+  import { ScrambleText } from '@utils/scrambleText'
+
+  const scramble = new ScrambleText({
+    text: 'Paul Valladares',
+    speed: 0.60,
+  })
+  const targetElement = document.getElementById('myself')
+  if (targetElement) {
+    scramble.setTargetElement(targetElement)
+    scramble.play()
+  }
+
+  console.log(targetElement)
+</script>
 <Layout title='Paul Valladares | Home'>
   <main>
     <div class='flex flex-col-reverse items-center justify-center md:flex-row'>
       <div class='w-9/12 text-white md:w-[450px]'>
-        <h1 class='mb-1 text-3xl font-bold tracking-tight md:text-5xl'>
-          Paul Valladares
-        </h1>
+        <div
+          id='myself'
+          class='mb-1 text-3xl font-bold tracking-tight md:text-5xl'
+        >
+        </div>
         <h2 class='mt-2 text-lg'>Frontend Dev available for hire</h2>
         <h2 class='text-lg'>
           prev
