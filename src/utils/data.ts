@@ -1,5 +1,26 @@
 const technologies = [
   {
+    name: 'TypeScript',
+    imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png',
+    altSrc: 'TypeScript Logo',
+    link: 'https://www.typescriptlang.org/',
+    ariaLink: 'TypeScript Documentation Website',
+  },
+  {
+    name: 'React',
+    imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png',
+    altSrc: 'React Logo',
+    link: 'https://reactjs.org/',
+    ariaLink: 'React Documentation Website',
+  },
+  {
+    name: 'Next.js',
+    imgSrc: 'https://static.netify.ai/logos/v/e/r/irepry/icon.png?v=1',
+    altSrc: 'Next.js Logo',
+    link: 'https://nextjs.org/',
+    ariaLink: 'Next.js Documentation Website',
+  },
+  {
     name: 'Astro',
     imgSrc: 'https://bestofjs.org/logos/astro.dark.svg',
     altSrc: 'Astro Logo',
@@ -7,12 +28,11 @@ const technologies = [
     ariaLink: 'Astro Documentation Website',
   },
   {
-    name: 'JavaScript',
-    imgSrc:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png',
-    altSrc: 'JavaScript Logo',
-    link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-    ariaLink: 'JavaScript Documentation Website',
+    name: 'Tailwind CSS',
+    imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',
+    altSrc: 'Tailwind CSS Logo',
+    link: 'https://tailwindcss.com/',
+    ariaLink: 'TailwindCSS Documentation Website',
   },
   {
     name: 'Node.js',
@@ -23,50 +43,24 @@ const technologies = [
   },
   {
     name: 'Python',
-    imgSrc:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png',
+    imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png',
     altSrc: 'Python Logo',
     link: 'https://www.python.org/',
     ariaLink: 'Python Documentation Website',
   },
   {
-    name: 'React',
-    imgSrc:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png',
-    altSrc: 'React Logo',
-    link: 'https://reactjs.org/',
-    ariaLink: 'React Documentation Website',
-  },
-  {
-    name: 'TypeScript',
-    imgSrc:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png',
-    altSrc: 'TypeScript Logo',
-    link: 'https://www.typescriptlang.org/',
-    ariaLink: 'TypeScript Documentation Website',
-  },
-  {
-    name: 'Tailwind CSS',
-    imgSrc:
-      'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',
-    altSrc: 'Tailwind CSS Logo',
-    link: 'https://tailwindcss.com/',
-    ariaLink: 'TailwindCSS Documentation Website',
-  },
-  {
-    name: 'Next.js',
-    imgSrc: 'https://static.netify.ai/logos/v/e/r/irepry/icon.png?v=1',
-    altSrc: 'Next.js Logo',
-    link: 'https://nextjs.org/',
-    ariaLink: 'Next.js Documentation Website',
-  },
-  {
     name: 'Go',
-    imgSrc:
-      'https://geekole.com/wp-content/uploads/2022/12/golang_logo_gopher_geekole.png',
+    imgSrc: 'https://geekole.com/wp-content/uploads/2022/12/golang_logo_gopher_geekole.png',
     altSrc: 'Golang Logo',
     link: 'https://go.dev/',
     ariaLink: 'Golang Documentation Website',
+  },
+  {
+    name: 'Docker',
+    imgSrc: 'https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png',
+    altSrc: 'Docker Logo',
+    link: 'https://www.docker.com/',
+    ariaLink: 'Docker Documentation Website',
   },
 ]
 
