@@ -36,7 +36,8 @@ const repos = await pinnedRepos.json()
 
   const scramble = new ScrambleText({
     text: 'Paul Valladares',
-    speed: 0.60,
+    speed: 0.45,
+    scrambleFactor: 0.2,
   })
   const targetElement = document.getElementById('myself')
   if (targetElement) {
