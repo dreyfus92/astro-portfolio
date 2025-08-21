@@ -50,7 +50,7 @@ const technologies = [
   },
   {
     name: 'Go',
-    imgSrc: 'https://geekole.com/wp-content/uploads/2022/12/golang_logo_gopher_geekole.png',
+    imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg',
     altSrc: 'Golang Logo',
     link: 'https://go.dev/',
     ariaLink: 'Golang Documentation Website',
