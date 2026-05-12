@@ -20,8 +20,20 @@
     @apply my-4 leading-7;
   }
 
-  .post code {
-    @apply rounded-sm bg-gray-600 px-1 py-[2px] text-white;
+  /* Inline `` `code` `` only — leave `pre > code` to Shiki / expressive-code */
+  .post
+    :where(p, li, td, th, blockquote, h1, h2, h3, h4, h5, h6)
+    code {
+    @apply inline rounded-md border border-neutral-500/45 bg-neutral-800/55 px-1.5 py-0.5 font-mono text-[0.9em] leading-snug text-neutral-200;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* Safety: never pill-wrap fenced blocks if markup shifts */
+  .post pre code {
+    @apply border-0 bg-transparent p-0 text-inherit;
+    box-decoration-break: unset;
+    -webkit-box-decoration-break: unset;
   }
 
   .post h2 {
@@ -32,8 +44,17 @@
     @apply my-6 text-xl font-bold text-neutral-100;
   }
 
-  .post a {
-    @apply text-neon-green;
+  /* Prose links: clear affordance without fighting nav/footer (outside article) */
+  .post article a:not(:has(img)) {
+    @apply text-neon-green underline decoration-neon-green/40 decoration-2 underline-offset-[3px] transition-colors duration-150;
+  }
+
+  .post article a:not(:has(img)):hover {
+    @apply decoration-neon-green text-neon-green;
+  }
+
+  .post article a:not(:has(img)):focus-visible {
+    @apply rounded-sm outline outline-2 outline-offset-2 outline-neon-green;
   }
 
   .post ul {

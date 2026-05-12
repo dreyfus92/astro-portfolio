@@ -1,0 +1,150 @@
+---
+title: 'Who co-authored my commit?'
+description: 'VS Code shipped AI co-author trailers in git commits as a silent default. The backlash was loud for good reasons and it connects to a wider worry about trust, metadata, and how we stay sharp while using AI.'
+pubDate: 2026-05-11
+draft: false
+cover: '@assets/posts/vscode-ai-arc.png'
+coverAlt: 'Post banner: illustrated developer at a workstation with browser and code on screen'
+---
+
+In April 2026, a small default in VS Code’s Git extension became a very large
+conversation. [Pull request #310226](https://github.com/microsoft/vscode/pull/310226)
+changed `git.addAICoAuthor` from **`off`** to **`all`**: when the editor thought
+AI had touched your work, it could add a `Co-authored-by: Copilot` trailer to
+your commit message **without** you having turned that behavior on yourself.
+
+That sounds like a niche setting. It is not niche when it touches the line of
+attribution every reviewer, lawyer, and future you reads in `git log`.
+
+## What actually shipped
+
+`Co-authored-by` lines are not decorative. They are part of how teams record
+who shaped a change. Flipping the default meant more people would emit that
+metadata automatically, on the assumption that the editor’s detection matched
+reality.
+
+The change lived in the Git extension’s contributed configuration: the schema
+default moved to `"all"`. The intent, as summarized in the thread, was to make
+AI attribution the path of least resistance.
+
+## Why people were furious
+
+The thread is long and sometimes ugly, but a few themes repeat with clarity.
+
+**Consent and surprise.** A default that alters commit messages is a default
+that alters published artifacts. Many commenters said they only noticed after
+the fact sometimes on commits they believed were entirely hand written.
+
+**False positives.** Several reports said Copilot trailers appeared even when
+they were not using Copilot for that change, or believed they had opted out.
+Notably, some people with `chat.disableAIFeatures` enabled still saw the
+trailer exactly the kind of mismatch that reads as “the editor overrode my
+intent.”
+
+**Signal vs noise.** If `Co-authored-by` stops meaning “someone actually
+co-authored this,” it stops helping governance, archaeology, or trust. One
+commenter put it sharply: conflating “I used this editor” with “I co-authored
+this” dilutes the signal the trailer was meant to carry.
+
+There was also an ironic beat: a Copilot powered review on the PR flagged that
+the runtime fallback in `repository.ts` still used `'off'` while the schema
+default said `"all"` a real consistency bug, and a memorable image of automation
+commenting on automation.
+
+## What maintainers said afterward
+
+After the pile-on, maintainer `dmitrivMS` acknowledged in the
+[PR discussion](https://github.com/microsoft/vscode/pull/310226) that the
+rollout had problems: the feature should not run when AI is
+disabled, it should not attribute non-AI work, and the default change needed
+more test coverage. Follow-up work appeared in linked PRs and an issue with
+more analysis (for example
+[#313725](https://github.com/microsoft/vscode/pull/313725),
+[#313931](https://github.com/microsoft/vscode/pull/313931), and
+[#314311](https://github.com/microsoft/vscode/issues/314311)). Maintainers
+later limited who could post; by then, for many readers, the damage was as much
+about trust as about bytes.
+
+I am not here to litigate Microsoft’s motives. I care about the **class of
+failure**: a high-impact default, shipped quietly, that collided with people’s
+mental model of what a text editor is allowed to do to their commits.
+
+## The bridge to “agentic coding” and cognitive debt
+
+[Lars Faye’s essay “Agentic Coding is a Trap”](https://larsfaye.com/articles/agentic-coding-is-a-trap)
+is not about Git trailers. It is about what happens when we optimize for speed
+and delegation at the expense of understanding and how fragile that leaves us.
+One idea he surfaces citing Anthropic’s own research on the risks is almost a paradox:
+getting value from AI coding tools takes supervision, and supervision takes the
+skills that can **atrophy** if we always let the machine carry the load.
+
+The VS Code incident is a small, concrete instance of the same pattern at the
+**product default** layer. When the tool silently signs your name next to
+another author, it widens the gap between what you *think* you shipped and what
+the record *says* you shipped. That is not “brain fog” in a clinical sense; it
+is **cognitive debt** in a systems sense. You pay interest every time you have to
+reconcile reality with metadata, or re audit commits you thought you understood.
+
+Faye also argues that good engineering used to rank **understanding** above raw
+turnaround time, and that some AI-heavy workflows invert that list by default.
+A commit trailer is tiny, but the inversion is the same shape: speed of
+attribution first, fidelity of attribution second.
+
+I do not think one bad default proves society is doomed to skill rot. I do think
+it is a useful reminder: **the UI will keep choosing for you** unless you
+re assert your own defaults both in `settings.json` and in how you work.
+
+## Alternatives to VS Code
+
+Leaving VS Code is not required to stay in control; plenty of people will stay
+and tighten settings. If you *do* want an editor whose product posture feels
+closer to “AI when I ask for it,” not “AI in the plumbing,” two directions are
+worth a serious look.
+
+**[Zed](https://zed.dev/)** is the obvious modern counterexample. It is fast,
+native, and built around collaboration and a small surface area. AI exists in
+Zed, but it reads as an **opt-in layer** you wire up (providers, plans, explicit
+invocation) rather than a background assumption that every workflow is
+Copilot shaped. There is no Git extension from Microsoft quietly reinterpreting
+your commits; the mental model is closer to a sharp editor that *can* call models
+when you choose to. Tradeoffs: smaller extension universe than VS Code, and you
+are betting on a younger product but if your complaint is silent defaults and
+ambient AI, Zed is deliberately pointed the other way.
+
+**[Helix](https://helix-editor.com/)** is the other pole: a modal, terminal-first
+editor in the Vim family with **no built in AI** at all. There is nothing to
+“default on” for co-authorship or inline completion from a vendor stack; what you
+get is treesitter-aware editing, sane out-of-the-box bindings, and an extension
+story that is still minimal compared to VS Code which, for this essay, is a
+feature: fewer moving parts that can ship a surprise under `settings.json`
+defaults you never read. If Helix is too bare for your day job, the same ethic
+holds for **Neovim** or **plain Vim** with a hand-picked config: no AI until you
+add a plugin and mean it.
+
+Neither is a moral victory over VS Code. Both are reminders that **defaults are
+a design choice** and some teams choose visibility and explicitness first, then
+layer intelligence on top when you ask.
+
+## How I am treating this in my own workflow
+
+I still use AI in editors, but I reach for it when the task calls for it not as
+the default way I write code. When I do use it, I supervise the work closely: I
+read diffs, question suggestions, and own the result before it ever becomes a
+commit. That lines up with how I want attribution to read: if a model genuinely
+helped on a change, I am fine saying so; if I was the one steering every line, I
+do not want a trailer implying otherwise.
+
+I treat commit metadata as part of the product surface. After this episode I
+re checked Git-related settings in any VS Code based environment I use and kept
+attribution **opt-in** in spirit even when the product wants convenience.
+
+If there’s one truth that matters after all of this, let it be this: **The only 
+worthwhile AI workflow is the one where you have clarity about every commit what 
+you shipped, and why. Never let a tool blur the record of your work, to yourself or to history.**
+
+## Further reading
+
+- [VS Code PR #310226 — Enabling AI co-author by default](https://github.com/microsoft/vscode/pull/310226)
+- [Lars Faye — Agentic Coding is a Trap](https://larsfaye.com/articles/agentic-coding-is-a-trap)
+- [VS Code issue #314311](https://github.com/microsoft/vscode/issues/314311) (post-incident write-up linked from the thread)
+- [VS Code PR #313725](https://github.com/microsoft/vscode/pull/313725) (community proposal to default `git.addAICoAuthor` to `off` again)

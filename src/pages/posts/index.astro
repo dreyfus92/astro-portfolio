@@ -1,17 +1,11 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import BlogCard from '@components/BlogCard.astro'
-import { getCollection, render } from 'astro:content'
+import { render } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
+import { getSortedBlogPosts } from '@utils/posts-collection'
 
-const posts = await getCollection('posts', ({ data }) => {
-  return import.meta.env.PROD ? !data.draft : true
-})
-
-// Sort posts by date if needed
-const sortedPosts = posts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-)
+const sortedPosts = await getSortedBlogPosts()
 
 const groupPostsByYear = () => {
   const postsByYear: Map<number, CollectionEntry<'posts'>[]> = new Map()

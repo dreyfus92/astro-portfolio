@@ -36,16 +36,17 @@ const repos = await pinnedRepos.json()
 
   const scramble = new ScrambleText({
     text: 'Paul Valladares',
-    speed: 0.45,
-    scrambleFactor: 0.2,
+    playOnMount: false,
+    speed: 1.25,
+    scrambleFactor: 0.25,
+    speedVariability: 0.08,
+    charset: 'full',
   })
   const targetElement = document.getElementById('myself')
   if (targetElement) {
     scramble.setTargetElement(targetElement)
     scramble.play()
   }
-
-  console.log(targetElement)
 </script>
 <Layout title='Paul Valladares | Home'>
   <main>
@@ -53,19 +54,10 @@ const repos = await pinnedRepos.json()
       <div class='w-9/12 text-white md:w-[450px]'>
         <div
           id='myself'
-          class='mb-1 text-3xl font-bold tracking-tight md:text-5xl'
+          class='mb-1 min-h-[1.15em] text-3xl font-bold tracking-[0.04em] md:text-4xl md:tracking-[0.035em]'
         >
         </div>
-        <h2 class='mt-2 text-lg'>Code tinkerer & UI craft enthusiast</h2>
-        <h2 class='text-lg'>
-          formerly at
-          <a
-            href='https://x.com/hackapulco'
-            target='_blank'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-800'
-            >@Hackapulco</a
-          >
-        </h2>
+        <h2 class='mt-2 text-lg'>frontend engineer <span class="text-neon-green">◈</span> oss maintainer <span class="text-neon-green">◈</span> software & data</h2>
         <p class='mt-4 text-left'>
           Hey there! I build web stuff with TypeScript, React, and Node.js. Started out as a civil engineer (UNAM grad), which gave me a knack for solving tricky problems. These days, I spend my time crafting <strong>responsive UIs</strong>, building <strong>full-stack apps</strong>, and tinkering with <strong>cloud setups</strong>. Always down to chat about code or collaborate on interesting projects.
         </p>
@@ -105,35 +97,62 @@ const repos = await pinnedRepos.json()
       <div class='w-9/12 text-white md:w-[740px]'>
         <h2 class='text-3xl font-bold'>Stuff I've worked on</h2>
         <p class='mt-4 text-left'>
-          I've been lucky enough to help out with some cool open source projects. I contribute to <a
-            href='https://docs.astro.build/'
-            aria-label='Documentation for Astro'
+          I'm a core maintainer of <a
+            href='https://github.com/bombshell-dev'
             target='_blank'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
-            ><strong>Astro Docs</strong>
-          </a>, <a
-            href='https://starlight.astro.build/'
-            target='_blank'
-            aria-label='Documentation for Starlight'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
-            ><strong>Starlight</strong></a
-          >, and <a
-            href='https://github.com/tauri-apps/tauri-docs'
-            target='_blank'
-            aria-label='Documentation for Tauri'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
-            ><strong>Tauri Docs</strong></a
-          > as a maintainer, which has been a blast. I also tinker with <a
-            href='https://github.com/withstudiocms/studiocms'
-            target='_blank'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
-            ><strong>StudioCMS</strong></a
-          > a native CMS for Astro and <a
-            href='https://bomb.sh/'
-            target='_blank'
+            aria-label='Bombshell on GitHub'
             class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
             ><strong>Bombshell</strong></a
-          >. Working with folks from around the world on these projects has taught me a ton about writing good code and collaborating effectively.
+          >, the community behind <a
+            href='https://github.com/bombshell-dev/clack'
+            target='_blank'
+            aria-label='clack on GitHub'
+            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
+            ><strong>clack</strong></a
+          > for prompt-driven CLI experiences, and of <a
+            href='https://github.com/e18e'
+            target='_blank'
+            aria-label='e18e on GitHub'
+            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
+            ><strong>e18e</strong></a
+          >
+          (Ecosystem Performance) cleaning dependency trees, reducing bloat, and making faster packages across
+          JavaScript. I'm also a maintainer of <a
+            href='https://astro.build/'
+            target='_blank'
+            aria-label='Astro'
+            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
+            ><strong>Astro</strong></a
+          >
+          and its ecosystem, including <a
+            href='https://starlight.astro.build/'
+            target='_blank'
+            aria-label='Starlight documentation'
+            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
+            ><strong>Starlight</strong></a
+          >
+          and <a
+            href='https://github.com/withstudiocms/studiocms'
+            target='_blank'
+            aria-label='StudioCMS on GitHub'
+            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
+            ><strong>StudioCMS</strong></a
+          >. I'm on the <a
+            href='https://tauri.app/'
+            target='_blank'
+            aria-label='Tauri'
+            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
+            ><strong>Tauri</strong></a
+          >
+          docs working group and chip in on <a
+            href='https://github.com/tauri-apps/tauri-docs'
+            target='_blank'
+            aria-label='tauri-docs on GitHub'
+            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
+            ><strong>tauri-docs</strong></a
+          >
+          when I can. Working with folks around the world on these projects has taught me a ton
+          about writing good code and collaborating effectively.
         </p>
         <div
           class='mt-10 grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-x-4 md:gap-y-8'
