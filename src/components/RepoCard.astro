@@ -3,11 +3,18 @@ import RepoLang from './RepoLang.astro'
 const { repo, link, description, language, languageColor } = Astro.props
 ---
 
-<a class='group block h-56 cursor-pointer' href={link}>
+<a
+  class='group relative block h-56 min-w-0 w-full cursor-pointer'
+  href={link}
+  title={description}
+>
   <div
-    class='relative flex h-full items-end rounded-3xl border-2 border-black bg-[#646664] p-8 text-white transition group-hover:-translate-x-2 group-hover:-translate-y-2 group-hover:shadow-[8px_8px_0_0_#000]'
+    class='relative flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border-2 border-black bg-[#646664] text-white transition group-hover:-translate-x-2 group-hover:-translate-y-2 group-hover:shadow-[8px_8px_0_0_#000]'
   >
-    <div class='lg:group-hover:absolute lg:group-hover:opacity-0'>
+    <!-- Default: icon + name at bottom -->
+    <div
+      class='flex min-h-0 min-w-0 flex-1 flex-col justify-end p-6 sm:p-8 lg:group-hover:hidden'
+    >
       <span class='text-3xl sm:text-4xl' role='img' aria-hidden='true'
         ><svg
           class='h-8 w-8'
@@ -21,18 +28,22 @@ const { repo, link, description, language, languageColor } = Astro.props
             clip-rule='evenodd'></path>
         </svg>
       </span>
-      <p class='mt-4 text-xl font-bold sm:text-2xl'>{repo}</p>
+      <p class='mt-4 truncate text-xl font-bold sm:text-2xl'>{repo}</p>
     </div>
 
+    <!-- lg hover: same fixed box, description clamped with ellipsis -->
     <div
-      class='absolute opacity-0 lg:group-hover:relative lg:group-hover:opacity-100'
+      class='pointer-events-none hidden min-h-0 min-w-0 flex-col p-6 opacity-0 sm:p-8 lg:pointer-events-none lg:absolute lg:inset-0 lg:flex lg:opacity-0 lg:transition-opacity lg:duration-150 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100'
     >
-      <h3 class='text-2xl font-bold'>{repo}</h3>
-
-      <p class='mt-4 text-lg font-medium leading-relaxed'>
+      <h3 class='shrink-0 truncate text-xl font-bold sm:text-2xl'>{repo}</h3>
+      <p
+        class='mt-2 min-h-0 flex-1 overflow-hidden text-sm leading-snug font-medium text-white/95 sm:text-base sm:leading-relaxed lg:line-clamp-4'
+      >
         {description}
       </p>
-      <RepoLang lang={language} color={languageColor} />
+      <div class='mt-2 shrink-0'>
+        <RepoLang lang={language} color={languageColor} />
+      </div>
     </div>
   </div>
 </a>
