@@ -36,16 +36,17 @@ const repos = await pinnedRepos.json()
 
   const scramble = new ScrambleText({
     text: 'Paul Valladares',
-    speed: 0.45,
-    scrambleFactor: 0.2,
+    playOnMount: false,
+    speed: 0.65,
+    scrambleFactor: 0.1,
+    speedVariability: 0.12,
+    charset: 'full',
   })
   const targetElement = document.getElementById('myself')
   if (targetElement) {
     scramble.setTargetElement(targetElement)
     scramble.play()
   }
-
-  console.log(targetElement)
 </script>
 <Layout title='Paul Valladares | Home'>
   <main>
@@ -53,7 +54,7 @@ const repos = await pinnedRepos.json()
       <div class='w-9/12 text-white md:w-[450px]'>
         <div
           id='myself'
-          class='mb-1 text-3xl font-bold tracking-tight md:text-5xl'
+          class='mb-1 min-h-[1.15em] text-3xl font-bold tracking-[0.04em] md:text-4xl md:tracking-[0.035em]'
         >
         </div>
         <h2 class='mt-2 text-lg'>Code tinkerer & UI craft enthusiast</h2>
