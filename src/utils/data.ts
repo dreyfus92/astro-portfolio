@@ -74,10 +74,16 @@ const technologies = [
 
 const socials = [
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/soysarcasme',
-    imgSrc: 'mdi:twitter',
-    ariaLabel: 'Paul Valladares Twitter Profile',
+    name: 'Bluesky',
+    url: 'https://bsky.app/profile/dreyfus11.bsky.social',
+    imgSrc: 'simple-icons:bluesky',
+    ariaLabel: 'Paul Valladares on Bluesky',
+  },
+  {
+    name: 'X formerly known as Twitter',
+    url: 'https://x.com/soysarcasme',
+    imgSrc: 'simple-icons:x',
+    ariaLabel: 'Paul Valladares on X',
   },
   {
     name: 'GitHub',
@@ -96,12 +102,6 @@ const socials = [
     url: 'https://discord.com/users/603517171175391242',
     imgSrc: 'ri:discord-fill',
     ariaLabel: 'Paul Valladares Discord Profile',
-  },
-  {
-    name: 'Frontend Mentor',
-    url: 'https://www.frontendmentor.io/profile/dreyfus92',
-    imgSrc: 'simple-icons:frontendmentor',
-    ariaLabel: 'Paul Valladares Frontend Mentor Profile',
   },
 ]
 
