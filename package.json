@@ -29,7 +29,7 @@
     "astro-capo": "^0.0.1",
     "astro-expressive-code": "0.40.2",
     "astro-icon": "1.1.5",
-    "framer-motion": "12.4.2",
+    "framer-motion": "12.38.0",
     "mdast-util-to-string": "4.0.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
