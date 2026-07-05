@@ -2,61 +2,98 @@
 
 A minimal-JS personal site and blog built with [Astro](https://astro.build/).
 
-## 📚 Stack
+## Stack
 
-- Platform: [Astro](https://astro.build/) (MDX, hybrid `output: 'server'`)
-- Deployment: [Vercel](https://vercel.com/) (`@astrojs/vercel`)
-- Package manager: [pnpm](https://pnpm.io/)
-- CSS: [Tailwind CSS v4](https://tailwindcss.com/) via [`@tailwindcss/vite`](https://tailwindcss.com/docs/installation/framework-guides/astro)
-- UI: [astro-icon](https://www.astroicon.dev/), [React](https://react.dev/) for a few islands, [expressive-code](https://expressive-code.com/) for fenced code in posts
+- **Framework:** [Astro 7](https://astro.build/) (MDX, `output: 'server'`)
+- **Deployment:** [Cloudflare Workers](https://workers.cloudflare.com/) via [`@astrojs/cloudflare`](https://docs.astro.build/en/guides/integrations-guide/cloudflare/) and [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) via [`@tailwindcss/vite`](https://tailwindcss.com/docs/installation/framework-guides/astro)
+- **Content:** Astro Content Collections (`glob` loader + Zod schema)
+- **Code blocks:** [expressive-code](https://expressive-code.com/)
+- **Package manager:** [pnpm](https://pnpm.io/)
 
-## 🚀 Project structure
+## Project structure
 
 ```text
-├── .vscode/
-├── public/                 # static assets (favicon, robots.txt, …)
+├── public/                 # Static assets (favicon, robots.txt)
 ├── src/
-│   ├── assets/             # images processed by Astro (e.g. post covers)
+│   ├── assets/             # Images processed by Astro (post covers, etc.)
 │   ├── components/
 │   ├── data/
-│   │   └── blog/           # MDX posts (Content Collections `posts`)
+│   │   └── blog/           # MDX posts (Content Collection: `posts`)
 │   ├── layouts/
-│   ├── pages/              # routes: .astro, .ts (e.g. llms.txt)
-│   ├── styles/             # global + post typography (Tailwind `@theme`)
+│   ├── pages/              # Routes (.astro, .ts endpoints)
+│   ├── styles/             # Global + post typography (Tailwind @theme)
 │   ├── utils/
-│   ├── content.config.ts   # collection schema + glob loader → `data/blog`
+│   ├── content.config.ts   # Collection schema + glob loader
 │   └── env.d.ts
-├── .env.example
-├── .gitignore
-├── .prettierrc
 ├── astro.config.ts
-├── LICENSE
+├── wrangler.jsonc          # Cloudflare Workers config
 ├── package.json
 ├── pnpm-lock.yaml
-├── README.md
-└── tsconfig.json
+├── tsconfig.json
+└── LICENSE
 ```
 
-Routes come from `src/pages/` (`.astro`, `.md`, `.mdx`, or `.ts` for endpoints). Blog URLs use each post’s collection **id** (the MDX filename stem), e.g. `/posts/<slug>`.
+### Routes
 
-`src/components/` holds Astro and React components. Anything in `public/` is served as-is at the site root.
+| Path | File | Notes |
+| --- | --- | --- |
+| `/` | `pages/index.astro` | Home |
+| `/posts` | `pages/posts/index.astro` | Blog index, grouped by year |
+| `/posts/[id]` | `pages/posts/[id].astro` | Individual posts (prerendered) |
+| `/socials` | `pages/socials.astro` | Social links |
+| `/contact` | `pages/contact.astro` | Contact form |
+| `/llms.txt` | `pages/llms.txt.ts` | Plain-text blog export for LLMs |
 
-**Tailwind:** there is no `tailwind.config.js`. Theme tokens live in CSS (for example `src/styles/index.css` and `src/styles/posts.css`) using Tailwind v4’s CSS-first setup wired through `astro.config.ts` → `vite.plugins: [tailwindcss()]`.
+Blog URLs use each post's collection **id** (the MDX filename stem), e.g. `/posts/wirths-law`.
 
-**Content:** MDX lives under `src/data/blog/` and is registered in `src/content.config.ts` with Astro’s `glob` loader so covers can use Astro’s image pipeline.
+### Content
 
-## 🧞 Running locally
+MDX lives in `src/data/blog/` and is registered in `src/content.config.ts`. Each post requires this frontmatter:
 
-Use **Node.js 20 LTS** (or current **18.17+** if you prefer; Astro 6 expects a recent 18.x).
+```yaml
+title: 'Post title'
+description: 'Short summary'
+pubDate: 2024-01-14
+draft: false
+cover: '@assets/posts/cover.png'
+coverAlt: 'Cover description'
+```
+
+Set `draft: true` to hide a post in production. Covers under `src/assets/` go through Astro's image pipeline at build time.
+
+### Tailwind
+
+There is no `tailwind.config.js`. Theme tokens live in CSS (`src/styles/index.css`, `src/styles/posts.css`) using Tailwind v4's CSS-first setup, wired through `astro.config.ts` → `vite.plugins: [tailwindcss()]`.
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `pnpm dev` | Start the dev server |
+| `pnpm start` | Type-check in watch mode + dev server |
+| `pnpm build` | Production build |
+| `pnpm preview` | Preview the production build locally |
+| `pnpm format` | Format with Prettier |
+
+## Running locally
+
+Requires **Node.js 18.20.8+**, **20.3.0+**, or **22+**.
 
 ```bash
 git clone git@github.com:dreyfus92/astro-portfolio.git
 cd astro-portfolio
-# install pnpm: https://pnpm.io/installation — e.g. corepack enable && corepack prepare pnpm@latest --activate
 pnpm install
 pnpm dev
 ```
 
-## 📝 License
+To preview the Cloudflare build locally:
 
-This project is licensed under the [MIT license](LICENSE).
+```bash
+pnpm build
+pnpm preview
+```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
