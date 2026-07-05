@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "paulvall-dev",
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"]
+  // Add bindings here if ever needed, e.g.:
+  // "kv_namespaces": [{ "binding": "MY_KV", "id": "<namespace_id>" }]
+}

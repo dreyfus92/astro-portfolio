@@ -1,36 +1,52 @@
 ---
 import { navItems } from '../utils/navigation'
-import { SpotifyNowPlaying } from '@components/Spotify/Badge'
 
-type Props = {
-  display?: boolean
-}
-
-const { display } = Astro.props
+const { pathname } = Astro.url
+const isActive = (route: string) =>
+  route === '/' ? pathname === '/' : pathname.startsWith(route)
 ---
 
-<nav
-  role='navigation'
-  aria-label='navigation'
-  id='top-nav'
-  class='mx-auto flex w-full flex-col items-center gap-4 pt-8 pb-8 sm:pb-16 md:w-[740px] md:flex-row md:justify-center'
+<script>
+  import { navigate } from 'astro:transitions/client'
+  import { navItems } from '../utils/navigation'
+
+  document.addEventListener('keydown', (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return
+    const target = e.target as HTMLElement
+    if (target.closest('input, textarea, select, [contenteditable]')) return
+    const item = navItems[Number(e.key) - 1]
+    if (item) navigate(item.route)
+  })
+</script>
+
+<header
+  class='border-border mx-auto flex w-full max-w-[880px] flex-col gap-2.5 border-b px-5 py-4 text-[13px] sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-5'
 >
-  <ul
-    class='flex items-center justify-center gap-4 rounded-full bg-slate-950 px-8 py-4'
-  >
+  <a href='/' class='text-dim'>
+    <b class='text-accent font-medium'>paul</b>@valladares:<span
+      class='text-ink'>~</span
+    >
+  </a>
+  <nav aria-label='Main' class='flex flex-wrap gap-x-4 gap-y-1 sm:gap-5'>
     {
-      navItems.map((navItem) => (
-        <li>
-          <a
-            href={navItem.route}
-            class='text-neon-green before:bg-neon-green relative font-medium before:absolute before:-bottom-1 before:h-0.5 before:w-full before:scale-x-0 before:transition hover:before:scale-x-100'
+      navItems.map((navItem, i) => (
+        <a
+          href={navItem.route}
+          aria-current={isActive(navItem.route) ? 'page' : undefined}
+          class:list={[
+            'hover:text-accent py-1 transition-colors sm:py-0',
+            isActive(navItem.route) ? 'text-ink' : 'text-dim',
+          ]}
+        >
+          <kbd
+            class='text-faint hidden font-[inherit] sm:inline'
+            aria-hidden='true'
           >
-            {navItem.text}
-          </a>
-        </li>
+            [{i + 1}]
+          </kbd>
+          <span class='text-faint'>./</span>{navItem.text.toLowerCase()}
+        </a>
       ))
     }
-    <!-- TODO: fix this  -->
-    <!-- {display ?? <SpotifyNowPlaying client:only="react" />} -->
-  </ul>
-</nav>
+  </nav>
+</header>

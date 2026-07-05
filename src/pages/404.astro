@@ -11,17 +11,22 @@ const description = 'Personal website of Paul Valladares'
     <HeadTags title={title} description={description} />
   </Head>
   <body>
-    <div
-      class='flex min-h-screen flex-col items-center justify-center text-white'
+    <main
+      class='mx-auto flex min-h-screen w-full max-w-[880px] flex-col items-start justify-center px-8'
     >
-      <h1 class='text-9xl font-bold'>404</h1>
-      <p class='mb-8 mt-4 text-2xl'>Oops! Page not found.</p>
+      <div class='text-dim prompt-glyph text-sm'>cat {'{page}'}</div>
+      <h1 class='text-ink mt-3 text-6xl font-bold tracking-tight md:text-8xl'>
+        404
+      </h1>
+      <p class='text-dim mt-4'>
+        cat: no such file or directory
+      </p>
       <a
-        class='inline-flex h-10 items-center justify-center rounded-md bg-neon-green px-8 text-sm font-medium text-gray-800 shadow transition-colors hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
         href='/'
+        class='border-accent-dim text-accent hover:bg-accent hover:text-bg mt-8 border px-6 py-2 font-semibold transition-colors'
       >
-        Go Home
+        cd ~
       </a>
-    </div>
+    </main>
   </body>
 </html>

@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import Navbar from '@components/Navbar.astro'
 import Footer from '@components/Footer.astro'
@@ -9,46 +8,27 @@ import '../styles/posts.css'
 import type { ImageMetadata } from 'astro'
 import { Image } from 'astro:assets'
 
-interface BlogPostLayoutProps {
+interface Props {
+  id: string
   frontmatter: {
     title: string
     description: string
-    pubDate: string
+    pubDate: Date
     cover: ImageMetadata
     coverAlt: string
   }
-  minutes: {
-    minutesRead: string
-  }
+  minutes: string
 }
 
-let { frontmatter, minutes } = Astro.props as BlogPostLayoutProps
+const { id, frontmatter, minutes } = Astro.props
 
-const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
-  'en-us',
-  {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  },
+const formattedDate = frontmatter.pubDate.toISOString().slice(0, 10)
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 )
 
-// get all posts
-let posts = await getCollection('posts')
-  .then((posts) =>
-    posts.sort(
-      (a, b) =>
-        new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
-    ),
-  )
-  .then((posts) => posts.filter((post) => !post.data.draft))
-
-// get the index of the current post
-const index = posts.findIndex((post) => {
-  return Astro.request.url.includes(post.slug ?? '')
-})
-
-// get the next and previous posts
+const index = posts.findIndex((post) => post.id === id)
 const nextPost = posts[index + 1]
 const prevPost = posts[index - 1]
 ---
@@ -57,63 +37,52 @@ const prevPost = posts[index - 1]
   <Head>
     <HeadTags title={frontmatter.title} description={frontmatter.description} />
   </Head>
-  <Navbar display={false} />
   <body>
-    <main class='post flex flex-col items-center text-white'>
-      <div class='w-10/12 md:w-[750px]'>
-        <h1 class='mb-4 text-4xl font-bold'>{frontmatter.title}</h1>
-        <div class='flex gap-4'>
-          <p class='flex items-center text-sm'>
-            <Icon
-              name='system-uicons:calendar-month'
-              class='text-neon-green mr-2 h-6 w-6'
-            />
-            {formattedDate}
-          </p>
-          <p class='flex items-center text-sm'>
-            <Icon
-              name='system-uicons:clock'
-              class='text-neon-green mr-2 h-6 w-6'
-            />
-            {minutes.minutesRead}
-          </p>
-        </div>
-        <hr class='mt-5 mb-10' />
-        <Image
-          src={frontmatter.cover}
-          alt={frontmatter.coverAlt}
-          class='rounded-md'
-        />
-        <br />
-        <article>
-          <slot />
-        </article>
+    <Navbar />
+    <main class='post mx-auto w-full max-w-[750px] px-8'>
+      <div class='text-dim prompt-glyph pt-16 text-sm'>
+        cat ./posts/{id}.mdx
       </div>
-      <div class='mb-10 w-10/12 md:w-[750px]'>
-        <div class='mt-10 flex w-full flex-col gap-4 sm:flex-row sm:gap-6'>
-          {
-            prevPost && (
-              <a
-                href={`/posts/${prevPost.slug}`}
-                class='hover:border-neon-green flex grow flex-col rounded border border-zinc-700 p-4 text-sm transition duration-500 ease-out'
-              >
-                <p class='mb-1 text-zinc-400'>&larr; Previous post</p>
-                <p class='font-semibold text-zinc-300'>{prevPost.data.title}</p>
-              </a>
-            )
-          }
-          {
-            nextPost && (
-              <a
-                href={`/posts/${nextPost.slug}`}
-                class='hover:border-neon-green flex grow flex-col rounded border border-zinc-700 p-4 text-right text-sm transition duration-500 ease-out'
-              >
-                <p class='mb-1'>Next post &rarr;</p>
-                <p class='font-semibold text-zinc-300'>{nextPost.data.title}</p>
-              </a>
-            )
-          }
-        </div>
+      <h1 class='text-ink mt-3 mb-4 text-3xl font-bold tracking-tight md:text-4xl'>
+        {frontmatter.title}
+      </h1>
+      <div class='text-faint flex gap-5 text-[12.5px]'>
+        <span>{formattedDate}</span>
+        <span>{minutes}</span>
+      </div>
+      <hr class='border-border mt-5 mb-10' />
+      <Image
+        src={frontmatter.cover}
+        alt={frontmatter.coverAlt}
+        class='border-border border'
+      />
+      <article class='mt-8'>
+        <slot />
+      </article>
+
+      <div class='mt-14 flex flex-col gap-4 sm:flex-row sm:gap-6'>
+        {
+          prevPost && (
+            <a
+              href={`/posts/${prevPost.id}`}
+              class='border-border bg-panel hover:border-accent-dim flex grow flex-col border p-4 text-sm transition-colors'
+            >
+              <p class='text-faint mb-1'>&larr; previous</p>
+              <p class='text-ink font-semibold'>{prevPost.data.title}</p>
+            </a>
+          )
+        }
+        {
+          nextPost && (
+            <a
+              href={`/posts/${nextPost.id}`}
+              class='border-border bg-panel hover:border-accent-dim flex grow flex-col border p-4 text-right text-sm transition-colors'
+            >
+              <p class='text-faint mb-1'>next &rarr;</p>
+              <p class='text-ink font-semibold'>{nextPost.data.title}</p>
+            </a>
+          )
+        }
       </div>
     </main>
     <Footer />

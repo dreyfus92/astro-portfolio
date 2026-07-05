@@ -1,75 +1,68 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import BlogCard from '@components/BlogCard.astro'
 import { getCollection, render } from 'astro:content'
-import type { CollectionEntry } from 'astro:content'
 
-const posts = await getCollection('posts', ({ data }) => {
-  return import.meta.env.PROD ? !data.draft : true
-})
+const posts = (
+  await getCollection('posts', ({ data }) =>
+    import.meta.env.PROD ? !data.draft : true,
+  )
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 
-// Sort posts by date if needed
-const sortedPosts = posts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+const withMinutes = await Promise.all(
+  posts.map(async (post) => {
+    const { remarkPluginFrontmatter } = await render(post)
+    return { post, minutes: remarkPluginFrontmatter.minutesRead as string }
+  }),
 )
 
-const groupPostsByYear = () => {
-  const postsByYear: Map<number, CollectionEntry<'posts'>[]> = new Map()
-  sortedPosts.forEach((post) => {
-    const year = new Date(post.data.pubDate).getFullYear()
-    if (!postsByYear.has(year)) {
-      postsByYear.set(year, [])
-    }
-    const yearPosts = postsByYear.get(year)
-    if (yearPosts) {
-      // Check if yearPosts is not undefined
-      yearPosts.push(post)
-    }
-  })
-  return postsByYear
+const byYear = new Map<number, typeof withMinutes>()
+for (const entry of withMinutes) {
+  const year = entry.post.data.pubDate.getFullYear()
+  byYear.set(year, [...(byYear.get(year) ?? []), entry])
 }
+const years = [...byYear.keys()].sort((a, b) => b - a)
 
-const postsByYear = groupPostsByYear()
-
-const years = Array.from(postsByYear.keys()).sort((a, b) => b - a)
-
-const getReadingTime = async (post: CollectionEntry<'posts'>) => {
-  const { remarkPluginFrontmatter } = await render(post)
-  return remarkPluginFrontmatter.minutesRead
-}
+const formatDate = (date: Date) => date.toISOString().slice(0, 10)
 ---
 
 <Layout title='Paul Valladares | Blog' description='Blog of Paul Valladares'>
-  <main class='flex flex-col items-center'>
-    <div class='w-[320px] md:w-[750px]'>
-      <div class='text-white'>
-        <h1>Posts</h1>
-        <p class='mt-4 text-left'>
-          Welcome to my little corner of the web! I write about whatever catches my interest - from coding adventures and tech discoveries to historical mysteries and occasional life musings. No strict schedule, no single topic - just stuff I find cool enough to share. Grab a coffee and have a browse!
-        </p>
-      </div>
-      <div class='my-10'>
-        {
-          years.map((year) => (
-            <div>
-              <h2 class='text-neon-green pb-10 pl-2'>{year}</h2>
-              <ul>
-                {postsByYear.get(year)?.map((post) => (
-                  <li>
-                    <BlogCard
-                      title={post.data.title}
-                      description={post.data.description}
-                      date={post.data.pubDate}
-                      link={`/posts/${post.id}`}
-                      readingTime={getReadingTime(post)}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
-      </div>
-    </div>
+  <main class='mx-auto w-full max-w-[880px] px-8'>
+    <section class='pt-22'>
+      <div class='text-dim prompt-glyph text-sm'>cat ./posts/README</div>
+      <h1 class='text-ink mt-3 text-3xl font-bold tracking-tight md:text-5xl'>
+        Posts
+      </h1>
+      <p class='text-dim mt-6 max-w-[58ch]'>
+        Whatever catches my interest. Coding quirks, tech discoveries,
+        historical mysteries and occasional life musings. No strict schedule, no
+        single topic.
+      </p>
+    </section>
+
+    {
+      years.map((year) => (
+        <section class='mt-16'>
+          <h2 class='text-dim prompt-glyph mb-6 text-sm font-medium'>
+            ls <span class='text-ink'>./{year}</span>
+          </h2>
+          <div class='border-border bg-panel border'>
+            {byYear.get(year)?.map(({ post, minutes }) => (
+              <a
+                href={`/posts/${post.id}`}
+                class='border-border hover:bg-tint group grid grid-cols-[110px_1fr_auto] items-baseline gap-5 border-b px-5 py-3.5 text-sm last:border-b-0'
+              >
+                <span class='text-faint text-[12.5px]'>
+                  {formatDate(post.data.pubDate)}
+                </span>
+                <span class='text-ink group-hover:text-accent'>
+                  {post.data.title}
+                </span>
+                <span class='text-faint text-[12.5px]'>{minutes}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
   </main>
 </Layout>

@@ -1,146 +1,203 @@
 ---
-import TechBadge from '@components/TechBadge.astro'
-import ProjectCard from '@components/RepoCard.astro'
 import Layout from '@layouts/Layout.astro'
-import { technologies } from '@utils/data'
-import { Image } from 'astro:assets'
+import { getProjects, stack } from '@utils/data'
+import { getCollection, render } from 'astro:content'
 
-type TechBadgeProps = {
-  name: string
-  imgSrc: string
-  altSrc: string
-  link: string
-  ariaLink: string
-}
+const projects = await getProjects()
 
-type PinnedRepos = {
-  owner: string
-  repo: string
-  link: string
-  description: string
-  image: string
-  language: string
-  languageColor: string
-  stars: number
-  forks: number
-}
-
-const pinnedRepos = await fetch(
-  'https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=dreyfus92',
+const posts = (
+  await getCollection('posts', ({ data }) =>
+    import.meta.env.PROD ? !data.draft : true,
+  )
 )
-const repos = await pinnedRepos.json()
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5)
+
+const latest = await Promise.all(
+  posts.map(async (post) => {
+    const { remarkPluginFrontmatter } = await render(post)
+    return { post, minutes: remarkPluginFrontmatter.minutesRead as string }
+  }),
+)
+
+const formatDate = (date: Date) => date.toISOString().slice(0, 10)
 ---
 
 <script>
-  import { ScrambleText } from '@utils/scrambleText'
+  import { scrambleText } from '@utils/scrambleText'
 
-  const scramble = new ScrambleText({
-    text: 'Paul Valladares',
-    speed: 0.45,
-    scrambleFactor: 0.2,
-  })
-  const targetElement = document.getElementById('myself')
-  if (targetElement) {
-    scramble.setTargetElement(targetElement)
-    scramble.play()
+  // run now (module scripts execute after the DOM is parsed) and again on
+  // ClientRouter navigations; the dataset flag stops a double run on load
+  const run = () => {
+    const el = document.getElementById('myself')
+    if (el && !el.dataset.scrambled) {
+      el.dataset.scrambled = 'true'
+      scrambleText(el, 'Paul Valladares')
+    }
   }
-
-  console.log(targetElement)
+  run()
+  document.addEventListener('astro:page-load', run)
 </script>
+
 <Layout title='Paul Valladares | Home'>
-  <main>
-    <div class='flex flex-col-reverse items-center justify-center md:flex-row'>
-      <div class='w-9/12 text-white md:w-[450px]'>
-        <div
-          id='myself'
-          class='mb-1 text-3xl font-bold tracking-tight md:text-5xl'
+  <main class='mx-auto w-full max-w-[880px] px-8'>
+    <section class='pt-22'>
+      <div class='text-dim prompt-glyph text-sm'>whoami</div>
+      <h1
+        class='text-ink mt-3 text-4xl font-bold tracking-tight md:text-6xl'
+      >
+        <span id='myself'>Paul Valladares</span><span
+          aria-hidden='true'
+          class='bg-accent ml-1.5 inline-block h-[0.9em] w-[0.55em] animate-[blink_1.1s_steps(1)_infinite] align-baseline'
+        ></span>
+      </h1>
+      <p class='text-dim mt-5 text-[17px]'>
+        Fullstack dev · open-source maintainer · <span class='text-ink'
+          >developer experience</span
         >
-        </div>
-        <h2 class='mt-2 text-lg'>Code tinkerer & UI craft enthusiast</h2>
-        <h2 class='text-lg'>
-          formerly at
-          <a
-            href='https://x.com/hackapulco'
-            target='_blank'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-800'
-            >@Hackapulco</a
-          >
-        </h2>
-        <p class='mt-4 text-left'>
-          Hey there! I build web stuff with TypeScript, React, and Node.js. Started out as a civil engineer (UNAM grad), which gave me a knack for solving tricky problems. These days, I spend my time crafting <strong>responsive UIs</strong>, building <strong>full-stack apps</strong>, and tinkering with <strong>cloud setups</strong>. Always down to chat about code or collaborate on interesting projects.
-        </p>
+      </p>
+      <p class='text-dim mt-6 max-w-[58ch]'>
+        I build developer tools in <strong class='text-ink font-medium'
+          >TypeScript</strong
+        > and <strong class='text-ink font-medium'>Node.js</strong>. At <a
+          href='https://bomb.sh'
+          target='_blank'
+          class='text-accent border-accent-dim border-b hover:opacity-80'
+          >Bombshell</a
+        > I help maintain <a
+          href='https://github.com/bombshell-dev/clack'
+          target='_blank'
+          class='text-accent border-accent-dim border-b hover:opacity-80'
+          >clack</a
+        >, the command-line prompt library behind <strong
+          class='text-ink font-medium'>59M+ npm downloads a month</strong
+        >. With <a
+          href='https://e18e.dev'
+          target='_blank'
+          class='text-accent border-accent-dim border-b hover:opacity-80'
+          >e18e</a
+        > I make the JavaScript ecosystem lighter and faster. I'm also part
+        of <a
+          href='https://studiocms.dev'
+          target='_blank'
+          class='text-accent border-accent-dim border-b hover:opacity-80'
+          >StudioCMS</a
+        > and maintain the docs for <a
+          href='https://docs.astro.build'
+          target='_blank'
+          class='text-accent border-accent-dim border-b hover:opacity-80'
+          >Astro</a
+        >, <a
+          href='https://starlight.astro.build'
+          target='_blank'
+          class='text-accent border-accent-dim border-b hover:opacity-80'
+          >Starlight</a
+        > and <a
+          href='https://tauri.app'
+          target='_blank'
+          class='text-accent border-accent-dim border-b hover:opacity-80'
+          >Tauri</a
+        >. If you're hiring, <a
+          href='/contact'
+          class='text-accent border-accent-dim border-b hover:opacity-80'
+          >let's talk</a
+        >.
+      </p>
+      <div
+        class='border-border text-dim mt-11 flex w-fit border text-[12.5px]'
+      >
+        <span class='text-accent px-3.5 py-1.5'>
+          <span
+            aria-hidden='true'
+            class='motion-safe:animate-[breathe_2.4s_ease-in-out_infinite]'
+          >●</span> open to collab
+        </span>
+        <span class='border-border border-l px-3.5 py-1.5'>tz UTC−6</span>
+        <span class='border-border border-l px-3.5 py-1.5'
+          >uptime 4y in OSS</span
+        >
       </div>
-      <Image
-        class='mb-10 ml-0 h-[120px] w-[120px] rounded-full md:mb-0 md:ml-10 md:h-[240px] md:w-[240px]'
-        src='https://avatars.githubusercontent.com/u/85648028?v=4'
-        alt='Paul Valladares'
-        inferSize={true}
-        loading='eager'
-      />
-    </div>
-    <div class='my-10 flex items-center justify-center md:my-16'>
-      <div class='w-9/12 text-white md:w-[740px]'>
-        <h2 class='text-3xl font-bold'>Tools I use</h2>
-        <p class='mt-4 text-left'>
-          I've picked up a bunch of tech along the way. From front-end frameworks to back-end systems and some DevOps stuff. Here's what I've been playing with lately:
-        </p>
-        <div
-          class='mt-10 grid grid-cols-2 gap-y-5 md:grid-cols-3 md:gap-x-4 md:gap-y-8'
-        >
+
+      <div class='mt-10'>
+        <div class='text-dim prompt-glyph text-sm'>echo $STACK</div>
+        <ul class='mt-4 flex max-w-[58ch] flex-wrap gap-2'>
           {
-            technologies.map((tech: TechBadgeProps) => (
-              <a
-                href={tech.link}
-                class='cursor-pointer text-gray-300'
-                aria-label={tech.ariaLink}
+            stack.map((tech) => (
+              <li
+                class='tag border-border bg-panel border px-2.5 py-1 text-[12.5px]'
+                style={`--tag: ${tech.color}`}
               >
-                <TechBadge {...tech} />
-              </a>
+                {tech.name}
+              </li>
             ))
           }
-        </div>
+        </ul>
       </div>
-    </div>
-    <div class='my-10 flex items-center justify-center md:my-16'>
-      <div class='w-9/12 text-white md:w-[740px]'>
-        <h2 class='text-3xl font-bold'>Stuff I've worked on</h2>
-        <p class='mt-4 text-left'>
-          I've been lucky enough to help out with some cool open source projects. I contribute to <a
-            href='https://docs.astro.build/'
-            aria-label='Documentation for Astro'
-            target='_blank'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
-            ><strong>Astro Docs</strong>
-          </a>, <a
-            href='https://starlight.astro.build/'
-            target='_blank'
-            aria-label='Documentation for Starlight'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
-            ><strong>Starlight</strong></a
-          >, and <a
-            href='https://github.com/tauri-apps/tauri-docs'
-            target='_blank'
-            aria-label='Documentation for Tauri'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
-            ><strong>Tauri Docs</strong></a
-          > as a maintainer, which has been a blast. I also tinker with <a
-            href='https://github.com/withstudiocms/studiocms'
-            target='_blank'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
-            ><strong>StudioCMS</strong></a
-          > a native CMS for Astro and <a
-            href='https://bomb.sh/'
-            target='_blank'
-            class='hover:bg-neon-green rounded-lg p-1 hover:text-gray-900'
-            ><strong>Bombshell</strong></a
-          >. Working with folks from around the world on these projects has taught me a ton about writing good code and collaborating effectively.
-        </p>
-        <div
-          class='mt-10 grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-x-4 md:gap-y-8'
-        >
-          {repos.map((repo: PinnedRepos) => <ProjectCard {...repo} />)}
-        </div>
+    </section>
+
+    <section class='mt-16'>
+      <h2 class='text-dim prompt-glyph mb-6 text-sm font-medium lowercase'>
+        ls <span class='text-ink'>./projects</span>
+      </h2>
+      <div class='grid grid-cols-1 gap-3.5 md:grid-cols-2'>
+        {
+          projects.map((project) => (
+            <a
+              href={project.link}
+              target='_blank'
+              class='border-border bg-panel hover:border-accent-dim block border p-5 transition-colors'
+            >
+              <div class='text-ink text-[15px] font-bold'>
+                <span class='text-accent'>▪ </span>
+                {project.name}
+              </div>
+              <p class='text-dim mt-2 min-h-[3.4em] text-[13.5px]'>
+                {project.description}
+              </p>
+              <div class='text-faint mt-3 text-xs'>
+                <span aria-hidden='true' style={`color: ${project.langColor}`}>
+                  ●
+                </span>{' '}
+                {project.meta}
+              </div>
+              <div class='bg-bg border-border text-dim mt-3 overflow-hidden border border-dashed px-3 py-2 text-[12.5px] text-ellipsis whitespace-nowrap'>
+                <span class='text-accent'>$ </span>
+                {project.cmd}
+              </div>
+            </a>
+          ))
+        }
       </div>
-    </div>
+    </section>
+
+    <section class='mt-20'>
+      <h2 class='text-dim prompt-glyph mb-6 text-sm font-medium lowercase'>
+        ls <span class='text-ink'>./posts</span> -la | head -5
+      </h2>
+      <div class='border-border bg-panel border'>
+        {
+          latest.map(({ post, minutes }) => (
+            <a
+              href={`/posts/${post.id}`}
+              class='border-border hover:bg-tint group grid grid-cols-[110px_1fr_auto] items-baseline gap-5 border-b px-5 py-3.5 text-sm last:border-b-0'
+            >
+              <span class='text-faint text-[12.5px]'>
+                {formatDate(post.data.pubDate)}
+              </span>
+              <span class='text-ink group-hover:text-accent'>
+                {post.data.title}
+              </span>
+              <span class='text-faint text-[12.5px]'>{minutes}</span>
+            </a>
+          ))
+        }
+      </div>
+      <a
+        href='/posts'
+        class='text-dim hover:text-accent mt-4 inline-block text-[13px]'
+      >
+        <span class='text-accent'>❯</span> cd /posts →
+      </a>
+    </section>
   </main>
 </Layout>

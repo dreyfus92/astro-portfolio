@@ -1,42 +1,40 @@
-@import 'tailwindcss';
-
-@theme {
-  --color-neon-green: oklch(77.04% 0.1759 132.7);
-  --color-neutral-50: oklch(0.985 0 0);
-  --color-neutral-100: oklch(0.97 0 0);
-  --color-neutral-200: oklch(0.922 0 0);
-  --color-neutral-300: oklch(0.87 0 0);
-  --color-neutral-400: oklch(0.708 0 0);
-  --color-neutral-500: oklch(0.556 0 0);
-  --color-neutral-600: oklch(0.439 0 0);
-  --color-neutral-700: oklch(0.371 0 0);
-  --color-neutral-800: oklch(0.269 0 0);
-  --color-neutral-900: oklch(0.205 0 0);
-  --color-neutral-950: oklch(0.145 0 0);
-}
+@reference './index.css';
 
 @layer base {
   .post p {
-    @apply my-4 leading-7;
+    @apply text-dim my-4 leading-7;
+  }
+
+  .post strong {
+    @apply text-ink font-medium;
   }
 
   .post code {
-    @apply rounded-sm bg-gray-600 px-1 py-[2px] text-white;
+    @apply bg-panel border-border text-ink rounded-sm border px-1 py-[2px] text-[13px];
   }
 
   .post h2 {
-    @apply my-6 text-3xl font-bold text-neutral-100;
+    @apply text-ink my-6 text-2xl font-bold tracking-tight;
   }
 
   .post h3 {
-    @apply my-6 text-xl font-bold text-neutral-100;
+    @apply text-ink my-6 text-xl font-bold tracking-tight;
   }
 
   .post a {
-    @apply text-neon-green;
+    @apply text-accent border-accent-dim border-b hover:opacity-80;
   }
 
-  .post ul {
-    @apply list-disc ps-6 leading-8 text-gray-300;
+  .post ul,
+  .post ol {
+    @apply text-dim list-disc ps-6 leading-8;
+  }
+
+  .post ol {
+    @apply list-decimal;
+  }
+
+  .post blockquote {
+    @apply border-accent-dim text-dim my-4 border-l-2 ps-4 italic;
   }
 }
