@@ -2,12 +2,11 @@
 export const prerender = true
 
 import BlogPostLayout from '@layouts/BlogPostLayout.astro'
-import { getCollection, render } from 'astro:content'
+import { render } from 'astro:content'
+import { getSortedBlogPosts } from '@utils/posts-collection'
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts', ({ data }) => {
-    return import.meta.env.PROD ? !data.draft : true
-  })
+  const posts = await getSortedBlogPosts()
 
   return posts.map((post) => ({
     params: { id: post.id },

@@ -1,17 +1,12 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import { getProjects, stack } from '@utils/data'
-import { getCollection, render } from 'astro:content'
+import { render } from 'astro:content'
+import { getSortedBlogPosts } from '@utils/posts-collection'
 
 const projects = await getProjects()
 
-const posts = (
-  await getCollection('posts', ({ data }) =>
-    import.meta.env.PROD ? !data.draft : true,
-  )
-)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 5)
+const posts = (await getSortedBlogPosts()).slice(0, 5)
 
 const latest = await Promise.all(
   posts.map(async (post) => {
