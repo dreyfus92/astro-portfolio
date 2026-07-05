@@ -28,3 +28,7 @@ pnpm-debug.log*
 # astro specific files for version 2.0.6
 .astro
 .idea
+
+# generated OG images (pnpm og, runs via prebuild)
+public/og/
+public/posts/**/og.png

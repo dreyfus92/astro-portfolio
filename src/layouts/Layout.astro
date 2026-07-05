@@ -7,15 +7,19 @@ import { Head } from 'astro-capo'
 export interface Props {
   title: string
   description?: string
+  image?: string | URL
 }
 
-const { title, description = 'Personal website of Paul Valladares' } =
-  Astro.props
+const {
+  title,
+  description = 'Personal website of Paul Valladares',
+  image,
+} = Astro.props
 ---
 
 <html lang='en'>
   <Head>
-    <HeadTags title={title} description={description} />
+    <HeadTags title={title} description={description} image={image} />
   </Head>
   <body>
     <Navbar />

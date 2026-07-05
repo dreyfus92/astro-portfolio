@@ -34,7 +34,10 @@ const formatDate = (date: Date) => date.toISOString().slice(0, 10)
   document.addEventListener('astro:page-load', run)
 </script>
 
-<Layout title='Paul Valladares | Home'>
+<Layout
+  title='Paul Valladares | Home'
+  image={new URL('/og/default.png', Astro.site)}
+>
   <main class='mx-auto w-full max-w-[880px] px-8'>
     <section class='pt-22'>
       <div class='text-dim prompt-glyph text-sm'>whoami</div>

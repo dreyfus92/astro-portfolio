@@ -22,7 +22,11 @@ const years = [...byYear.keys()].sort((a, b) => b - a)
 const formatDate = (date: Date) => date.toISOString().slice(0, 10)
 ---
 
-<Layout title='Paul Valladares | Blog' description='Blog of Paul Valladares'>
+<Layout
+  title='Paul Valladares | Blog'
+  description='Blog of Paul Valladares'
+  image={new URL('/og/posts.png', Astro.site)}
+>
   <main class='mx-auto w-full max-w-[880px] px-8'>
     <section class='pt-22'>
       <div class='text-dim prompt-glyph text-sm'>cat ./posts/README</div>

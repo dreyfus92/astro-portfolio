@@ -33,7 +33,12 @@ const prevPost = posts[index - 1]
 
 <html lang='en'>
   <Head>
-    <HeadTags title={frontmatter.title} description={frontmatter.description} />
+    <HeadTags
+      title={frontmatter.title}
+      description={frontmatter.description}
+      image={new URL(`/posts/${id}/og.png`, Astro.site)}
+      article
+    />
   </Head>
   <body>
     <Navbar />

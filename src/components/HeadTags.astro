@@ -5,7 +5,8 @@ import { ClientRouter } from 'astro:transitions'
 export interface Props {
   title: string
   description: string
-  image?: string
+  image?: string | URL
+  article?: boolean
 }
 
 const favicon = (path: string) => `${new URL(path, Astro.url).pathname}?v=2`
@@ -13,8 +14,12 @@ const favicon = (path: string) => `${new URL(path, Astro.url).pathname}?v=2`
 const {
   title,
   description,
-  image = new URL('/banner.png', Astro.site),
+  image = new URL('/og/default.png', Astro.site),
+  article = false,
 } = Astro.props
+
+const imageUrl = (image instanceof URL ? image : new URL(image, Astro.site)).href
+const ogType = article ? 'article' : 'website'
 ---
 
 <!-- HTML Meta Tags -->
@@ -53,12 +58,14 @@ const {
 
 <!-- Facebook Meta Tags -->
 
-<meta property='og:type' content='website' />
+<meta property='og:type' content={ogType} />
 <meta property='og:site_name' content='Paul Valladares' />
 <meta property='og:url' content={Astro.url} />
 <meta property='og:title' content={title} />
 <meta property='og:description' content={description} />
-<meta property='og:image' content={image} />
+<meta property='og:image' content={imageUrl} />
+<meta property='og:image:width' content='1200' />
+<meta property='og:image:height' content='630' />
 
 <!-- Twitter Meta Tags -->
 
@@ -66,7 +73,7 @@ const {
 <meta property='twitter:url' content={Astro.url} />
 <meta property='twitter:title' content={title} />
 <meta property='twitter:description' content={description} />
-<meta property='twitter:image' content={image} />
+<meta property='twitter:image' content={imageUrl} />
 
 <!-- ViewTransitions -->
 <ClientRouter />
