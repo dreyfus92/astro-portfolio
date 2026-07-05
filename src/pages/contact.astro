@@ -1,59 +1,74 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import { Icon } from 'astro-icon/components'
 ---
 
 <Layout title='Paul Valladares | Contact'>
-  <main class='flex flex-col items-center'>
-    <h1>Contact</h1>
-    <div id='form-container' class='my-16 rounded-lg p-0.5'>
-      <form
-        id='contact-form'
-        class='flex w-[320px] flex-col gap-4 rounded-lg bg-zinc-900 p-10 text-white md:w-[750px] [&_input]:block [&_input]:bg-zinc-800 max-sm:[&_input]:w-full [&_select]:block [&_select]:bg-zinc-800 [&_select]:text-white [&_textarea]:block [&_textarea]:bg-zinc-800'
-        action='https://getform.io/f/0317a7a6-6baa-4a9e-98c3-7717e70bce41'
-        method='POST'
-      >
-        <label for='name' class='font-semibold'>Name</label>
+  <main class='mx-auto w-full max-w-[880px] px-8'>
+    <section class='pt-22'>
+      <div class='text-dim prompt-glyph text-sm'>mail -s "hello"</div>
+      <h1 class='text-ink mt-3 text-3xl font-bold tracking-tight md:text-5xl'>
+        Contact
+      </h1>
+      <p class='text-dim mt-6 max-w-[58ch]'>
+        Got a project, a bug, or a package that needs a diet? Fill this in and
+        it lands in my inbox.
+      </p>
+    </section>
+
+    <form
+      class='border-border bg-panel mt-12 flex max-w-[640px] flex-col gap-5 border p-8'
+      action='https://getform.io/f/0317a7a6-6baa-4a9e-98c3-7717e70bce41'
+      method='POST'
+    >
+      <label class='text-dim flex flex-col gap-2 text-[13px]'>
+        <span><span class='text-accent'>$</span> name</span>
         <input
           type='text'
-          id='name'
           name='name'
           placeholder='Jane Doe'
-          class='rounded-sm p-2'
           required
+          class='bg-bg border-border text-ink placeholder:text-faint focus:border-accent-dim border p-2.5 outline-none'
         />
-        <label for='email' class='font-semibold'>Email</label>
+      </label>
+      <label class='text-dim flex flex-col gap-2 text-[13px]'>
+        <span><span class='text-accent'>$</span> email</span>
         <input
           type='email'
-          id='email'
           name='email'
           placeholder='jane.doe@example.com'
-          class='rounded-sm p-2'
           required
+          class='bg-bg border-border text-ink placeholder:text-faint focus:border-accent-dim border p-2.5 outline-none'
         />
-        <label for='subject' class='font-semibold'>Subject</label>
-        <select id='subject' name='subject' class='rounded-sm p-2' required>
+      </label>
+      <label class='text-dim flex flex-col gap-2 text-[13px]'>
+        <span><span class='text-accent'>$</span> subject</span>
+        <select
+          name='subject'
+          required
+          class='bg-bg border-border text-ink focus:border-accent-dim border p-2.5 outline-none'
+        >
           <option value='General'>General</option>
           <option value='Freelance Work'>Freelance Work</option>
           <option value='Collaboration'>Collaboration</option>
           <option value='Job Opportunity'>Job Opportunity</option>
           <option value='Other'>Other</option>
         </select>
-        <label for='message' class='font-semibold'>Message</label>
+      </label>
+      <label class='text-dim flex flex-col gap-2 text-[13px]'>
+        <span><span class='text-accent'>$</span> message</span>
         <textarea
-          id='message'
           name='message'
           placeholder='Hello, I am Jane Doe...'
-          class='h-48 resize-none rounded-sm p-2'
-          required></textarea>
-        <button
-          type='submit'
-          class='bg-opacity-10 mt-4 flex w-fit items-center gap-1 self-center rounded-lg bg-gray-400 px-4 py-2 font-semibold text-white backdrop-blur-lg hover:scale-105 hover:transition-transform hover:duration-300'
-        >
-          <Icon name='ic:baseline-send' class='h-4' />
-          Send
-        </button>
-      </form>
-    </div>
+          required
+          class='bg-bg border-border text-ink placeholder:text-faint focus:border-accent-dim h-48 resize-none border p-2.5 outline-none'
+        ></textarea>
+      </label>
+      <button
+        type='submit'
+        class='border-accent-dim text-accent hover:bg-accent hover:text-bg w-fit cursor-pointer border px-6 py-2 font-semibold transition-colors'
+      >
+        send ⏎
+      </button>
+    </form>
   </main>
 </Layout>

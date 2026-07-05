@@ -2,22 +2,26 @@
 export const prerender = true
 
 import BlogPostLayout from '@layouts/BlogPostLayout.astro'
-import { getCollection, render } from 'astro:content'
-import { postCollectionFilter } from '@utils/posts-collection'
+import { render } from 'astro:content'
+import { getSortedBlogPosts } from '@utils/posts-collection'
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts', postCollectionFilter)
+  const posts = await getSortedBlogPosts()
 
   return posts.map((post) => ({
     params: { id: post.id },
-    props: { post },
+    props: { ...post },
   }))
 }
 
-const { post } = Astro.props
+const post = Astro.props
 const { Content, remarkPluginFrontmatter } = await render(post)
 ---
 
-<BlogPostLayout post={post} minutes={remarkPluginFrontmatter}>
+<BlogPostLayout
+  id={post.id}
+  frontmatter={post.data}
+  minutes={remarkPluginFrontmatter.minutesRead}
+>
   <Content />
 </BlogPostLayout>

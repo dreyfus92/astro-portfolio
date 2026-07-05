@@ -1,108 +1,157 @@
-const technologies = [
+type Project = {
+  name: string
+  description: string
+  link: string
+  meta: string
+  cmd: string
+  langColor: string
+}
+
+/* commands worth showing for repos we know; anything else gets gh repo clone */
+const cmdOverrides: Record<string, string> = {
+  clack: 'npm i @clack/prompts',
+  cli: 'npx @e18e/cli analyze',
+  studiocms: 'npm create studiocms@latest',
+}
+
+/* static fallback when the pinned-repos service is down */
+const fallbackProjects: Project[] = [
   {
-    name: 'TypeScript',
-    imgSrc:
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-    altSrc: 'TypeScript Logo',
-    link: 'https://www.typescriptlang.org/',
-    ariaLink: 'TypeScript Documentation Website',
+    name: 'clack',
+    description:
+      'Effortlessly build beautiful command-line apps. Prompts people actually enjoy.',
+    link: 'https://github.com/bombshell-dev/clack',
+    meta: 'TypeScript · bombshell-dev',
+    cmd: 'npm i @clack/prompts',
+    langColor: '#3178c6',
   },
   {
-    name: 'React',
-    imgSrc:
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-    altSrc: 'React Logo',
-    link: 'https://react.dev/',
-    ariaLink: 'React Documentation Website',
+    name: 'e18e/cli',
+    description:
+      'A powerful CLI for analyzing and optimizing your JS/TS projects.',
+    link: 'https://github.com/e18e/cli',
+    meta: 'TypeScript · e18e',
+    cmd: 'npx @e18e/cli analyze',
+    langColor: '#3178c6',
   },
   {
-    name: 'Next.js',
-    imgSrc:
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
-    altSrc: 'Next.js Logo',
-    link: 'https://nextjs.org/',
-    ariaLink: 'Next.js Documentation Website',
+    name: 'studiocms',
+    description:
+      'Astro-native headless CMS, built from the ground up by and for the Astro community.',
+    link: 'https://github.com/withstudiocms/studiocms',
+    meta: 'TypeScript · withstudiocms',
+    cmd: 'npm create studiocms@latest',
+    langColor: '#3178c6',
   },
   {
-    name: 'Astro',
-    imgSrc:
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg',
-    altSrc: 'Astro Logo',
-    link: 'https://astro.build/',
-    ariaLink: 'Astro Documentation Website',
+    name: 'docs maintainership',
+    description:
+      'Astro Docs, Starlight and Tauri Docs. The unglamorous work that decides whether anyone can use the glamorous work.',
+    link: 'https://github.com/withastro/docs',
+    meta: 'MDX · withastro · tauri-apps',
+    cmd: 'gh repo clone withastro/docs',
+    langColor: '#fcb32c',
   },
-  {
-    name: 'Tailwind CSS',
-    imgSrc:
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
-    altSrc: 'Tailwind CSS Logo',
-    link: 'https://tailwindcss.com/',
-    ariaLink: 'TailwindCSS Documentation Website',
-  },
-  {
-    name: 'Node.js',
-    imgSrc:
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-    altSrc: 'Node.js Logo',
-    link: 'https://nodejs.org/',
-    ariaLink: 'Node.js Documentation Website',
-  },
-  {
-    name: 'Python',
-    imgSrc:
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-    altSrc: 'Python Logo',
-    link: 'https://www.python.org/',
-    ariaLink: 'Python Documentation Website',
-  },
-  {
-    name: 'Go',
-    imgSrc: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg',
-    altSrc: 'Golang Logo',
-    link: 'https://go.dev/',
-    ariaLink: 'Golang Documentation Website',
-  },
-  {
-    name: 'Docker',
-    imgSrc:
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-    altSrc: 'Docker Logo',
-    link: 'https://www.docker.com/',
-    ariaLink: 'Docker Documentation Website',
-  },
+]
+
+type PinnedRepo = {
+  owner: string
+  repo: string
+  description: string
+  language: string
+  languageColor: string
+}
+
+async function fetchPinned(): Promise<Project[]> {
+  const res = await fetch(
+    'https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=dreyfus92',
+    { signal: AbortSignal.timeout(3000) },
+  )
+  if (!res.ok) throw new Error(`pinned repos: ${res.status}`)
+  const repos: PinnedRepo[] = await res.json()
+  return repos.map((r) => {
+    const owner = r.owner.replace(/\/+$/, '')
+    return {
+      name: r.repo,
+      description: r.description,
+      link: `https://github.com/${owner}/${r.repo}`,
+      meta: `${r.language} · ${owner}`,
+      cmd: cmdOverrides[r.repo] ?? `gh repo clone ${owner}/${r.repo}`,
+      langColor: r.languageColor,
+    }
+  })
+}
+
+/* module-scope cache: only the first request after a cold start waits on the
+   scraper; after the TTL we serve stale and refresh in the background */
+const TTL_MS = 10 * 60 * 1000
+let cache: { projects: Project[]; at: number } | null = null
+let refreshing: Promise<void> | null = null
+
+export async function getProjects(): Promise<Project[]> {
+  if (cache) {
+    if (Date.now() - cache.at >= TTL_MS) {
+      refreshing ??= fetchPinned()
+        .then((projects) => {
+          cache = { projects, at: Date.now() }
+        })
+        .catch(() => {}) // keep serving stale if the scraper is down
+        .finally(() => {
+          refreshing = null
+        })
+    }
+    return cache.projects
+  }
+
+  try {
+    const projects = await fetchPinned()
+    cache = { projects, at: Date.now() }
+    return projects
+  } catch {
+    return fallbackProjects
+  }
+}
+
+const stack = [
+  { name: 'typescript', color: '#3178c6' },
+  { name: 'javascript', color: '#f7df1e' },
+  { name: 'node.js', color: '#5fa04e' },
+  { name: 'astro', color: '#bc52ee' },
+  { name: 'react', color: '#61dafb' },
+  { name: 'tailwindcss', color: '#38bdf8' },
+  { name: 'vite', color: '#646cff' },
+  { name: 'go', color: '#00add8' },
+  { name: 'python', color: '#3776ab' },
+  { name: 'docker', color: '#2496ed' },
 ]
 
 const socials = [
   {
-    name: 'Bluesky',
-    url: 'https://bsky.app/profile/dreyfus11.bsky.social',
-    imgSrc: 'simple-icons:bluesky',
-    ariaLabel: 'Paul Valladares on Bluesky',
-  },
-  {
-    name: 'X formerly known as Twitter',
-    url: 'https://x.com/soysarcasme',
-    imgSrc: 'simple-icons:x',
-    ariaLabel: 'Paul Valladares on X',
-  },
-  {
     name: 'GitHub',
     url: 'https://github.com/dreyfus92',
-    imgSrc: 'mdi:github',
     ariaLabel: 'Paul Valladares GitHub Profile',
+  },
+  {
+    name: 'Bluesky',
+    url: 'https://bsky.app/profile/dreyfus11.bsky.social',
+    ariaLabel: 'Paul Valladares Bluesky Profile',
+  },
+  {
+    name: 'X / Twitter',
+    url: 'https://twitter.com/soysarcasme',
+    ariaLabel: 'Paul Valladares Twitter Profile',
   },
   {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/paul-valladares',
-    imgSrc: 'mdi:linkedin',
     ariaLabel: 'Paul Valladares LinkedIn Profile',
   },
   {
     name: 'Discord',
     url: 'https://discord.com/users/603517171175391242',
-    imgSrc: 'ri:discord-fill',
     ariaLabel: 'Paul Valladares Discord Profile',
   },
 ]
 
-export { technologies, socials }
+export { socials, stack }
+export type { Project }

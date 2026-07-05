@@ -1,63 +1,40 @@
-@import 'tailwindcss';
-
-@theme {
-  --color-neon-green: oklch(77.04% 0.1759 132.7);
-  --color-neutral-50: oklch(0.985 0 0);
-  --color-neutral-100: oklch(0.97 0 0);
-  --color-neutral-200: oklch(0.922 0 0);
-  --color-neutral-300: oklch(0.87 0 0);
-  --color-neutral-400: oklch(0.708 0 0);
-  --color-neutral-500: oklch(0.556 0 0);
-  --color-neutral-600: oklch(0.439 0 0);
-  --color-neutral-700: oklch(0.371 0 0);
-  --color-neutral-800: oklch(0.269 0 0);
-  --color-neutral-900: oklch(0.205 0 0);
-  --color-neutral-950: oklch(0.145 0 0);
-}
+@reference './index.css';
 
 @layer base {
   .post p {
-    @apply my-4 leading-7;
+    @apply text-dim my-4 leading-7;
   }
 
-  /* Inline `` `code` `` only — leave `pre > code` to Shiki / expressive-code */
-  .post
-    :where(p, li, td, th, blockquote, h1, h2, h3, h4, h5, h6)
-    code {
-    @apply inline rounded-md border border-neutral-500/45 bg-neutral-800/55 px-1.5 py-0.5 font-mono text-[0.9em] leading-snug text-neutral-200;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
+  .post strong {
+    @apply text-ink font-medium;
   }
 
-  /* Safety: never pill-wrap fenced blocks if markup shifts */
-  .post pre code {
-    @apply border-0 bg-transparent p-0 text-inherit;
-    box-decoration-break: unset;
-    -webkit-box-decoration-break: unset;
+  .post code {
+    @apply bg-panel border-border text-ink rounded-sm border px-1 py-[2px] text-[13px];
   }
 
   .post h2 {
-    @apply my-6 text-3xl font-bold text-neutral-100;
+    @apply text-ink my-6 text-2xl font-bold tracking-tight;
   }
 
   .post h3 {
-    @apply my-6 text-xl font-bold text-neutral-100;
+    @apply text-ink my-6 text-xl font-bold tracking-tight;
   }
 
-  /* Prose links: clear affordance without fighting nav/footer (outside article) */
-  .post article a:not(:has(img)) {
-    @apply text-neon-green underline decoration-neon-green/40 decoration-2 underline-offset-[3px] transition-colors duration-150;
+  .post a {
+    @apply text-accent border-accent-dim border-b hover:opacity-80;
   }
 
-  .post article a:not(:has(img)):hover {
-    @apply decoration-neon-green text-neon-green;
+  .post ul,
+  .post ol {
+    @apply text-dim list-disc ps-6 leading-8;
   }
 
-  .post article a:not(:has(img)):focus-visible {
-    @apply rounded-sm outline outline-2 outline-offset-2 outline-neon-green;
+  .post ol {
+    @apply list-decimal;
   }
 
-  .post ul {
-    @apply list-disc ps-6 leading-8 text-gray-300;
+  .post blockquote {
+    @apply border-accent-dim text-dim my-4 border-l-2 ps-4 italic;
   }
 }

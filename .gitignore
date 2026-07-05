@@ -1,7 +1,12 @@
 # build output
 dist/
 .output/
-.vercel/
+
+# cloudflare local state
+.wrangler/
+
+# claude code
+.claude/
 
 # dependencies
 node_modules/

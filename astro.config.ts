@@ -1,35 +1,24 @@
 import { defineConfig } from 'astro/config'
+import { unified } from '@astrojs/markdown-remark'
 import { remarkReadingTime } from './src/utils/readingTime.mjs'
 import tailwindcss from '@tailwindcss/vite'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import vercel from '@astrojs/vercel'
+import cloudflare from '@astrojs/cloudflare'
 import expressiveCode from 'astro-expressive-code'
-import icon from 'astro-icon'
-
-import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
   markdown: {
-    shikiConfig: {
-      // Choose from Shiki's built-in themes (or add your own)
-      // https://github.com/shikijs/shiki/blob/main/docs/themes.md
-      theme: 'dark-plus',
-      // Add custom languages
-      // Note: Shiki has countless langs built-in, including .astro!
-      // https://github.com/shikijs/shiki/blob/main/docs/languages.md
-      langs: [],
-      // Enable word wrap to prevent horizontal scrolling
-      wrap: true,
-    },
-    remarkPlugins: [remarkReadingTime],
-    syntaxHighlight: 'shiki',
+    processor: unified({ remarkPlugins: [remarkReadingTime] }),
   },
-  integrations: [sitemap(), expressiveCode(), mdx(), react(), icon()],
+  integrations: [sitemap(), expressiveCode(), mdx()],
   site: 'https://www.paulvall.dev',
+  prefetch: { prefetchAll: true },
   output: 'server',
-  adapter: vercel(),
+  // sharp can't run on Workers: prerendered pages get optimized at build,
+  // SSR pages serve images as-is
+  adapter: cloudflare({ imageService: 'compile' }),
   image: {
     remotePatterns: [{ protocol: 'https' }],
   },

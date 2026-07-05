@@ -1,47 +1,52 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import { socials } from '@utils/data'
-import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
-
-type Socials = {
-  name: string
-  url: string
-  imgSrc: string
-  ariaLabel: string
-}
 ---
 
 <Layout
   title='Paul Valladares | Socials'
   description='Links for social media of Paul Valladares'
 >
-  <main class='mb-28 mt-10'>
-    <Image
-      class='mx-auto mb-10 w-40 rounded-full'
-      src='https://avatars.githubusercontent.com/u/85648028?v=4'
-      alt='Paul Valladares'
-      inferSize={true}
-      loading='eager'
-    />
-    <h2 class='mb-3 px-2 text-center text-3xl text-white'>Paul Valladares</h2>
-    <p class='mb-10 px-2 text-center text-2xl font-bold'>
-      Frontend Developer based in Mexico
-    </p>
-    <div class='flex flex-col items-center justify-center gap-6 md:gap-8'>
+  <main class='mx-auto w-full max-w-[880px] px-8'>
+    <section class='pt-22'>
+      <div class='text-dim prompt-glyph text-sm'>ls ./socials</div>
+      <div class='mt-8 flex items-center gap-6'>
+        <Image
+          class='border-border h-[88px] w-[88px] rounded-full border'
+          src='https://avatars.githubusercontent.com/u/85648028?v=4'
+          alt='Paul Valladares'
+          inferSize={true}
+          loading='eager'
+        />
+        <div>
+          <h1 class='text-ink text-2xl font-bold tracking-tight md:text-3xl'>
+            Paul Valladares
+          </h1>
+          <p class='text-dim mt-1'>
+            CLI tooling &amp; e18e — based in Mexico
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class='border-border bg-panel mt-12 max-w-[640px] border'>
       {
-        socials.map((opt: Socials) => {
-          return (
-            <a
-              class='text-md flex w-[350px] items-center justify-center rounded bg-neon-green px-8 py-3 text-center font-medium text-gray-800 transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:bg-neon-green md:w-[450px]'
-              href={opt.url}
-              aria-label={opt.ariaLabel}
-            >
-              <Icon name={opt.imgSrc} class='mr-2 h-6 w-6' />
-              <p class='text-gray-800'>{opt.name}</p>
-            </a>
-          )
-        })
+        socials.map((social) => (
+          <a
+            href={social.url}
+            target='_blank'
+            rel='noreferrer'
+            aria-label={social.ariaLabel}
+            class='border-border hover:bg-tint group flex items-baseline justify-between border-b px-5 py-4 text-sm last:border-b-0'
+          >
+            <span class='text-ink group-hover:text-accent'>
+              <span class='text-accent'>▪ </span>
+              {social.name}
+            </span>
+            <span class='text-faint text-[12.5px]'>↗</span>
+          </a>
+        ))
       }
     </div>
   </main>

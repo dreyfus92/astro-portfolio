@@ -1,44 +1,74 @@
 @import 'tailwindcss';
 
-@theme {
-  --color-neon-green: oklch(77.04% 0.1759 132.7);
-  --color-neutral-50: oklch(0.985 0 0);
-  --color-neutral-100: oklch(0.97 0 0);
-  --color-neutral-200: oklch(0.922 0 0);
-  --color-neutral-300: oklch(0.87 0 0);
-  --color-neutral-400: oklch(0.708 0 0);
-  --color-neutral-500: oklch(0.556 0 0);
-  --color-neutral-600: oklch(0.439 0 0);
-  --color-neutral-700: oklch(0.371 0 0);
-  --color-neutral-800: oklch(0.269 0 0);
-  --color-neutral-900: oklch(0.205 0 0);
-  --color-neutral-950: oklch(0.145 0 0);
+/* TTY design system — bomb.sh purple (#871aff). Dark is the default,
+   light follows the OS preference. */
+:root {
+  --bg: #0d0a14;
+  --panel: #131020;
+  --border: #261e3c;
+  --ink: #dcd6ec;
+  --dim: #8b80a6;
+  --faint: #524868;
+  --accent: #a970ff;
+  --accent-dim: #6d3bbf;
+  --glow: rgba(135, 26, 255, 0.07);
+  --tint: rgba(135, 26, 255, 0.08);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fbfafd;
+    --panel: #f4f1fa;
+    --border: #e5def2;
+    --ink: #241b38;
+    --dim: #6f6488;
+    --faint: #a89bc4;
+    --accent: #7a14e6;
+    --accent-dim: #b28ae0;
+    --glow: rgba(135, 26, 255, 0.045);
+    --tint: rgba(135, 26, 255, 0.05);
+    color-scheme: light;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-border: var(--border);
+  --color-ink: var(--ink);
+  --color-dim: var(--dim);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-tint: var(--tint);
+  --font-mono:
+    ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Menlo, Consolas,
+    monospace;
 }
 
 @layer base {
+  html {
+    background: var(--bg);
+  }
+
   body {
-    @apply bg-neutral-800 break-words antialiased;
+    @apply font-mono text-ink break-words antialiased;
+    background:
+      radial-gradient(1200px 600px at 70% -10%, var(--glow), transparent 60%),
+      var(--bg);
+    font-size: 15px;
+    line-height: 1.65;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
-    word-wrap: break-word;
   }
 
-  h1 {
-    @apply text-3xl font-bold tracking-tight text-white md:text-5xl;
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
   }
 
-  h2 {
-    @apply text-2xl font-bold tracking-tight;
-  }
-
-  p {
-    @apply text-gray-300;
-  }
-
-  a {
-    @apply text-neon-green;
-  }
-
+  /* legacy image sizing used inside old blog posts */
   img[alt='cat-in-a-server-room'],
   img[alt='programmer-with-chrome'] {
     @apply mx-auto h-[350px] md:h-[600px];
@@ -48,17 +78,38 @@
   img[alt='second-option-to-copy-response-gif'] {
     @apply mx-auto;
   }
+}
 
-  [astro-icon] {
-    @apply w-8;
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
+}
 
-  pre {
-    @apply rounded p-4 text-sm;
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 1;
   }
+  50% {
+    opacity: 0.3;
+  }
+}
 
-  ::selection {
-    color: #17191e;
-    background: #87cb49;
+/* brand-colored stack tags; light theme darkens the color for contrast
+   (javascript yellow et al. are illegible on near-white) */
+.tag {
+  color: var(--tag, var(--dim));
+}
+@media (prefers-color-scheme: light) {
+  .tag {
+    color: color-mix(in oklab, var(--tag, var(--dim)) 60%, black);
+  }
+}
+
+@utility prompt-glyph {
+  &::before {
+    content: '❯ ';
+    color: var(--accent);
   }
 }
