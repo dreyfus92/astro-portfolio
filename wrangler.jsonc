@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "paulvall-dev",
+  "name": "astro-portfolio",
   "compatibility_date": "2026-07-01",
   "compatibility_flags": ["nodejs_compat"]
   // Add bindings here if ever needed, e.g.:
