@@ -11,7 +11,6 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/check": "0.9.9",
     "@astrojs/cloudflare": "^14.1.1",
     "@astrojs/markdown-remark": "^7.2.1",
     "@astrojs/mdx": "7.0.2",
@@ -23,14 +22,15 @@
     "mdast-util-to-string": "4.0.0",
     "reading-time": "1.5.0",
     "sharp": "^0.35.3",
-    "tailwindcss": "^4.3.2",
-    "typescript": "5.7.3"
+    "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
+    "@astrojs/check": "0.9.9",
     "@types/node": "22.13.4",
     "prettier": "3.5.1",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.6.11",
+    "typescript": "5.7.3",
     "wrangler": "^4.107.0"
   }
 }
