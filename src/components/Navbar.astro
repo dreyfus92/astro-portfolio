@@ -10,13 +10,42 @@ const isActive = (route: string) =>
   import { navigate } from 'astro:transitions/client'
   import { navItems } from '../utils/navigation'
 
-  document.addEventListener('keydown', (e) => {
-    if (e.metaKey || e.ctrlKey || e.altKey) return
-    const target = e.target as HTMLElement
-    if (target.closest('input, textarea, select, [contenteditable]')) return
-    const item = navItems[Number(e.key) - 1]
-    if (item) navigate(item.route)
-  })
+  // SSR + ClientRouter: programmatic navigate() works, but <a> clicks still
+  // full-reload. Intercept header/nav links so clicks match keybind transitions.
+  if (!document.documentElement.dataset.navInit) {
+    document.documentElement.dataset.navInit = 'true'
+
+    document.addEventListener('click', (e) => {
+      const link = (e.target as HTMLElement).closest(
+        'nav a[href^="/"], header > a[href^="/"]',
+      ) as HTMLAnchorElement | null
+      if (!link || e.defaultPrevented) return
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0)
+        return
+
+      const href = link.getAttribute('href')
+      if (!href) return
+
+      const target = new URL(href, location.origin)
+      if (
+        target.origin !== location.origin ||
+        (target.pathname === location.pathname &&
+          target.search === location.search)
+      )
+        return
+
+      e.preventDefault()
+      navigate(href)
+    })
+
+    document.addEventListener('keydown', (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return
+      const target = e.target as HTMLElement
+      if (target.closest('input, textarea, select, [contenteditable]')) return
+      const item = navItems[Number(e.key) - 1]
+      if (item) navigate(item.route)
+    })
+  }
 </script>
 
 <header
