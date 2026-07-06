@@ -133,7 +133,7 @@ const socials = [
   },
   {
     name: 'Bluesky',
-    url: 'https://bsky.app/profile/dreyfus11.bsky.social',
+    url: 'https://bsky.app/profile/paulvall.dev',
     ariaLabel: 'Paul Valladares Bluesky Profile',
   },
   {
