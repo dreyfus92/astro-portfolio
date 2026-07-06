@@ -78,7 +78,7 @@ async function main() {
       command: 'whoami',
       title: 'Paul Valladares',
       description:
-        'Fullstack dev · open-source maintainer · developer experience',
+        'Fullstack dev and open source maintainer. TypeScript, Node.js, and CLI tools.',
     }),
   )
 
