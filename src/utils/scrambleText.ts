@@ -15,10 +15,10 @@ export function scrambleText(
   el: HTMLElement,
   text: string,
   { duration = 1100, cycleMs = 50 }: ScrambleOptions = {},
-): void {
+): () => void {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     el.textContent = text
-    return
+    return () => {}
   }
 
   const randomChar = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
@@ -30,6 +30,7 @@ export function scrambleText(
   let start: number | null = null
   let lastCycle = 0
   let tail = scramble(0)
+  let raf: number
 
   const frame = (now: number) => {
     start ??= now
@@ -44,9 +45,10 @@ export function scrambleText(
 
     el.textContent = text.slice(0, revealed) + tail.slice(0, text.length - revealed)
 
-    if (t < 1) requestAnimationFrame(frame)
+    if (t < 1) raf = requestAnimationFrame(frame)
     else el.textContent = text
   }
 
-  requestAnimationFrame(frame)
+  raf = requestAnimationFrame(frame)
+  return () => cancelAnimationFrame(raf)
 }

@@ -1,10 +1,10 @@
 ---
 const links = [
-  { text: 'github', url: 'https://github.com/dreyfus92' },
-  { text: 'bluesky', url: 'https://bsky.app/profile/paulvall.dev' },
-  { text: 'x', url: 'https://twitter.com/soysarcasme' },
-  { text: 'linkedin', url: 'https://www.linkedin.com/in/paul-valladares/' },
-  { text: 'mail', url: 'mailto:paulvi92@gmail.com' },
+  { text: 'github', hover: '@dreyfus92', url: 'https://github.com/dreyfus92' },
+  { text: 'bluesky', hover: '@paulvall.dev', url: 'https://bsky.app/profile/paulvall.dev' },
+  { text: 'x', hover: '@soysarcasme', url: 'https://twitter.com/soysarcasme' },
+  { text: 'linkedin', hover: '@paul-valladares', url: 'https://www.linkedin.com/in/paul-valladares/' },
+  { text: 'mail', hover: 'paulvi92@gmail.com', url: 'mailto:paulvi92@gmail.com' },
 ]
 ---
 
@@ -21,7 +21,10 @@ const links = [
             href={link.url}
             target='_blank'
             rel='noreferrer'
-            class='text-dim hover:text-accent transition-colors'
+            class='text-dim hover:text-accent'
+            style={`--w: ${link.text.length}ch; --wh: ${link.hover.length}ch`}
+            data-label={link.text}
+            data-hover={link.hover}
           >
             {link.text}
           </a>
@@ -31,3 +34,51 @@ const links = [
     }
   </span>
 </footer>
+
+<style>
+  footer a[data-hover] {
+    display: inline-block;
+    width: var(--w);
+    overflow: hidden;
+    white-space: nowrap;
+    transition:
+      width 200ms ease-out,
+      color 150ms;
+  }
+  footer a[data-hover]:hover,
+  footer a[data-hover]:focus {
+    width: var(--wh);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    footer a[data-hover] {
+      transition-property: color;
+    }
+  }
+</style>
+
+<script>
+  import { scrambleText } from '@utils/scrambleText'
+
+  const cancels = new WeakMap<HTMLElement, () => void>()
+
+  const swap = (el: HTMLElement, text: string) => {
+    cancels.get(el)?.()
+    cancels.set(el, scrambleText(el, text, { duration: 800, cycleMs: 40 }))
+  }
+
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('footer a[data-hover]').forEach((el) => {
+      if (el.dataset.scrambleBound) return
+      el.dataset.scrambleBound = 'true'
+      const reveal = () => swap(el, el.dataset.hover!)
+      const restore = () => swap(el, el.dataset.label!)
+      el.addEventListener('mouseenter', reveal)
+      el.addEventListener('mouseleave', restore)
+      el.addEventListener('focus', reveal)
+      el.addEventListener('blur', restore)
+    })
+  }
+
+  init()
+  document.addEventListener('astro:page-load', init)
+</script>
