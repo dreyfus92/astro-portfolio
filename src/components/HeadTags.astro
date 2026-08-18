@@ -53,6 +53,12 @@ const ogType = article ? 'article' : 'website'
   href={favicon('/favicon/safari-pinned-tab.svg')}
   color='#a970ff'
 />
+<link
+  rel='alternate'
+  type='application/rss+xml'
+  title="Paul Valladares' Blog"
+  href={new URL('/rss.xml', Astro.site)}
+/>
 <meta name='msapplication-TileColor' content='#871aff' />
 <meta name='theme-color' content='#0d0a14' />
 
