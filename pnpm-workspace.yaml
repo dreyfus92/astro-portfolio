@@ -1,4 +1,12 @@
+packages:
+  - .
+
 allowBuilds:
   esbuild: true
   sharp: true
   workerd: true
+# ponytail: pnpm 10 (Cloudflare) key; allowBuilds is the pnpm 11 one
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - workerd
