@@ -1,0 +1,69 @@
+---
+title: 'we need time to assimilate'
+description: 'the reason behind one sort function got lost in a rewrite, and a tarball came out nine times bigger. on comprehension debt, peter naur, and why open source should slow down.'
+pubDate: 2026-09-21
+draft: false
+cover: '@assets/posts/we-need-time-to-assimilate/cover.png'
+coverAlt: 'terminal boot log where generated, tests passed and released are all marked OK, while understood is still pending behind a blinking cursor'
+---
+
+on september 12, dario amodei published [we must pace the frontier](https://darioamodei.com/post/we-must-pace-the-frontier), an essay asking the entire ai industry to slow down. "we must slow the pace at which we improve the capabilities of ai models," he wrote. sam altman, demis hassabis and elon musk [all endorsed it](https://thezvi.wordpress.com/2026/09/14/we-must-pace-the-frontier/). the people with the most money riding on speed, the ones who spent years telling us the exponential can't be stopped, are now warning that ai building the next ai, left unchecked, "could outrun our ability to understand and control these systems."
+
+set aside whether they mean it. the interesting part is the admission underneath: production has outrun comprehension, even for the people doing the producing.
+
+now look down the stack, at open source. we don't have a race with china. we don't have investors demanding a frontier. and yet we're speeding up like we do. let me show you what that looks like, using a project i respect a lot.
+
+i run pnpm every day. this site builds with it. zoltan kochan has carried that project for years and the whole ecosystem is better for it. so read what follows as a case study, not a callout. i'm picking it because i happened to be there, and because if it can happen to a project this well run, it can happen to anyone.
+
+on august 26, pnpm shipped [version 12](https://github.com/pnpm/pnpm/releases/tag/v12.0.0), a rewrite of the cli in rust. two weeks later [bjorn](https://bsky.app/profile/bluwy.me), from the vite core team, [noticed something odd](https://bsky.app/profile/bluwy.me/post/3mv2i2bq7v22g): pnpm 12 was packing tarballs with much worse compression. his [create-vite-extra](https://github.com/bluwy/create-vite-extra) went from an 89KB tarball to 823KB. same files. nine times bigger.
+
+nobody in the thread knew why. cranking the gzip level up saved 4KB. i got curious and went digging, and [it wasn't the gzip level, it was file order](https://bsky.app/profile/paulvall.dev/post/3mv5ddlykts2f). gzip only remembers the last 32KB it saw, so duplicated content has to sit close together to get compressed away. pnpm 11 got its file list from npm-packlist, which sorts entries by extension, then by file name, so identical files living in different folders end up as neighbors. the rust port [collects paths into a sorted set](https://github.com/pnpm/pnpm/blob/92168e938157a2c5c56065e166520f5048516c46/pnpm/crates/fs-packlist/src/lib.rs#L126-L133), which orders them by full path, and the twins drift apart.
+
+here's the part i keep thinking about. the ordering was never a secret. bjorn [dug up the comment](https://bsky.app/profile/bluwy.me/post/3mv5fygaqck2y) in npm-packlist that [says it right there](https://github.com/npm/npm-packlist/blob/d1eed617b1ff1eedf5909efec7867aee385d0350/lib/index.js#L279-L292): "optimize for compressibility". the reason was written down, in the exact code being replaced, and it still didn't make it across. the rewrite reproduced "make a valid tarball" but not "make a small one", because no spec and no test ever asked for it. it was institutional knowledge disguised as an implementation detail.
+
+i don't think anyone did anything wrong here, and that's what makes it worth writing about. the tests passed. nothing crashed. packages with a lot of duplicated files just got quietly fatter, and there was no signal anywhere that could have told the team. it took someone downstream happening to look at a file size. and the response was exactly what you'd hope for: [james](https://bsky.app/profile/43081j.com) [filed the issue](https://github.com/pnpm/pnpm/issues/14766) the next day, the [fix](https://github.com/pnpm/pnpm/pull/14832) landed within a week and shipped in [12.5.0](https://github.com/pnpm/pnpm/releases/tag/v12.5.0). bjorn saw the same fat tarball come out of `bun pack` too, so this was never one project's problem.
+
+if the labs building the models can admit they're moving too fast to understand their own systems, open source can admit it too. because the pnpm story isn't really about pnpm. it's about a feeling i haven't been able to shake: nobody can digest knowledge at the speed we're now producing it. we need time to assimilate things. we're humans.
+
+## theory building
+
+peter naur wrote about this in 1985, in [programming as theory building](https://pages.cs.wisc.edu/~remzi/Naur.pdf). his claim: the real product of programming isn't the code. it's the theory of the program that forms in the minds of the people who built it. the code is a lossy artifact of that theory. a program whose theory has died is dead, and reviving it requires rebuilding the theory, not just reading the source.
+
+this regression is naur's argument made empirical. someone at npm knew why tarball entries were ordered that way, and even left a note. pnpm 11 inherited the behavior through a dependency without ever needing the theory. the rust port dropped the dependency, and the behavior went with it. nine times bigger tarballs is what a dead theory looks like in production.
+
+to be honest about the limits of this example: speed didn't plant this trap. the theory was never pnpm's to begin with, it lived inside a dependency. a careful, hand-written pr swapping npm-packlist for something lighter would have dropped the same behavior, and i say that as someone who spends time at [e18e](https://e18e.dev) recommending exactly that kind of swap.
+
+what speed changes is the odds of noticing. small prs only buy you understanding if there's time between them. at that rate nobody gets to sit with one piece long enough to wonder why npm sorted its files that way. the traps were always there. going slowly is how you give yourself a chance to see them.
+
+## generation got decoupled from comprehension
+
+writing code slowly was never a bug. it was the time in which understanding formed. you understood the system because you were slow inside it. the speed of production and the speed of comprehension used to be coupled, because the same brain did both.
+
+ai broke that coupling. generation scaled enormously. comprehension didn't, because comprehension runs on human hardware. spaced exposure, sleep, making mistakes and feeling them. there's no api for that.
+
+so every project moving faster than its people can absorb is accumulating a gap between what exists and what anyone understands. addy osmani calls it [comprehension debt](https://addyosmani.com/blog/comprehension-debt/). unlike tech debt, you can't refactor your way out. the only payment is time, and the interest gets collected as quiet regressions like the tarball one. i have no idea how much of that rust port was written with ai, and it doesn't matter. a fast rewrite has the same shape either way: a lot of code produced, not much time for the theory to travel with it.
+
+and maintainers are feeling the same gap from the other side, as reviewers. godot's rémi verschelde says ai slop prs are ["becoming increasingly draining and demoralizing"](https://www.theregister.com/2026/02/18/godot_maintainers_struggle_with_draining/) for maintainers. curl [ended its bug bounty](https://daniel.haxx.se/blog/2026/01/26/the-end-of-the-curl-bug-bounty/) after the share of reports that turned out to be real vulnerabilities fell from over 15% to under 5%. github opened [a community discussion](https://github.com/orgs/community/discussions/185387) about the flood of low-quality contributions, and then [shipped a setting](https://github.com/orgs/community/discussions/187038) that lets maintainers turn pull requests off entirely. the asymmetry is structural: producing a change is now nearly free, reviewing it is still priced in human attention.
+
+## to be fair
+
+ai isn't the villain here, and this isn't a call to ban it. i use it daily. it genuinely helps with the comprehension side too: explaining unfamiliar code, onboarding contributors, answering why-questions at 2am. but look at the ratio. generation scaled maybe a hundredfold. comprehension aids gave us, what, two? the gap still widens. the problem isn't the tool. it's a system where production outruns digestion. that chokes no matter how good the food is.
+
+## what slowing down actually means
+
+not zero pace. deliberate pace.
+
+fewer, larger releases, so downstream gets one migration to absorb instead of a drip of breaking changes. rewrites treated as theory transfers, not code transfers: before replacing something that works, write down why it works, and treat every undocumented behavior as load-bearing until proven otherwise. contribution policies that price in review cost, like requiring submitters to explain their change in their own words. and honestly, maintainers saying no more often, without apology.
+
+boring, slow apis are a feature. [chesterton's fence](https://en.wikipedia.org/wiki/G._K._Chesterton#Chesterton's_Fence) still applies, we're just hitting it at machine speed now.
+
+open source never ran on code. it ran on people who understood code. right now we're scaling the first and starving the second. slowing down isn't nostalgia. it's the only speed at which understanding survives.
+
+## further reading
+
+- [dario amodei, we must pace the frontier](https://darioamodei.com/post/we-must-pace-the-frontier)
+- [peter naur, programming as theory building (1985)](https://pages.cs.wisc.edu/~remzi/Naur.pdf)
+- [addy osmani, comprehension debt](https://addyosmani.com/blog/comprehension-debt/)
+- [bjorn's thread on pnpm 12 tarball sizes](https://bsky.app/profile/bluwy.me/post/3mv2i2bq7v22g)
+- [pnpm issue #14766, pack adds tar entries in insertion order](https://github.com/pnpm/pnpm/issues/14766)
+- [daniel stenberg, the end of the curl bug-bounty](https://daniel.haxx.se/blog/2026/01/26/the-end-of-the-curl-bug-bounty/)
