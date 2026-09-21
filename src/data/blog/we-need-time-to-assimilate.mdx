@@ -31,6 +31,10 @@ peter naur wrote about this in 1985, in [programming as theory building](https:/
 
 this regression is naur's argument made empirical. someone at npm knew why tarball entries were ordered that way, and even left a note. pnpm 11 inherited the behavior through a dependency without ever needing the theory. the rust port dropped the dependency, and the behavior went with it. nine times bigger tarballs is what a dead theory looks like in production.
 
+to be honest about the limits of this example: speed didn't plant this trap. the theory was never pnpm's to begin with, it lived inside a dependency. a careful, hand-written pr swapping npm-packlist for something lighter would have dropped the same behavior, and i say that as someone who spends time at [e18e](https://e18e.dev) recommending exactly that kind of swap.
+
+what speed changes is the odds of noticing. small prs only buy you understanding if there's time between them. at that rate nobody gets to sit with one piece long enough to wonder why npm sorted its files that way. the traps were always there. going slowly is how you give yourself a chance to see them.
+
 ## generation got decoupled from comprehension
 
 writing code slowly was never a bug. it was the time in which understanding formed. you understood the system because you were slow inside it. the speed of production and the speed of comprehension used to be coupled, because the same brain did both.
