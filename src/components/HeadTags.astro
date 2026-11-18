@@ -18,7 +18,8 @@ const {
   article = false,
 } = Astro.props
 
-const imageUrl = (image instanceof URL ? image : new URL(image, Astro.site)).href
+const imageUrl = (image instanceof URL ? image : new URL(image, Astro.site))
+  .href
 const ogType = article ? 'article' : 'website'
 ---
 
@@ -85,4 +86,4 @@ const ogType = article ? 'article' : 'website'
 <ClientRouter />
 
 <!-- sifa-id -->
-<link rel="me" href="https://sifa.id/p/paulvall.dev">
+<link rel='me' href='https://sifa.id/p/paulvall.dev' />

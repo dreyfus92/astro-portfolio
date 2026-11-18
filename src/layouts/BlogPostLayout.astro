@@ -64,28 +64,24 @@ const prevPost = posts[index - 1]
       </article>
 
       <div class='mt-14 flex flex-col gap-4 sm:flex-row sm:gap-6'>
-        {
-          prevPost && (
-            <a
-              href={`/posts/${prevPost.id}`}
-              class='border-border bg-panel hover:border-accent-dim flex grow flex-col border p-4 text-sm transition-colors'
-            >
-              <p class='text-faint mb-1'>&larr; previous</p>
-              <p class='text-ink font-semibold'>{prevPost.data.title}</p>
-            </a>
-          )
-        }
-        {
-          nextPost && (
-            <a
-              href={`/posts/${nextPost.id}`}
-              class='border-border bg-panel hover:border-accent-dim flex grow flex-col border p-4 text-right text-sm transition-colors'
-            >
-              <p class='text-faint mb-1'>next &rarr;</p>
-              <p class='text-ink font-semibold'>{nextPost.data.title}</p>
-            </a>
-          )
-        }
+        {prevPost && (
+          <a
+            href={`/posts/${prevPost.id}`}
+            class='border-border bg-panel hover:border-accent-dim flex grow flex-col border p-4 text-sm transition-colors'
+          >
+            <p class='text-faint mb-1'>&larr; previous</p>
+            <p class='text-ink font-semibold'>{prevPost.data.title}</p>
+          </a>
+        )}
+        {nextPost && (
+          <a
+            href={`/posts/${nextPost.id}`}
+            class='border-border bg-panel hover:border-accent-dim flex grow flex-col border p-4 text-right text-sm transition-colors'
+          >
+            <p class='text-faint mb-1'>next &rarr;</p>
+            <p class='text-ink font-semibold'>{nextPost.data.title}</p>
+          </a>
+        )}
       </div>
     </main>
     <Footer />

@@ -22,10 +22,7 @@ export function scrambleText(
   }
 
   const randomChar = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
-  const scramble = (from: number) =>
-    text
-      .slice(from)
-      .replace(/\S/g, randomChar) // keep spaces so the word shape holds
+  const scramble = (from: number) => text.slice(from).replace(/\S/g, randomChar) // keep spaces so the word shape holds
 
   let start: number | null = null
   let lastCycle = 0
@@ -43,7 +40,8 @@ export function scrambleText(
       lastCycle = now
     }
 
-    el.textContent = text.slice(0, revealed) + tail.slice(0, text.length - revealed)
+    el.textContent =
+      text.slice(0, revealed) + tail.slice(0, text.length - revealed)
 
     if (t < 1) raf = requestAnimationFrame(frame)
     else el.textContent = text

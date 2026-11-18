@@ -48,34 +48,30 @@ const isActive = (route: string) =>
   }
 </script>
 
-<header
-  class='border-border mx-auto flex w-full max-w-[880px] flex-col gap-2.5 border-b px-5 py-4 text-[13px] sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-5'
->
+<header class='border-border mx-auto flex w-full max-w-[880px] flex-col gap-2.5 border-b px-5 py-4 text-[13px] sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-5'>
   <a href='/' class='text-dim'>
-    <b class='text-accent font-medium'>paul</b>@valladares:<span
-      class='text-ink'>~</span
-    >
+    <b class='text-accent font-medium'>paul</b>@valladares:
+    <span class='text-ink'>~</span>
   </a>
   <nav aria-label='Main' class='flex flex-wrap gap-x-4 gap-y-1 sm:gap-5'>
-    {
-      navItems.map((navItem, i) => (
-        <a
-          href={navItem.route}
-          aria-current={isActive(navItem.route) ? 'page' : undefined}
-          class:list={[
-            'hover:text-accent py-1 transition-colors sm:py-0',
-            isActive(navItem.route) ? 'text-ink' : 'text-dim',
-          ]}
+    {navItems.map((navItem, i) => (
+      <a
+        href={navItem.route}
+        aria-current={isActive(navItem.route) ? 'page' : undefined}
+        class:list={[
+          'hover:text-accent py-1 transition-colors sm:py-0',
+          isActive(navItem.route) ? 'text-ink' : 'text-dim',
+        ]}
+      >
+        <kbd
+          class='text-faint hidden font-[inherit] sm:inline'
+          aria-hidden='true'
         >
-          <kbd
-            class='text-faint hidden font-[inherit] sm:inline'
-            aria-hidden='true'
-          >
-            [{i + 1}]
-          </kbd>
-          <span class='text-faint'>./</span>{navItem.text.toLowerCase()}
-        </a>
-      ))
-    }
+          [{i + 1}]
+        </kbd>
+        <span class='text-faint'>./</span>
+        {navItem.text.toLowerCase()}
+      </a>
+    ))}
   </nav>
 </header>

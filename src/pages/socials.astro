@@ -31,23 +31,21 @@ import { Image } from 'astro:assets'
     </section>
 
     <div class='border-border bg-panel mt-12 max-w-[640px] border'>
-      {
-        socials.map((social) => (
-          <a
-            href={social.url}
-            target='_blank'
-            rel='noreferrer'
-            aria-label={social.ariaLabel}
-            class='border-border hover:bg-tint group flex items-baseline justify-between border-b px-5 py-4 text-sm last:border-b-0'
-          >
-            <span class='text-ink group-hover:text-accent'>
-              <span class='text-accent'>▪ </span>
-              {social.name}
-            </span>
-            <span class='text-faint text-[12.5px]'>↗</span>
-          </a>
-        ))
-      }
+      {socials.map((social) => (
+        <a
+          href={social.url}
+          target='_blank'
+          rel='noreferrer'
+          aria-label={social.ariaLabel}
+          class='border-border hover:bg-tint group flex items-baseline justify-between border-b px-5 py-4 text-sm last:border-b-0'
+        >
+          <span class='text-ink group-hover:text-accent'>
+            <span class='text-accent'>▪ </span>
+            {social.name}
+          </span>
+          <span class='text-faint text-[12.5px]'>↗</span>
+        </a>
+      ))}
     </div>
   </main>
 </Layout>

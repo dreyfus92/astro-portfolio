@@ -40,30 +40,28 @@ const formatDate = (date: Date) => date.toISOString().slice(0, 10)
       </p>
     </section>
 
-    {
-      years.map((year) => (
-        <section class='mt-16'>
-          <h2 class='text-dim prompt-glyph mb-6 text-sm font-medium'>
-            ls <span class='text-ink'>./{year}</span>
-          </h2>
-          <div class='border-border bg-panel border'>
-            {byYear.get(year)?.map(({ post, minutes }) => (
-              <a
-                href={`/posts/${post.id}`}
-                class='border-border hover:bg-tint group grid grid-cols-[110px_1fr_auto] items-baseline gap-5 border-b px-5 py-3.5 text-sm last:border-b-0'
-              >
-                <span class='text-faint text-[12.5px]'>
-                  {formatDate(post.data.pubDate)}
-                </span>
-                <span class='text-ink group-hover:text-accent'>
-                  {post.data.title}
-                </span>
-                <span class='text-faint text-[12.5px]'>{minutes}</span>
-              </a>
-            ))}
-          </div>
-        </section>
-      ))
-    }
+    {years.map((year) => (
+      <section class='mt-16'>
+        <h2 class='text-dim prompt-glyph mb-6 text-sm font-medium'>
+          ls <span class='text-ink'>./{year}</span>
+        </h2>
+        <div class='border-border bg-panel border'>
+          {byYear.get(year)?.map(({ post, minutes }) => (
+            <a
+              href={`/posts/${post.id}`}
+              class='border-border hover:bg-tint group grid grid-cols-[110px_1fr_auto] items-baseline gap-5 border-b px-5 py-3.5 text-sm last:border-b-0'
+            >
+              <span class='text-faint text-[12.5px]'>
+                {formatDate(post.data.pubDate)}
+              </span>
+              <span class='text-ink group-hover:text-accent'>
+                {post.data.title}
+              </span>
+              <span class='text-faint text-[12.5px]'>{minutes}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
   </main>
 </Layout>

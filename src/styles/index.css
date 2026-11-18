@@ -53,7 +53,7 @@
   }
 
   body {
-    @apply font-mono text-ink break-words antialiased;
+    @apply text-ink font-mono break-words antialiased;
     background:
       radial-gradient(1200px 600px at 70% -10%, var(--glow), transparent 60%),
       var(--bg);
