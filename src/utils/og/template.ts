@@ -50,6 +50,9 @@ export function buildOgTemplate({
     {
       display: 'flex',
       flexDirection: 'column',
+      // satori >= 0.42 defaults to content-box; without this the padding
+      // pushes the root past the 1200x630 canvas
+      boxSizing: 'border-box',
       width: WIDTH,
       height: HEIGHT,
       backgroundColor: colors.bg,
