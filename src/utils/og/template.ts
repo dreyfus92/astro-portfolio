@@ -50,6 +50,9 @@ export function buildOgTemplate({
     {
       display: 'flex',
       flexDirection: 'column',
+      // satori >= 0.42 defaults to content-box; without this the padding
+      // pushes the root past the 1200x630 canvas
+      boxSizing: 'border-box',
       width: WIDTH,
       height: HEIGHT,
       backgroundColor: colors.bg,
@@ -89,26 +92,34 @@ export function buildOgTemplate({
           border: `2px solid ${colors.border}`,
         },
         [
-          el('div', {
-            fontSize: 52,
-            fontWeight: 700,
-            lineHeight: 1.15,
-            color: colors.ink,
-            marginBottom: 20,
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-          }, truncate(title, 72)),
-          el('div', {
-            fontSize: 24,
-            lineHeight: 1.45,
-            color: colors.dim,
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-          }, truncate(description, 120)),
+          el(
+            'div',
+            {
+              fontSize: 52,
+              fontWeight: 700,
+              lineHeight: 1.15,
+              color: colors.ink,
+              marginBottom: 20,
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+            },
+            truncate(title, 72),
+          ),
+          el(
+            'div',
+            {
+              fontSize: 24,
+              lineHeight: 1.45,
+              color: colors.dim,
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+            },
+            truncate(description, 120),
+          ),
         ],
       ),
       el(

@@ -41,10 +41,9 @@ const formatDate = (date: Date) => date.toISOString().slice(0, 10)
   <main class='mx-auto w-full max-w-[880px] px-8'>
     <section class='pt-22'>
       <div class='text-dim prompt-glyph text-sm'>whoami</div>
-      <h1
-        class='text-ink mt-3 text-4xl font-bold tracking-tight md:text-6xl'
-      >
-        <span id='myself'>Paul Valladares</span><span
+      <h1 class='text-ink mt-3 text-4xl font-bold tracking-tight md:text-6xl'>
+        <span id='myself'>Paul Valladares</span>
+        <span
           aria-hidden='true'
           class='bg-accent ml-1.5 inline-block h-[0.9em] w-[0.55em] animate-[blink_1.1s_steps(1)_infinite] align-baseline'
         ></span>
@@ -52,91 +51,114 @@ const formatDate = (date: Date) => date.toISOString().slice(0, 10)
       <p class='text-dim mt-5 text-[17px]'>
         fullstack dev
         <span class='text-accent'> ◈ </span>
-        open source maintainer 
+        open source maintainer
         <span class='text-accent'> ◈ </span>
         developer experience
       </p>
       <p class='text-dim mt-6 max-w-[58ch]'>
-        I build developer tools in <strong class='text-ink font-medium'
-          >TypeScript</strong
-        > and <strong class='text-ink font-medium'>Node.js,</strong> the kind you
+        I build developer tools in{' '}
+        <strong class='text-ink font-medium'>TypeScript</strong> and{' '}
+        <strong class='text-ink font-medium'>Node.js,</strong> the kind you
         install with npm and don't think about until they save you an afternoon.
       </p>
       <p class='text-dim mt-4 max-w-[58ch]'>
-        At <a
+        At{' '}
+        <a
           href='https://bomb.sh'
           target='_blank'
           class='text-accent border-accent-dim border-b hover:opacity-80'
-          >Bombshell</a
-        > I help maintain <a
+        >
+          Bombshell
+        </a>{' '}
+        I help maintain{' '}
+        <a
           href='https://github.com/bombshell-dev/clack'
           target='_blank'
           class='text-accent border-accent-dim border-b hover:opacity-80'
-          >clack</a
-        >, the CLI prompt library behind <strong class='text-ink font-medium'
-          >10M+ weekly npm downloads</strong
-        >. I also work with <a
+        >
+          clack
+        </a>
+        , the CLI prompt library behind{' '}
+        <strong class='text-ink font-medium'>10M+ weekly npm downloads</strong>.
+        I also work with{' '}
+        <a
           href='https://e18e.dev'
           target='_blank'
           class='text-accent border-accent-dim border-b hover:opacity-80'
-          >e18e</a
-        >, <a
+        >
+          e18e
+        </a>
+        ,{' '}
+        <a
           href='https://studiocms.dev'
           target='_blank'
           class='text-accent border-accent-dim border-b hover:opacity-80'
-          >StudioCMS</a
-        >, and docs for <a
+        >
+          StudioCMS
+        </a>
+        , and docs for{' '}
+        <a
           href='https://docs.astro.build'
           target='_blank'
           class='text-accent border-accent-dim border-b hover:opacity-80'
-          >Astro</a
-        >, <a
+        >
+          Astro
+        </a>
+        ,{' '}
+        <a
           href='https://starlight.astro.build'
           target='_blank'
           class='text-accent border-accent-dim border-b hover:opacity-80'
-          >Starlight</a
-        >, and <a
+        >
+          Starlight
+        </a>
+        , and{' '}
+        <a
           href='https://tauri.app'
           target='_blank'
           class='text-accent border-accent-dim border-b hover:opacity-80'
-          >Tauri</a
-        >.
+        >
+          Tauri
+        </a>
+        .
       </p>
       <p class='text-dim mt-4 max-w-[58ch]'>
-        Got something interesting? <a
+        Got something interesting?{' '}
+        <a
           href='/contact'
           class='text-accent border-accent-dim border-b hover:opacity-80'
-          >Let's talk</a
-        >.
+        >
+          Let's talk
+        </a>
+        .
       </p>
-      <div
-        class='border-border text-dim mt-11 flex w-fit border text-[12.5px]'
-      >
+      <div class='border-border text-dim mt-11 flex w-fit border text-[12.5px]'>
         <span class='text-green-500 px-3.5 py-1.5'>
           <span
             aria-hidden='true'
             class='motion-safe:animate-[breathe_2.4s_ease-in-out_infinite]'
-          >●</span> open to collab
+          >
+            ●
+          </span>{' '}
+          open to collab
         </span>
         <span class='border-border border-l px-3.5 py-1.5'>tz UTC−6</span>
-        <span class='border-border border-l px-3.5 py-1.5'
-          >uptime 4y in OSS</span
-        >
+        <span class='border-border border-l px-3.5 py-1.5'>
+          uptime 4y in OSS
+        </span>
       </div>
 
       <div class='mt-10'>
         <div class='text-dim prompt-glyph text-sm'>echo $STACK</div>
         <ul class='mt-4 flex max-w-[58ch] flex-wrap gap-2'>
-          {
-            stack.map((tech) => (
-              <li
-                class='tag border-border bg-panel border px-2.5 py-1 text-[12.5px]'
-                style={`--tag: ${tech.color}`}
-              >
-                {tech.name}
-              </li>
-            ))
-          }
+          {stack.map((tech) => (
+            <li
+              class='tag border-border bg-panel border px-2.5 py-1 text-[12.5px]'
+              style={`--tag: ${tech.color}`}
+            >
+              {tech.name}
+            </li>
+          ))}
         </ul>
       </div>
     </section>
@@ -146,33 +168,31 @@ const formatDate = (date: Date) => date.toISOString().slice(0, 10)
         ls <span class='text-ink'>./projects</span>
       </h2>
       <div class='grid grid-cols-1 gap-3.5 md:grid-cols-2'>
-        {
-          projects.map((project) => (
-            <a
-              href={project.link}
-              target='_blank'
-              class='border-border bg-panel hover:border-accent-dim block border p-5 transition-colors'
-            >
-              <div class='text-ink text-[15px] font-bold'>
-                <span class='text-accent'>▪ </span>
-                {project.name}
-              </div>
-              <p class='text-dim mt-2 min-h-[3.4em] text-[13.5px]'>
-                {project.description}
-              </p>
-              <div class='text-faint mt-3 text-xs'>
-                <span aria-hidden='true' style={`color: ${project.langColor}`}>
-                  ●
-                </span>{' '}
-                {project.meta}
-              </div>
-              <div class='bg-bg border-border text-dim mt-3 overflow-hidden border border-dashed px-3 py-2 text-[12.5px] text-ellipsis whitespace-nowrap'>
-                <span class='text-accent'>$ </span>
-                {project.cmd}
-              </div>
-            </a>
-          ))
-        }
+        {projects.map((project) => (
+          <a
+            href={project.link}
+            target='_blank'
+            class='border-border bg-panel hover:border-accent-dim block border p-5 transition-colors'
+          >
+            <div class='text-ink text-[15px] font-bold'>
+              <span class='text-accent'>▪ </span>
+              {project.name}
+            </div>
+            <p class='text-dim mt-2 min-h-[3.4em] text-[13.5px]'>
+              {project.description}
+            </p>
+            <div class='text-faint mt-3 text-xs'>
+              <span aria-hidden='true' style={`color: ${project.langColor}`}>
+                ●
+              </span>{' '}
+              {project.meta}
+            </div>
+            <div class='bg-bg border-border text-dim mt-3 overflow-hidden border border-dashed px-3 py-2 text-[12.5px] text-ellipsis whitespace-nowrap'>
+              <span class='text-accent'>$ </span>
+              {project.cmd}
+            </div>
+          </a>
+        ))}
       </div>
     </section>
 
@@ -181,22 +201,20 @@ const formatDate = (date: Date) => date.toISOString().slice(0, 10)
         ls <span class='text-ink'>./posts</span> -la | head -5
       </h2>
       <div class='border-border bg-panel border'>
-        {
-          latest.map(({ post, minutes }) => (
-            <a
-              href={`/posts/${post.id}`}
-              class='border-border hover:bg-tint group grid grid-cols-[110px_1fr_auto] items-baseline gap-5 border-b px-5 py-3.5 text-sm last:border-b-0'
-            >
-              <span class='text-faint text-[12.5px]'>
-                {formatDate(post.data.pubDate)}
-              </span>
-              <span class='text-ink group-hover:text-accent'>
-                {post.data.title}
-              </span>
-              <span class='text-faint text-[12.5px]'>{minutes}</span>
-            </a>
-          ))
-        }
+        {latest.map(({ post, minutes }) => (
+          <a
+            href={`/posts/${post.id}`}
+            class='border-border hover:bg-tint group grid grid-cols-[110px_1fr_auto] items-baseline gap-5 border-b px-5 py-3.5 text-sm last:border-b-0'
+          >
+            <span class='text-faint text-[12.5px]'>
+              {formatDate(post.data.pubDate)}
+            </span>
+            <span class='text-ink group-hover:text-accent'>
+              {post.data.title}
+            </span>
+            <span class='text-faint text-[12.5px]'>{minutes}</span>
+          </a>
+        ))}
       </div>
       <a
         href='/posts'
